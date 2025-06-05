@@ -84,5 +84,27 @@ OWOX Data Marts is free for internal or client use, not for resale in a competin
 - **Connectors** (`packages/connectors`) are distributed under the [MIT License](licenses/MIT.md)
 - **Platform** (all other files and directories) is distributed under the [ELv2 License](licenses/Elasticv2.md)
 
+## 🚀 Running the App Locally and in Production
 
+To run the full application (backend + frontend), use the following commands:
+
+### 🛠 Development Mode
+
+Run both the NestJS backend and the Vite frontend in watch mode:
+
+```bash
+npm run dev
+```
+
+This command uses npm-run-all to launch both services concurrently. It’s ideal for local development and live editing.
+
+## 🌐 Serve Production Build
+
+Start the NestJS server that serves static frontend files:
+
+```bash
+npm run serve
+```
+
+---
 ⭐ **Like this project?** [Star the repo here »](https://github.com/OWOX/owox-data-marts)

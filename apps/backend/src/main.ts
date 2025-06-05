@@ -6,6 +6,8 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 
 const logger = new Logger('Bootstrap');
+const PATH_PREFIX = 'api';
+const DEFAULT_PORT = 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -16,22 +18,23 @@ async function bootstrap() {
       transform: true,
     })
   );
-
-  const distPath = join(__dirname, '..', '..', 'web', 'dist');
+  app.setGlobalPrefix(PATH_PREFIX);
 
   // Serve static files from Vite frontend (after build)
+  const distPath = join(__dirname, '..', '..', 'web', 'dist');
   app.useStaticAssets(distPath);
 
   // Handle SPA fallback for client-side routing
   app.use((req: Request, res: Response, next: NextFunction) => {
-    if (req.path.startsWith('/api')) {
+    if (req.path.startsWith(`/${PATH_PREFIX}`)) {
       next();
     } else {
       res.sendFile(join(distPath, 'index.html'));
     }
   });
 
-  await app.listen(process.env.PORT ?? 3000);
+  const port = process.env.PORT ? Number(process.env.PORT) : DEFAULT_PORT;
+  await app.listen(port);
   logger.log(`Application is running on: ${await app.getUrl()}`);
 }
 

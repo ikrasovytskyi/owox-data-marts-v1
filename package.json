@@ -18,7 +18,9 @@
   ],
   "scripts": {
     "pipeline-runner-node": "npm run pipeline-runner-node --workspace=packages/pipeline-runner",
-    "dev": "npm run dev --workspaces --if-present",
+    "dev:web": "npm run dev -w @owox/web",
+    "dev:backend": "npm run dev -w @owox/backend",
+    "dev": "npm-run-all --parallel dev:web dev:backend",
     "serve": "npm run build --workspaces --if-present && npm run serve --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "lint:fix": "npm run lint:fix --workspaces --if-present",
