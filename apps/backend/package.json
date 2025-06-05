@@ -12,6 +12,7 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
+    "serve": "npm run start:prod",
     "lint": "eslint . --config ./eslint.config.cjs",
     "lint:fix": "eslint . --fix --config ./eslint.config.cjs",
     "dev": "npm run start:dev",
