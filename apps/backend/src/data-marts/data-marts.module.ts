@@ -15,6 +15,11 @@ import { DataMart } from './entities/data-mart.entity';
 import { DataStorage } from './entities/data-storage.entity';
 import { dataStorageFacadesProviders } from './data-storage-types/data-storage-facades';
 import { dataStorageResolverProviders } from './data-storage-types/data-storage-providers';
+import { UpdateDataMartDefinitionService } from './use-cases/update-data-mart-definition.service';
+import { DataMartService } from './services/data-mart.service';
+import { PublishDataMartService } from './use-cases/publish-data-mart.service';
+import { UpdateDataMartDescriptionService } from './use-cases/update-data-mart-description.service';
+import { UpdateDataMartTitleService } from './use-cases/update-data-mart-title.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([DataMart, DataStorage])],
@@ -22,9 +27,14 @@ import { dataStorageResolverProviders } from './data-storage-types/data-storage-
   providers: [
     ...dataStorageResolverProviders,
     ...dataStorageFacadesProviders,
+    DataMartService,
     CreateDataMartService,
     ListDataMartsService,
     GetDataMartService,
+    UpdateDataMartDefinitionService,
+    PublishDataMartService,
+    UpdateDataMartDescriptionService,
+    UpdateDataMartTitleService,
     DataMartMapper,
     DataStorageService,
     DataStorageMapper,
