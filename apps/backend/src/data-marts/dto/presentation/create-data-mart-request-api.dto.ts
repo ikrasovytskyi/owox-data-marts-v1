@@ -7,6 +7,7 @@ export class CreateDataMartRequestApiDto {
   @IsNotEmpty()
   title: string;
 
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   storageId: string;

@@ -15,9 +15,12 @@ import { UpdateDataMartTitleCommand } from '../dto/domain/update-data-mart-title
 import { UpdateDataMartDescriptionApiDto } from '../dto/presentation/update-data-mart-description-api.dto';
 import { UpdateDataMartDescriptionCommand } from '../dto/domain/update-data-mart-description.command';
 import { PublishDataMartCommand } from '../dto/domain/publish-data-mart.command';
+import { DataStorageMapper } from './data-storage.mapper';
 
 @Injectable()
 export class DataMartMapper {
+  constructor(private readonly dataStorageMapper: DataStorageMapper) {}
+
   toCreateDomainCommand(
     context: AuthorizationContext,
     dto: CreateDataMartRequestApiDto
@@ -29,7 +32,8 @@ export class DataMartMapper {
     return new DataMartDto(
       entity.id,
       entity.title,
-      entity.storage.type,
+      entity.status,
+      this.dataStorageMapper.toDomainDto(entity.storage),
       entity.createdAt,
       entity.modifiedAt,
       entity.definitionType,
@@ -53,7 +57,8 @@ export class DataMartMapper {
     return {
       id: dto.id,
       title: dto.title,
-      storageType: dto.storageType,
+      status: dto.status,
+      storage: this.dataStorageMapper.toApiResponse(dto.storage),
       definitionType: dto.definitionType,
       definition: dto.definition,
       description: dto.description,
