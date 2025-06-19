@@ -16,6 +16,7 @@ import { UpdateDataMartDescriptionApiDto } from '../dto/presentation/update-data
 import { UpdateDataMartDescriptionCommand } from '../dto/domain/update-data-mart-description.command';
 import { PublishDataMartCommand } from '../dto/domain/publish-data-mart.command';
 import { DataStorageMapper } from './data-storage.mapper';
+import { DeleteDataMartCommand } from '../dto/domain/delete-data-mart.command';
 
 @Injectable()
 export class DataMartMapper {
@@ -116,5 +117,9 @@ export class DataMartMapper {
 
   toPublishCommand(id: string, context: AuthorizationContext): PublishDataMartCommand {
     return new PublishDataMartCommand(id, context.projectId, context.userId);
+  }
+
+  toDeleteCommand(id: string, context: AuthorizationContext): DeleteDataMartCommand {
+    return new DeleteDataMartCommand(id, context.projectId, context.userId);
   }
 }

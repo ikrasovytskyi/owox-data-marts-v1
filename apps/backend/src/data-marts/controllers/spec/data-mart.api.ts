@@ -1,5 +1,12 @@
 import { applyDecorators } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiBody, ApiParam, ApiOkResponse } from '@nestjs/swagger';
+import {
+  ApiOperation,
+  ApiResponse,
+  ApiBody,
+  ApiParam,
+  ApiOkResponse,
+  ApiNoContentResponse,
+} from '@nestjs/swagger';
 import { CreateDataMartRequestApiDto } from '../../dto/presentation/create-data-mart-request-api.dto';
 import { DataMartResponseApiDto } from '../../dto/presentation/data-mart-response-api.dto';
 import { CreateDataMartResponseApiDto } from '../../dto/presentation/create-data-mart-response-api.dto';
@@ -62,5 +69,13 @@ export function UpdateDataMartTitleSpec() {
     ApiParam({ name: 'id', description: 'DataMart ID' }),
     ApiBody({ type: UpdateDataMartTitleApiDto }),
     ApiOkResponse({ type: DataMartResponseApiDto })
+  );
+}
+
+export function DeleteDataMartSpec() {
+  return applyDecorators(
+    ApiOperation({ summary: 'Soft delete DataMart' }),
+    ApiParam({ name: 'id', type: String }),
+    ApiNoContentResponse({ description: 'DataMart deleted' })
   );
 }

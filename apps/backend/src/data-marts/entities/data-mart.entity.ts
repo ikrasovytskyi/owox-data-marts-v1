@@ -6,6 +6,7 @@ import {
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 import { DataStorage } from './data-storage.entity';
 import { DataMartStatus } from '../enums/data-mart-status.enum';
@@ -41,6 +42,9 @@ export class DataMart {
 
   @Column()
   createdById: string;
+
+  @DeleteDateColumn({ nullable: true })
+  deletedAt?: Date;
 
   @CreateDateColumn()
   createdAt: Date;

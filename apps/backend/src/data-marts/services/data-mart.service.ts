@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { DataMart } from '../entities/data-mart.entity';
+import { DataStorage } from '../entities/data-storage.entity';
 
 @Injectable()
 export class DataMartService {
@@ -26,5 +27,9 @@ export class DataMartService {
     }
 
     return entity;
+  }
+
+  async findByStorage(storage: DataStorage): Promise<DataMart[]> {
+    return this.dataMartRepository.find({ where: { storage: { id: storage.id } } });
   }
 }

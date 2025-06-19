@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { CreateDataMartRequestApiDto } from '../dto/presentation/create-data-mart-request-api.dto';
 import { CreateDataMartResponseApiDto } from '../dto/presentation/create-data-mart-response-api.dto';
 import { DataMartResponseApiDto } from '../dto/presentation/data-mart-response-api.dto';
@@ -14,6 +14,7 @@ import { UpdateDataMartDefinitionService } from '../use-cases/update-data-mart-d
 import { UpdateDataMartTitleService } from '../use-cases/update-data-mart-title.service';
 import { UpdateDataMartDescriptionService } from '../use-cases/update-data-mart-description.service';
 import { PublishDataMartService } from '../use-cases/publish-data-mart.service';
+import { DeleteDataMartService } from '../use-cases/delete-data-mart.service';
 import { ApiTags } from '@nestjs/swagger';
 import {
   CreateDataMartSpec,
@@ -23,6 +24,7 @@ import {
   UpdateDataMartDefinitionSpec,
   UpdateDataMartDescriptionSpec,
   UpdateDataMartTitleSpec,
+  DeleteDataMartSpec,
 } from './spec/data-mart.api';
 import {
   AuthContext,
@@ -40,6 +42,7 @@ export class DataMartController {
     private readonly updateTitleService: UpdateDataMartTitleService,
     private readonly updateDescriptionService: UpdateDataMartDescriptionService,
     private readonly publishDataMartService: PublishDataMartService,
+    private readonly deleteDataMartService: DeleteDataMartService,
     private readonly mapper: DataMartMapper
   ) {}
 
@@ -118,5 +121,15 @@ export class DataMartController {
     const command = this.mapper.toPublishCommand(id, context);
     const dataMart = await this.publishDataMartService.run(command);
     return this.mapper.toResponse(dataMart);
+  }
+
+  @Delete(':id')
+  @DeleteDataMartSpec()
+  async delete(
+    @AuthContext() context: AuthorizationContext,
+    @Param('id') id: string
+  ): Promise<void> {
+    const command = this.mapper.toDeleteCommand(id, context);
+    await this.deleteDataMartService.run(command);
   }
 }
