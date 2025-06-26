@@ -1,3 +1,4 @@
+import { loadEnv } from './load-env';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
@@ -6,6 +7,8 @@ import { setupSwagger } from './config/swagger.config';
 import { setupGlobalPipes } from './config/global-pipes.config';
 import { setupStaticAssets } from './config/express-static.config';
 import { BaseExceptionFilter } from './common/exceptions/base-exception.filter';
+import { ConfigService } from '@nestjs/config';
+import { runMigrationsIfNeeded } from './config/migrations.config';
 
 const logger = new Logger('Bootstrap');
 const PATH_PREFIX = 'api';
@@ -13,6 +16,11 @@ const SWAGGER_PATH = 'swagger-ui';
 const DEFAULT_PORT = 3000;
 
 async function bootstrap() {
+  loadEnv();
+  const configService = new ConfigService();
+
+  await runMigrationsIfNeeded(configService);
+
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: ['error', 'warn', 'log'],
   });
@@ -25,7 +33,7 @@ async function bootstrap() {
 
   app.enableShutdownHooks();
 
-  await app.listen(process.env.PORT ? Number(process.env.PORT) : DEFAULT_PORT);
+  await app.listen(configService.get<number>('PORT') ?? DEFAULT_PORT);
   let appUrl = await app.getUrl();
   appUrl = appUrl.replace('[::1]', 'localhost');
   logger.log(`Application is running on: ${appUrl}`);

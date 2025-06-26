@@ -120,6 +120,7 @@ npm run serve
 
 - [Lint-staged Workflow](docs/lint-staged-workflow.md) - Code quality and formatting workflow
 - [Monorepo Structure](docs/monorepo-structure.md) - Project architecture and organization
+- [Migrations Guide](apps/backend/src/migrations/README.md) - Database migration workflow
 
 ---
 
