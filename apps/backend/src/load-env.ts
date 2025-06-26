@@ -1,6 +1,7 @@
 import { config as dotenvConfig } from 'dotenv';
-import findUp from 'find-up';
 import { Logger } from '@nestjs/common';
+import { join } from 'path';
+import { existsSync } from 'fs';
 
 const logger = new Logger('LoadEnv');
 
@@ -11,20 +12,26 @@ export function loadEnv(): void {
 
   const baseEnvName = '.env';
   const devEnvName = '.env.dev';
-  const baseEnvPath = findUp.sync(baseEnvName);
-  const devEnvPath = findUp.sync(devEnvName);
 
-  if (baseEnvPath) {
+  const isCompiled = __dirname.includes('dist');
+  const baseDirPath = join(__dirname, ...(isCompiled ? ['..', '..'] : ['..']));
+
+  const baseEnvPath = join(baseDirPath, baseEnvName);
+  const devEnvPath = join(baseDirPath, devEnvName);
+
+  const baseEnvExist = existsSync(baseEnvPath);
+  if (baseEnvExist) {
     dotenvConfig({ path: baseEnvPath });
     logger.log(`Loaded ${baseEnvName} from ${baseEnvPath}`);
   }
 
-  if (devEnvPath) {
+  const devEnvExist = existsSync(devEnvPath);
+  if (devEnvExist) {
     dotenvConfig({ path: devEnvPath, override: true });
     logger.log(`Loaded ${devEnvName} from ${devEnvPath}`);
   }
 
-  if (!baseEnvPath && !devEnvPath) {
+  if (!baseEnvExist && !devEnvExist) {
     logger.warn(`No ${baseEnvName} or ${devEnvName} file found`);
   }
 
