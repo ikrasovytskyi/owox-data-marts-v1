@@ -1,0 +1,39 @@
+name: Snapshot
+on:
+  push:
+    branches: [main]
+
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for changesets to work properly
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm run build
+
+      - name: Publish to "latest"
+        run: |
+          npx changeset publish --access public
+
+      - name: Create dummy changeset
+        run: |
+          cat <<EOF > .changeset/snapshot-release.md
+          ---
+          "mv-odm": minor
+          ---
+          Snapshot release
+          EOF
+
+      - name: Publish to "next"
+        run: |
+          npx changeset version --snapshot next
+          npx changeset publish --no-git-tag --snapshot --tag next

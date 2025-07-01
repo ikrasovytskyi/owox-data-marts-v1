@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@2.3.1/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [["owox", "@owox/backend", "@owox/connectors", "@owox/connector-runner"]],
+  "access": "public",
+  "snapshot": {
+    "useCalculatedVersion": true
+  },
+  "updateInternalDependencies": "minor"
+}
