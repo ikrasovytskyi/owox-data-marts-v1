@@ -1,45 +1,17 @@
 # Publishing Guide for OWOX CLI
 
-This guide explains how to publish the OWOX Data Marts CLI package to npm.
+This guide explains the automated publishing process for the OWOX Data Marts CLI package to npm.
 
-## Prerequisites
+## Overview
 
-1. **NPM Account**: Ensure you have access to publish to npm
-2. **Authentication**: Login to npm with `npm login`
+The `owox` CLI package is published automatically through GitHub Actions. For detailed information about the release strategy, versioning, installation commands, security guidelines, and troubleshooting, see the [Release & Versioning Strategy](../../docs/release-strategy.md).
 
-## Publishing Process
-
-### 1. Pre-publishing Checklist
-
-- [ ] No sensitive data in the package
-- [ ] All tests pass: `npm test`
-- [ ] Linting passes: `npm run lint`
-- [ ] Security audit passes: `npm audit`
-- [ ] CLI builds successfully: `npm run build`
-- [ ] OCLIF manifest is up to date: `oclif manifest`
-
-### 2. Publishing
-
-```bash
-# Simple publish command
-npm publish
-```
+## Automated Publishing Process
 
 The publishing process automatically:
-
 - Runs the `prepack` script (which generates OCLIF manifest)
 - Runs the `prepublishOnly` script (which runs security audit, tests and linting)
-- Publishes the package
-
-### 3. Manual Publishing (if needed)
-
-```bash
-# Check what will be published (builds automatically)
-npm pack --dry-run
-
-# Publish (builds automatically)
-npm publish
-```
+- Publishes the package to the appropriate npm tag
 
 ## Package Contents
 
@@ -51,11 +23,10 @@ The published package contains only the production-necessary files:
 - `oclif.manifest.json` - OCLIF command manifest
 - `package.json` - Package metadata and dependencies
 
-## Troubleshooting
+To preview what will be published before the automated process runs:
 
-## Security
+```bash
+npm pack --dry-run
+```
 
-- Never commit API keys or sensitive configuration
-- Use environment variables for configuration
-- Security audit runs automatically during `prepublishOnly` script
-- Consider using `npm audit fix` before publishing if vulnerabilities are found
+This command will show you exactly which files will be included in the published package.
