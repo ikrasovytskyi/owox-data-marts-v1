@@ -28,7 +28,7 @@ jobs:
         run: |
           cat <<EOF > .changeset/snapshot-release.md
           ---
-          "mv-odm": minor
+          "owox": minor
           ---
           Snapshot release
           EOF
