@@ -1,6 +1,6 @@
 {
   "name": "@owox/backend",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "OWOX Data Marts Backend - Full-stack data orchestration platform",
   "author": "OWOX",
   "license": "ELv2",
@@ -82,8 +82,8 @@
     "swagger-ui-express": "^5.0.1",
     "typeorm": "^0.3.24",
     "zod": "^3.25.64",
-    "@owox/connectors": "0.0.0",
-    "@owox/connector-runner": "0.0.0"
+    "@owox/connectors": "0.1.0",
+    "@owox/connector-runner": "0.1.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.0",
