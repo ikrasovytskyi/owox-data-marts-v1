@@ -2,6 +2,7 @@
   "name": "@owox/docs",
   "type": "module",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "sync": "node scripts/sync-docs.js",
     "dev": "npm run sync && astro dev",
