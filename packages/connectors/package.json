@@ -1,8 +1,11 @@
 {
   "name": "@owox/connectors",
   "version": "0.0.0",
-  "private": true,
   "description": "Connectors and storages for different data sources",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "scripts": {
     "build": "vite build --config vite.config.js",
@@ -10,6 +13,7 @@
     "prebuild": "npm run clean",
     "analyze": "npm run build -- --mode analyze",
     "prepack": "npm run build",
+    "prepublishOnly": "npm audit && npm run lint",
     "lint": "eslint . --config ./eslint.config.js",
     "lint:fix": "eslint . --fix --config ./eslint.config.js",
     "lint:md": "markdownlint-cli2 --config ../../.markdownlint-cli2.mjs",
