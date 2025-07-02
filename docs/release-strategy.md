@@ -18,12 +18,12 @@ This repository follows a structured release strategy with the following princip
 
 ## Installation Commands
 
-| Need            | Command                             |
-| --------------- | ----------------------------------- |
-| Stable (newest) | `npm i owox`                      |
-| Stable (exact)  | `npm i owox@1.8.0`                |
-| Snapshot (newest)| `npm i owox@next`                 |
-| Snapshot (exact) | `npm i owox@0.5.0-next-20250630211639` |
+| Need             | Command                                          |
+| ---------------- | ------------------------------------------------ |
+| Stable (newest)  | `npm install -g owox`                            |
+| Stable (exact)   | `npm install -g owox@1.8.0`                      |
+| Snapshot (newest)| `npm install -g owox@next`                       |
+| Snapshot (exact) | `npm install -g owox@0.5.0-next-20250630211639`  |
 
 ## Contributor Workflow
 
