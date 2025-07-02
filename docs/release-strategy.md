@@ -35,8 +35,8 @@ This repository follows a structured release strategy with the following princip
 npx changeset
 
 # Choose the appropriate bump type:
-# - minor: for new features, improvements (recommended)
 # - major: for breaking changes (use sparingly)
+# - minor: for new features, improvements (recommended)
 # - patch: not used in this strategy
 
 # Add everything and commit

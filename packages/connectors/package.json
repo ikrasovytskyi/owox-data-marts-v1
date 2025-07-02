@@ -22,7 +22,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json}\""
   },
   "files": [
-    "dist/"
+    "dist/**/*.js",
+    "dist/**/*.cjs"
   ],
   "exports": {
     ".": {
