@@ -11,7 +11,7 @@ The monorepo is divided into two main sections:
 
 ## Directory Structure
 
-```
+```text
 owox-data-marts/
 ├── apps/                  # Deployable applications
 │   ├── web/               # Frontend web application

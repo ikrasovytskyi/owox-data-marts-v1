@@ -45,7 +45,7 @@ sequenceDiagram
 
 lint-staged automatically finds the nearest configuration file to each staged file:
 
-```
+```text
 📁 project-root/
 ├── .lintstagedrc.json          # Root config (fallback)
 ├── 📁 apps/
@@ -119,7 +119,7 @@ npm run setup:husky
 npm install  # → triggers postinstall → setup:husky
 ```
 
-### What the setup does:
+### What the setup does
 
 1. **Initializes Husky**: Creates `.husky/` directory
 2. **Creates pre-commit hook**: Runs `npm run pre-commit`

@@ -1,6 +1,7 @@
 # OWOX Web Application
 
 ## Overview
+
 This is the web interface for OWOX Data Marts - an open-source solution for Data Analysts. This web application provides a user-friendly interface for managing Data Marts.
 
 ## Technologies Used
@@ -25,12 +26,14 @@ The project follows a monorepo structure using npm workspaces.
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/OWOX/owox-data-marts.git
    cd owox-data-marts
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```

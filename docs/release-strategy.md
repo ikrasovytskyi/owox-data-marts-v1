@@ -48,6 +48,7 @@ git push
 ### 2. Automated Process
 
 On every push to `main`:
+
 1. **Snapshot Build** (`publish.yml`): Automatically publishes a snapshot version to the `next` tag for testing and early access
 2. **Version PR** (`release-pr.yml`): Changesets bot creates/updates a "Version Packages" PR that collects all pending changesets
 3. **Stable Release** (`publish.yml`): When the "Version Packages" PR is merged, the workflow publishes the new stable version to the `latest` tag

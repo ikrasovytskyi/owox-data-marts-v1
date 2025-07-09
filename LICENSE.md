@@ -1,3 +1,5 @@
+# License
+
 The project uses a dual-license model:
 
 - Connectors (packages/connectors) are distributed under the MIT License (licenses/MIT.md)

@@ -7,7 +7,7 @@ feature is organized as a self-contained module with its own components, API int
 
 Each feature module should follow this structure:
 
-```
+```text
 feature-name/
 ├── components/       # React components specific to the feature
 ├── model/            # Business logic, types, and state

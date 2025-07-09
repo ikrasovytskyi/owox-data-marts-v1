@@ -104,12 +104,12 @@ export class ProjectsFacadeImpl implements ProjectsFacade {
 * ✅ Prettier
 * ✅ Unit tests
 
-### 🔒 Not Allowed:
+### 🔒 Not Allowed
 
 * Merging into `main` is forbidden if:
 
-    * There are lint or formatting errors
-    * Facade implementations are not covered by unit tests
+  * There are lint or formatting errors
+  * Facade implementations are not covered by unit tests
 
 ---
 

@@ -1,4 +1,6 @@
-## 🏷️ OWOX Data Marts — Free, Open-Source Connectors for Data Analysts
+# OWOX Data Marts
+
+## 🏷 Free, Open-Source Connectors for Data Analysts
 
 Collect any marketing, financial, or CRM data into Google Sheets or BigQuery — for free.  
 No vendors. No lock-in. No permissions sharing with 3-rd parties.
@@ -49,12 +51,12 @@ Whether you're an analyst at an agency, a startup, or in a huge enterprise, this
 | Google Sheets   | 🟢 Public | [Issues](https://github.com/OWOX/owox-data-marts/issues?q=is%3Aissue%20state%3Aopen%20label%3AGoogleSheets) |
 | Google BigQuery | 🟢 Public | [Issues](https://github.com/OWOX/owox-data-marts/issues?q=state%3Aopen%20%20label%3AGoogleBigQuery)         |
 
-If you find an integration missing, you can share your use case and request it [here](https://github.com/OWOX/owox-data-marts/discussions)
+If you find an integration missing, you can share your use case and request it in the [discussions](https://github.com/OWOX/owox-data-marts/discussions)
 
 ## 🧰 How It Works
 
 - 🎯 Pick your platform (e.g. Facebook Ads) from [existing integrations](packages/connectors/src/Sources)
-- 🧾 Make a copy of the Template from the [table above]
+- 🧾 Make a copy of the Template from the [connectors table](#-available-connectors)
 - 🔐 Add your API credentials directly to the sheet — **they stay private**
 - 🚀 Run the Apps Script to pull your data
 - 📅 Schedule it (optional) for daily/weekly refreshes
@@ -75,6 +77,7 @@ Learn how to collect and automate marketing, financial, and any other data into 
 ▶️ [**Watch the Replay on YouTube**](https://www.youtube.com/live/nQYfHX-IjY8?t=66s)
 
 What you'll learn:
+
 - Why data access is broken (and how to fix it)
 - Facebook Ads → Sheets and TikTok Ads → BigQuery — **live demos**
 - How to automate reporting across clients without SaaS limits

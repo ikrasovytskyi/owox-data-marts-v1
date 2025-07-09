@@ -140,7 +140,7 @@ The Scheduler Module can be configured using environment variables:
 
 #### ⚡ Direct Runner
 
-```
+```text
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │ Fetch       │────►│ Process     │────►│ Update      │
 │ Triggers    │     │ In Current  │     │ Status      │
@@ -154,13 +154,13 @@ require distributed processing.
 
 To use the direct runner, set:
 
-```
+```bash
 SCHEDULER_TRIGGER_RUNNER_TYPE=direct
 ```
 
 #### 🌐 Google PubSub Runner
 
-```
+```text
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │ Fetch       │────►│ Publish to  │────►│ Subscribe & │────►│ Process     │
 │ Triggers    │     │ PubSub      │     │ Receive     │     │ & Update    │
@@ -174,7 +174,7 @@ multiple instances or services.
 
 To use the PubSub runner, set:
 
-```
+```bash
 SCHEDULER_TRIGGER_RUNNER_TYPE=pubsub
 SCHEDULER_PUBSUB_PROJECT_ID=your-google-cloud-project-id
 ```

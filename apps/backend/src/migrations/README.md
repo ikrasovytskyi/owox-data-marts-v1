@@ -21,7 +21,7 @@
 
 To generate a migration template, use the following command:
 
-```
+```bash
 npm run migration:create-template <MigrationName>
 ```
 
@@ -31,11 +31,14 @@ Where `<MigrationName>` is the desired name for your migration (e.g.,
 ## Running and Reverting Migrations
 
 - To run all pending migrations:
-  ```
+
+  ```bash
   npm run migration:run
   ```
+
 - To revert the last executed migration:
-  ```
+
+  ```bash
   npm run migration:revert
   ```
 

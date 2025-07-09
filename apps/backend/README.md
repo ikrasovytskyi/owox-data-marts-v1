@@ -41,8 +41,8 @@ This document also includes the conventions for organizing the application struc
 * Should interact only with the **corresponding repository**.
 * Can return both:
 
-    * `Entity` — for use-case services
-    * `Domain DTO` — for API/CLI usage (only if simple)
+  * `Entity` — for use-case services
+  * `Domain DTO` — for API/CLI usage (only if simple)
 * **Must not depend on other services or use-cases**.
 
 ### 4. **Use-Case Service Layer**
@@ -77,7 +77,7 @@ This document also includes the conventions for organizing the application struc
 
 > 📌 **Do not place `fromEntity()` or `fromDomain()` inside DTOs**, and avoid doing mapping inside services as well.
 > Use dedicated **mapper classes** to convert between layers.
-
+>
 > 🧩 Naming and grouping of mappers (e.g., one vs many) — left to the team's discretion.
 
 ---
@@ -101,7 +101,7 @@ This document also includes the conventions for organizing the application struc
 
 ## 📁 Suggested Folder Structure
 
-```
+```text
 src/
   users/
     entities/
@@ -124,7 +124,7 @@ src/
       user.controller.ts
 ```
 
-### 📌 Notes:
+### 📌 Notes
 
 * Domain DTOs are stored under `dto/domain/` — they are part of the application layer.
 * Presentation-layer DTOs are stored under `dto/presentation/` — used in API/CLI.
