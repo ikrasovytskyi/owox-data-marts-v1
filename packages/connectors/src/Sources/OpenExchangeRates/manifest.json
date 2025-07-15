@@ -1,3 +1,5 @@
 {
-  "title": "Open Exchange Rates"
+  "title": "Open Exchange Rates",
+  "logo": "openexchangerates.svg",
+  "docUrl": "https://github.com/OWOX/owox-data-marts/blob/main/packages/connectors/src/Sources/OpenExchangeRates/README.md"
 }

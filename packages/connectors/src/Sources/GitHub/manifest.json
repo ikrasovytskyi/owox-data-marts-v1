@@ -1,3 +1,5 @@
 {
-  "title": "GitHub"
+  "title": "GitHub",
+  "logo": "github.svg",
+  "docUrl": "https://github.com/OWOX/owox-data-marts/blob/main/packages/connectors/src/Sources/GitHub/README.md"
 }

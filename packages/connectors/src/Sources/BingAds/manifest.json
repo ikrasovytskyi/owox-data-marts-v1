@@ -1,3 +1,5 @@
 {
-  "title": "Bing Ads"
+  "title": "Bing Ads",
+  "logo": "bing-ads.svg",
+  "docUrl": "https://github.com/OWOX/owox-data-marts/blob/main/packages/connectors/src/Sources/BingAds/README.md"
 }

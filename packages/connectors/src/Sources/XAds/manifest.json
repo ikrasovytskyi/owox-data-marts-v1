@@ -1,3 +1,5 @@
 {
-  "title": "X Ads"
+  "title": "X Ads",
+  "logo": "x-ads.svg",
+  "docUrl": "https://github.com/OWOX/owox-data-marts/blob/main/packages/connectors/src/Sources/XAds/README.md"
 }

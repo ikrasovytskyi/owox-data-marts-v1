@@ -1,3 +1,5 @@
 {
-  "title": "Open Holidays"
+  "title": "Open Holidays",
+  "logo": "open-holidays.svg",
+  "docUrl": "https://github.com/OWOX/owox-data-marts/blob/main/packages/connectors/src/Sources/OpenHolidays/README.md"
 }
