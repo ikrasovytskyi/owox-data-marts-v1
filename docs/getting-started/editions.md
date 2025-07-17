@@ -66,11 +66,10 @@ Legend:
 
 [^1]: **Data Connectivity** — Bring business data into your DWH in minutes — no manual exports, no complex setup.  
 [^2]: **Data Storage (SQL-accessible)** — Work with live data in your own data warehouse — stay in control, stay efficient.  
-[^3]: **Data Enablement** — Amplify analytics team by giving business users direct, self-service access to governed data.
-* **Google Sheets Extension** — Bring trusted data into Google Sheets — with filters and auto-refresh, without waiting on analysts.
-* **Looker Studio Connector** — Connect Data Marts to Looker Studio so teams can build dashboards on trusted, reusable data — without rewriting logic.
-* **Open Data Protocol (OData)** — Seamlessly connect your preferred tools to trusted data using OData protocol, empowering business users with flexible, secure access.
-
+[^3]: **Data Enablement** — Amplify analytics team by giving business users direct, self-service access to governed data.  
+**Google Sheets Extension** — Bring trusted data into Google Sheets — with filters and auto-refresh, without waiting on analysts.  
+**Looker Studio Connector** — Connect Data Marts to Looker Studio so teams can build dashboards on trusted, reusable data — without rewriting logic.  
+**Open Data Protocol (OData)** — Seamlessly connect your preferred tools to trusted data using OData protocol, empowering business users with flexible, secure access.  
 [^4]: **Data Mart Management** — Think of Data Marts as your company’s internal API for analytics — structured, reusable, and controlled.  
 [^5]: **Relationships** *(coming soon)* — Connect your Data Marts into a clear, reusable model — easy to maintain & share, easy for AI to explore.  
 [^6]: **Orchestration** — Put your data delivery on autopilot — from source to report — and stay in control with one simple orchestration hub.  
