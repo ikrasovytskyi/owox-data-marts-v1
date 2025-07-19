@@ -24,11 +24,13 @@ OWOX Data Marts is a growing library of JavaScript-based **connectors** that:
 
 Whether you're an analyst at an agency, a startup, or in a huge enterprise, this project gives you **full control over your data collection connectors**.
 
+
 ## 🔌 Available Connectors
 
 ### Data Sources
 
-| Name                          | Status            | Links                                                                                                                                                                                                                                 |
+
+| Name                          | Status            | Links     |
 | ----------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Facebook Ads                  | 🟢 Public         | [Google Drive](https://drive.google.com/drive/u/0/folders/1_x556pta5lKtKbTltIrPEDkNqAn78jM4), [Source Code](packages/connectors/src/Sources/FacebookMarketing), [Readme](packages/connectors/src/Sources/FacebookMarketing/README.md) |
 | Open Exchange Rates           | 🟢 Public         | [Google Drive](https://drive.google.com/drive/u/0/folders/1akutchS-Txr5PwToMzHrikTXd_GTs-84), [Source Code](packages/connectors/src/Sources/OpenExchangeRates), [Readme](packages/connectors/src/Sources/OpenExchangeRates/README.md) |
