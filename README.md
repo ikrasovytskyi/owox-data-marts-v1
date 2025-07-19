@@ -24,11 +24,9 @@ OWOX Data Marts is a growing library of JavaScript-based **connectors** that:
 
 Whether you're an analyst at an agency, a startup, or in a huge enterprise, this project gives you **full control over your data collection connectors**.
 
-
 ## 🔌 Available Connectors
 
 ### Data Sources
-
 
 | Name                          | Status            | Links     |
 | ----------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
