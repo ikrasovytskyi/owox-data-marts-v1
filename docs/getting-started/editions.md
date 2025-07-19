@@ -25,7 +25,6 @@ Legend:
 
 ## Features
 
-
 | | **Community Apps Script**| **Community** | **Agency** | **Enterprise** |
 |-----|---|---|---|---|
 | **Summary** | _The starting point for data professionals starting to automate data collection to Google Sheets and / or BigQuery_ | _Ideal for teams automating business reporting while valuing data autonomy: gaining full control over data connectivity and enablement_ | _Optimized for Digital and Data Agencies managing multiple client's reporting — scale to unlimited connectors and reports under a predictable, fixed price_ | _Built for organizations looking for a tailored self-managed solution with an extra layer of flexibility, security & support included_ |
