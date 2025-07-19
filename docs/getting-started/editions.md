@@ -62,7 +62,7 @@ Legend:
 | [**Support Level**](https://support.owox.com/hc/en-us/articles/115000216754-Support-Options) | _Community_ | _Community_ | _Agency_ | _Enterprise_                                  |
 | **How to start**| [Download Sheets template](../../README.md#data-sources) | [Install on your desktop](./quick-start.md) | [Upgrade Community Edition](https://www.owox.com/pricing) | [Contact our team](https://www.owox.com/pricing) |
 
-*This page will be updated regularly as we develop more features and refine editions.*
+_This page will be updated regularly as we develop more features and refine editions._
 
 ## 📝 Feature Descriptions
 
@@ -73,13 +73,13 @@ Legend:
 **Looker Studio Connector** — Connect Data Marts to Looker Studio so teams can build dashboards on trusted, reusable data — without rewriting logic.  
 **Open Data Protocol (OData)** — Seamlessly connect your preferred tools to trusted data using OData protocol, empowering business users with flexible, secure access.  
 [^4]: **Data Mart Management** — Think of Data Marts as your company’s internal API for analytics — structured, reusable, and controlled.  
-[^5]: **Semantic Layer** *(coming soon)* — Build a clear, reusable semantic layer by connecting Data Marts, mapping business context to physical data tables.  
+[^5]: **Semantic Layer** _(coming soon)_ — Build a clear, reusable semantic layer by connecting Data Marts, mapping business context to physical data tables.  
 [^6]: **Orchestration** — Put your data delivery on autopilot — from source to report — and stay in control with one simple orchestration hub.  
-[^7]: **Users Management** *(coming soon)* — Simple multi-user access with identical permissions and email sign-in.  
-[^8]: **Social Sign In** *(coming soon)* — Simplify onboarding with secure social login for your team.  
-[^9]: **SSO (SAML)** *(coming soon)* — Enable secure, one-click access with your organization’s SSO — no separate passwords to manage.  
-[^10]: **High Availability Cluster** *(coming soon)* — Stay resilient at scale with high-availability architecture built for performance.  
-[^11]: **Access Permissions (including Contexts)** *(coming soon)* — Give the right people/teams the right access, and block everything else.  
-[^12]: **Multiple Projects** *(coming soon)* — Manage multiple business environments under one account — with clean separation and full control.  
-[^13]: **Monitoring & Advanced Logging** *(coming soon)* — Stay ahead of failures with complete visibility into data workflows and system performance.  
-[^14]: **Telemetry** *(coming soon)* — Gain insight into data usage patterns so you can declutter, govern, and optimize your reporting layer.
+[^7]: **Users Management** _(coming soon)_ — Simple multi-user access with identical permissions and email sign-in.  
+[^8]: **Social Sign In** _(coming soon)_ — Simplify onboarding with secure social login for your team.  
+[^9]: **SSO (SAML)** _(coming soon)_ — Enable secure, one-click access with your organization’s SSO — no separate passwords to manage.  
+[^10]: **High Availability Cluster** _(coming soon)_ — Stay resilient at scale with high-availability architecture built for performance.  
+[^11]: **Access Permissions (including Contexts)** _(coming soon)_ — Give the right people/teams the right access, and block everything else.  
+[^12]: **Multiple Projects** _(coming soon)_ — Manage multiple business environments under one account — with clean separation and full control.  
+[^13]: **Monitoring & Advanced Logging** _(coming soon)_ — Stay ahead of failures with complete visibility into data workflows and system performance.  
+[^14]: **Telemetry** _(coming soon)_ — Gain insight into data usage patterns so you can declutter, govern, and optimize your reporting layer.
