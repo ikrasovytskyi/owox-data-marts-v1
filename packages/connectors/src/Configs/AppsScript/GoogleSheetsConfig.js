@@ -443,16 +443,14 @@ var GoogleSheetsConfig = class GoogleSheetsConfig extends AbstractConfig {
      */
     sendNotifications({ status, error }) {
       try {
-        const formattedMessage = this.formatStatusMessage({ status, error });
-        const statusDisplayText = this.getStatusProperties(status).displayText;
+        const { title, messageWithDetails } = this.prepareNotificationContent({ status, error });
         
         // Send email notification if NotifyByEmail has value
         if (this.NotifyByEmail && this.NotifyByEmail.value && this.NotifyByEmail.value.trim()) {
           EmailNotification.send({
             to: this.NotifyByEmail.value,
-            message: formattedMessage,
-            status: statusDisplayText,
-            connectorName: this.configSpreadsheet.getName()
+            subject: title,
+            message: messageWithDetails
           });
         }
         
@@ -460,9 +458,7 @@ var GoogleSheetsConfig = class GoogleSheetsConfig extends AbstractConfig {
         if (this.NotifyByGoogleChat && this.NotifyByGoogleChat.value && this.NotifyByGoogleChat.value.trim()) {
           GoogleChatNotification.send({
             webhookUrl: this.NotifyByGoogleChat.value.trim(),
-            message: formattedMessage,
-            status: statusDisplayText,
-            connectorName: this.configSpreadsheet.getName()
+            message: messageWithDetails
           });
         }
       } catch (error) {
@@ -471,22 +467,26 @@ var GoogleSheetsConfig = class GoogleSheetsConfig extends AbstractConfig {
     }
     //----------------------------------------------------------------
 
-  //---- formatStatusMessage -----------------------------------------
+  //---- prepareNotificationContent ----------------------------------
     /**
-     * Format user-friendly status message
+     * Prepare notification title and message content
      * @param {Object} params - Parameters object
      * @param {number} params.status - Status constant
-     * @param {string} params.error - Error message if status is Error
-     * @returns {string} - Formatted message
+     * @param {string} params.error - Error message for Error status
+     * @returns {Object} - Object with title and messageWithDetails properties
      */
-    formatStatusMessage({ status, error }) {
-      const statusProps = this.getStatusProperties(status);
+    prepareNotificationContent({ status, error }) {
+      const documentName = this.configSpreadsheet.getName();
       const documentUrl = this.configSpreadsheet.getUrl();
+      const { displayText, notificationMessage } = this.getStatusProperties(status);
+      const title = `${documentName} - Status: ${displayText}`;
       
-      return `${statusProps.notificationMessage}${status === EXECUTION_STATUS.ERROR && error ? `: ${error}` : ''}\n\n${documentUrl}`;
+      return {
+        title,
+        messageWithDetails: `${title}\n${documentUrl}\n\n${notificationMessage}${status === EXECUTION_STATUS.ERROR && error ? `: ${error}` : ''}`
+      };
     }
     //----------------------------------------------------------------
-
 
   //---- shouldSendNotifications -------------------------------------
     /**
