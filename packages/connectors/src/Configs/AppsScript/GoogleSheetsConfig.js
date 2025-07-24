@@ -483,7 +483,7 @@ var GoogleSheetsConfig = class GoogleSheetsConfig extends AbstractConfig {
       const statusProps = this.getStatusProperties(status);
       const documentUrl = this.configSpreadsheet.getUrl();
       
-      return `${statusProps.notificationMessage}${status === EXECUTION_STATUS.ERROR && error ? `: ${error}` : ''} (${documentUrl})`;
+      return `${statusProps.notificationMessage}${status === EXECUTION_STATUS.ERROR && error ? `: ${error}` : ''}\n\n${documentUrl}`;
     }
     //----------------------------------------------------------------
 
