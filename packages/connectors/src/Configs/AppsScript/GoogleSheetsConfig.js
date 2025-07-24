@@ -481,12 +481,9 @@ var GoogleSheetsConfig = class GoogleSheetsConfig extends AbstractConfig {
      */
     formatStatusMessage({ status, error }) {
       const statusProps = this.getStatusProperties(status);
+      const documentUrl = this.configSpreadsheet.getUrl();
       
-      if (status === EXECUTION_STATUS.ERROR && error) {
-        return `${statusProps.notificationMessage}: ${error}`;
-      }
-      
-      return statusProps.notificationMessage;
+      return `${statusProps.notificationMessage}${status === EXECUTION_STATUS.ERROR && error ? `: ${error}` : ''} (${documentUrl})`;
     }
     //----------------------------------------------------------------
 
@@ -521,26 +518,26 @@ var GoogleSheetsConfig = class GoogleSheetsConfig extends AbstractConfig {
   //---- createTimeoutTrigger ----------------------------------------
     createTimeoutTrigger() {
       this.removeTimeoutTrigger();
-      const trigger = ScriptApp.newTrigger('checkForTimeout')
+      ScriptApp.newTrigger('checkForTimeout')
         .timeBased()
         .after((this.MaxRunTimeout.value * 2 + 1) * 60 * 1000) // The trigger fires after (MaxRunTimeout * 2 + 1) minutes to ensure isInProgress() returns false even if LastImportDate was updated at the end of the import.
         .create();
-      PropertiesService.getScriptProperties().setProperty('timeoutTriggerId', trigger.getUniqueId());
     }
     //----------------------------------------------------------------
 
   //---- removeTimeoutTrigger ----------------------------------------
     removeTimeoutTrigger() {
-      const triggerId = PropertiesService.getScriptProperties().getProperty('timeoutTriggerId');
-      if (triggerId) {
-        const triggers = ScriptApp.getProjectTriggers();
-        triggers.forEach(trigger => {
-          if (trigger.getUniqueId() === triggerId) {
-            ScriptApp.deleteTrigger(trigger);
-          }
-        });
-        PropertiesService.getScriptProperties().deleteProperty('timeoutTriggerId');
-      }
+      const triggers = ScriptApp.getProjectTriggers();
+      let removedCount = 0;
+      
+      triggers.forEach(trigger => {
+        if (trigger.getHandlerFunction() === 'checkForTimeout') {
+          ScriptApp.deleteTrigger(trigger);
+          removedCount++;
+        }
+      });
+      
+      console.log(`[TimeoutTrigger] ${removedCount > 0 ? `Removed ${removedCount} timeout trigger(s)` : 'No timeout triggers found to remove'}`);
     }
     //----------------------------------------------------------------
 
@@ -555,7 +552,6 @@ var GoogleSheetsConfig = class GoogleSheetsConfig extends AbstractConfig {
       } else {
         console.log('[TimeoutTrigger] Status is still in progress');
       }
-      this.removeTimeoutTrigger();
     }
     //----------------------------------------------------------------
 }
