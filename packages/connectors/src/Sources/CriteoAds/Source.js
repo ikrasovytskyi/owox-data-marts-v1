@@ -11,26 +11,26 @@ var CriteoAdsSource = class CriteoAdsSource extends AbstractSource {
 
     super(configRange.mergeParameters({
       StartDate: {
-        isRequired: true,
         requiredType: "date",
-        label: "Start Date",
-        description: "Start date for data import"
+        label: 'Start Date',
+        description: 'Start date for data import',
+        attributes: ['manualBackfill']
       },
       EndDate: {
-        isRequired: false,
         requiredType: "date",
-        label: "End Date",
-        description: "End date for data import"
+        label: 'End Date',
+        description: 'End date for data import',
+        attributes: ['manualBackfill']
       },
       AdvertiserIDs: {
         isRequired: true,
-        label: "Advertiser IDs",
-        description: "Criteo Advertiser IDs to fetch data from"
+        label: 'Advertiser IDs',
+        description: 'Comma-separated list of Criteo advertiser IDs'
       },
       AccessToken: {
         requiredType: "string",
-        label: "Access Token",
-        description: "Criteo API Access Token for authentication"
+        label: 'Access Token',
+        description: 'Criteo API Access Token for authentication'
       },
       ReimportLookbackWindow: {
         requiredType: "number",

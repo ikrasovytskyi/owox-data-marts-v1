@@ -40,14 +40,15 @@ var XAdsSource = class XAdsSource extends AbstractSource {
       },
       StartDate: {
         requiredType: "date",
-        isRequired: true,
-        label: "Start Date",
-        description: "Start date for data import"
+        label: 'Start Date',
+        description: 'Start date for data import',
+        attributes: ['manualBackfill']
       },
       EndDate: {
         requiredType: "date",
-        label: "End Date",
-        description: "End date for data import"
+        label: 'End Date',
+        description: 'End date for data import',
+        attributes: ['manualBackfill']
       },
       ReimportLookbackWindow: {
         requiredType: "number",
