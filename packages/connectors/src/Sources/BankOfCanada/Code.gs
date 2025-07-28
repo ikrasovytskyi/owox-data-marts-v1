@@ -18,13 +18,17 @@ function onOpen() {
     .addToUi();
 }
 
-function importNewData() {
+function importNewData(importType = OWOX.RunConfigType.INCREMENTAL, params = null) {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  const runConfig = OWOX.AbstractRunConfig.createIncremental();
+  const source = new OWOX.BankOfCanadaSource(config);
+  const runConfig = new OWOX.AbstractRunConfig({
+    type: importType,
+    data: params || []
+  });
   
   const connector = new OWOX.BankOfCanadaConnector(
     config,
-    new OWOX.BankOfCanadaSource(config),
+    source,
     "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
     runConfig
   );
@@ -37,21 +41,6 @@ function manualBackfill() {
   const source = new OWOX.BankOfCanadaSource(config);
   
   config.showManualBackfillDialog(source);
-}
-
-function executeManualBackfill(params) {
-  const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  
-  const runConfig = OWOX.AbstractRunConfig.createManualBackfill(params);
-  
-  const connector = new OWOX.BankOfCanadaConnector(
-    config,
-    new OWOX.BankOfCanadaSource(config),
-    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
-    runConfig
-  );
-
-  connector.run();
 }
 
 function cleanUpExpiredData() {

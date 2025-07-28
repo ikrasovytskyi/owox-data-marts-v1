@@ -207,7 +207,7 @@
       });    
       google.script.host.close();
       
-      google.script.run.executeManualBackfill(params);
+      google.script.run.importNewData(RunConfigType.MANUAL_BACKFILL, params);
     }
   </script>
 </body>

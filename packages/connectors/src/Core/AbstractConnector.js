@@ -21,12 +21,12 @@ var AbstractConnector = class AbstractConnector {
       }
 
       // Set default run config if not provided (fallback for backwards compatibility)
-      this.runConfig = runConfig || AbstractRunConfig.createIncremental();
+      this.runConfig = runConfig || new AbstractRunConfig();
 
       try {
 
         config.validate();
-        this.runConfig.validate(config);
+        this.runConfig.validate(config); //?config
 
       } catch(error) {
 
@@ -292,8 +292,13 @@ var AbstractConnector = class AbstractConnector {
         return lookbackDate;
       }
 
-      // Fallback to StartDate only if no LastRequestedDate
-      return this.config.StartDate.value;
+      // If StartDate exists, use it
+      if (this.config.StartDate && this.config.StartDate.value) {
+        return this.config.StartDate.value;
+      }
+
+      // If neither LastRequestedDate nor StartDate exists, use today's date
+      return new Date();
     }
     //----------------------------------------------------------------
 

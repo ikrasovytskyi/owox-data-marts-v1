@@ -64,29 +64,4 @@ var AbstractRunConfig = class AbstractRunConfig {
       // Type validation will be done by config.validate() after _processRunConfig()
     }
   }
-
-  /**
-   * Creates a manual backfill run config
-   * @param {Array} params - Array of parameter objects with configField and value
-   * @returns {AbstractRunConfig} New run config instance
-   */
-  static createManualBackfill(params) {
-    // params is already an array of {configField, value} objects
-    return new AbstractRunConfig({
-      type: RunConfigType.MANUAL_BACKFILL,
-      data: params
-    });
-  }
-
-  /**
-   * Creates an incremental run config
-   * @param {Object} state - State object (optional, for future use)
-   * @returns {AbstractRunConfig} New run config instance
-   */
-  static createIncremental(state = {}) {
-    return new AbstractRunConfig({
-      type: RunConfigType.INCREMENTAL,
-      state
-    });
-  }
-}; 
+};

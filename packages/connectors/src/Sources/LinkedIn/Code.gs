@@ -18,12 +18,15 @@ function onOpen() {
     .addToUi();
 }
 
-function importNewData() {
+function importNewData(importType = OWOX.RunConfigType.INCREMENTAL, params = null) {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  const runConfig = OWOX.AbstractRunConfig.createIncremental();
   const properties = PropertiesService.getDocumentProperties().getProperties();
   const source = new OWOX.LinkedInSource(config.setParametersValues(properties));
-
+  const runConfig = new OWOX.AbstractRunConfig({
+    type: importType,
+    data: params || []
+  });
+  
   const connector = new OWOX.LinkedInConnector(
     config,
     source,
@@ -41,22 +44,6 @@ function manualBackfill() {
   ));
   
   config.showManualBackfillDialog(source);
-}
-
-function executeManualBackfill(params) {
-  const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  const runConfig = OWOX.AbstractRunConfig.createManualBackfill(params);
-  const properties = PropertiesService.getDocumentProperties().getProperties();
-  const source = new OWOX.LinkedInSource(config.setParametersValues(properties));
-  
-  const connector = new OWOX.LinkedInConnector(
-    config,
-    source,
-    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
-    runConfig
-  );
-
-  connector.run();
 }
 
 function updateFieldsSheet() {

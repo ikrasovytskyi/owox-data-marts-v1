@@ -18,13 +18,17 @@ function onOpen() {
     .addToUi();
 }
 
-function importNewData() {
+function importNewData(importType = OpenHolidays_Integration.RunConfigType.INCREMENTAL, params = null) {
   const config = new OpenHolidays_Integration.GoogleSheetsConfig(CONFIG_RANGE);
-  const runConfig = OpenHolidays_Integration.AbstractRunConfig.createIncremental();
-
+  const source = new OpenHolidays_Integration.OpenHolidaysSource(config);
+  const runConfig = new OpenHolidays_Integration.AbstractRunConfig({
+    type: importType,
+    data: params || []
+  });
+  
   const connector = new OpenHolidays_Integration.OpenHolidaysConnector(
     config,
-    new OpenHolidays_Integration.OpenHolidaysSource(config),
+    source,
     "GoogleSheetsStorage",
     runConfig
   );
@@ -37,20 +41,6 @@ function manualBackfill() {
   const source = new OpenHolidays_Integration.OpenHolidaysSource(config);
   
   config.showManualBackfillDialog(source);
-}
-
-function executeManualBackfill(params) {
-  const config = new OpenHolidays_Integration.GoogleSheetsConfig(CONFIG_RANGE);
-  const runConfig = OpenHolidays_Integration.AbstractRunConfig.createManualBackfill(params);
-  
-  const connector = new OpenHolidays_Integration.OpenHolidaysConnector(
-    config,
-    new OpenHolidays_Integration.OpenHolidaysSource(config),
-    "GoogleSheetsStorage",
-    runConfig
-  );
-
-  connector.run();
 }
 
 function cleanUpExpiredData() {

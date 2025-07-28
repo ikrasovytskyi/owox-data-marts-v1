@@ -19,11 +19,14 @@ function onOpen() {
     .addToUi();
 }
 
-function importNewData() {
-  const config = new OWOX.GoogleSheetsConfig( CONFIG_RANGE );
-  const runConfig = OWOX.AbstractRunConfig.createIncremental();
+function importNewData(importType = OWOX.RunConfigType.INCREMENTAL, params = null) {
+  const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
   const properties = PropertiesService.getDocumentProperties().getProperties();
   const source = new OWOX.FacebookMarketingSource(config.setParametersValues(properties));
+  const runConfig = new OWOX.AbstractRunConfig({
+    type: importType,
+    data: params || []
+  });
   
   const connector = new OWOX.FacebookMarketingConnector(
     config,
@@ -33,7 +36,6 @@ function importNewData() {
   );
 
   connector.run();
-
 }
 
 function manualBackfill() {
@@ -43,22 +45,6 @@ function manualBackfill() {
   ));
   
   config.showManualBackfillDialog(source);
-}
-
-function executeManualBackfill(params) {
-  const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  const runConfig = OWOX.AbstractRunConfig.createManualBackfill(params);
-  const properties = PropertiesService.getDocumentProperties().getProperties();
-  const source = new OWOX.FacebookMarketingSource(config.setParametersValues(properties));
-  
-  const connector = new OWOX.FacebookMarketingConnector(
-    config,
-    source,
-    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
-    runConfig
-  );
-
-  connector.run();
 }
 
 function cleanUpExpiredData() {
