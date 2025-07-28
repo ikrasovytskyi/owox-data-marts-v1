@@ -1,27 +1,10 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 import { softDropTable } from './helper';
 
-export class CreateDataMartAndDataStorageTables1750350724543 implements MigrationInterface {
-  name = 'CreateDataMartAndDataStorageTables1750350724543';
+export class CreateDataMartTable1750350724544 implements MigrationInterface {
+  name = 'CreateDataMartTable1750350724544';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.createTable(
-      new Table({
-        name: 'data_storage',
-        columns: [
-          { name: 'id', type: 'varchar', isPrimary: true },
-          { name: 'type', type: 'varchar', isNullable: false },
-          { name: 'projectId', type: 'varchar', isNullable: false },
-          { name: 'credentials', type: 'json', isNullable: true },
-          { name: 'config', type: 'json', isNullable: true },
-          { name: 'deletedAt', type: 'datetime', isNullable: true },
-          { name: 'createdAt', type: 'datetime', default: 'CURRENT_TIMESTAMP' },
-          { name: 'modifiedAt', type: 'datetime', default: 'CURRENT_TIMESTAMP' },
-        ],
-      }),
-      true
-    );
-
     await queryRunner.createTable(
       new Table({
         name: 'data_mart',
@@ -38,11 +21,11 @@ export class CreateDataMartAndDataStorageTables1750350724543 implements Migratio
           { name: 'createdAt', type: 'datetime', default: 'CURRENT_TIMESTAMP' },
           { name: 'modifiedAt', type: 'datetime', default: 'CURRENT_TIMESTAMP' },
           { name: 'storageId', type: 'varchar', isNullable: true },
+          { name: 'schema', type: 'json', isNullable: true },
         ],
       }),
       true
     );
-
     await queryRunner.createForeignKey(
       'data_mart',
       new TableForeignKey({
@@ -57,6 +40,5 @@ export class CreateDataMartAndDataStorageTables1750350724543 implements Migratio
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await softDropTable(queryRunner, 'data_mart');
-    await softDropTable(queryRunner, 'data_storage');
   }
 }
