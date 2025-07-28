@@ -97,7 +97,6 @@ var RedditAdsConnector = class RedditAdsConnector extends AbstractConnector {
         storage.saveData(preparedData);
       }
 
-      // Only update LastRequestedDate for incremental runs
       if (this.runConfig.type === RunConfigType.INCREMENTAL) {
         this.config.updateLastRequstedDate(currentDate);
       }

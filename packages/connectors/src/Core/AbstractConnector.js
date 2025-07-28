@@ -66,11 +66,6 @@ var AbstractConnector = class AbstractConnector {
      */
     _processRunConfig() {
       if (this.runConfig.type === RunConfigType.MANUAL_BACKFILL) {
-        // For manual backfill, clear LastRequestedDate to force using StartDate
-        if (this.config.LastRequestedDate) {
-          this.config.LastRequestedDate.value = null;
-        }
-        
         // Apply manual backfill parameters
         this.runConfig.data.forEach(item => { 
           if (this.config[item.configField] && 
@@ -90,11 +85,6 @@ var AbstractConnector = class AbstractConnector {
         this.config.logMessage(`🔧 Manual Backfill mode activated with custom parameters`);
         
       } else if (this.runConfig.type === RunConfigType.INCREMENTAL) {
-        // For incremental, apply state if provided
-        if (this.runConfig.state.lastRequestedDate && this.config.LastRequestedDate) {
-          this.config.LastRequestedDate.value = new Date(this.runConfig.state.lastRequestedDate);
-        }
-        
         this.config.logMessage(`🔄 Incremental mode activated`);
       }
     }

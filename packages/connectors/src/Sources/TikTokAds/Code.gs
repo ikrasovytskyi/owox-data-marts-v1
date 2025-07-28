@@ -30,17 +30,15 @@ function onOpen() {
  */
 function startImportProcess() {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
+  const runConfig = OWOX.AbstractRunConfig.createIncremental();
   const properties = PropertiesService.getDocumentProperties().getProperties();
   const source = new OWOX.TikTokAdsSource(config.setParametersValues(properties));
-  
-  const runConfig = OWOX.AbstractRunConfig.createIncremental();
   
   const connector = new OWOX.TikTokAdsConnector(
     config,
     source,
-    "GoogleSheetsStorage",
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
     runConfig
-    // "GoogleBigQueryStorage"
   );
 
   connector.run();
@@ -56,14 +54,14 @@ function manualBackfill() {
 
 function executeManualBackfill(params) {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  const properties = PropertiesService.getDocumentProperties().getProperties();
-  
   const runConfig = OWOX.AbstractRunConfig.createManualBackfill(params);
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.TikTokAdsSource(config.setParametersValues(properties));
   
   const connector = new OWOX.TikTokAdsConnector(
     config,
-    new OWOX.TikTokAdsSource(config.setParametersValues(properties)),
-    "GoogleSheetsStorage",
+    source,
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
     runConfig
   );
 

@@ -14,10 +14,7 @@ var FacebookMarketingConnector = class FacebookMarketingConnector extends Abstra
       DestinationTableNamePrefix: {
         default: ""
       }
-    }), 
-    source,
-    null, // storage - auto-assign
-    runConfig);
+    }), source, null, runConfig);
     
     this.storageName = storageName;
 
@@ -153,7 +150,7 @@ var FacebookMarketingConnector = class FacebookMarketingConnector extends Abstra
 
         // Only update LastRequestedDate for incremental runs
         if (this.runConfig.type === RunConfigType.INCREMENTAL) {
-        this.config.updateLastRequstedDate(startDate);
+          this.config.updateLastRequstedDate(startDate);
         }
         startDate.setDate( startDate.getDate() + 1);  // let's move on to the next date
 

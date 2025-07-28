@@ -51,7 +51,6 @@ var LinkedInSource = class LinkedInSource extends AbstractSource {
       },
       StartDate: {
         requiredType: "date",
-        isRequired: true,
         label: 'Start Date',
         description: 'Start date for data import',
         attributes: ['manualBackfill']

@@ -20,16 +20,16 @@ constructor(config) {
         errorMessage: "You need to add App Id first. Go to Google Sheets Menu ⟩ OWOX ⟩ 🔑 Manage Credentials'"
       },
       StartDate: {
-        isRequired: true,
         requiredType: "date",
-        default: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
-        label: "Start Date",
-        description: "Start date for data import"
+        label: 'Start Date',
+        description: 'Start date for data import',
+        attributes: ['manualBackfill']
       },
       EndDate: {
         requiredType: "date",
-        label: "End Date",
-        description: "End date for data import"
+        label: 'End Date',
+        description: 'End date for data import',
+        attributes: ['manualBackfill']
       },
       ReimportLookbackWindow: {
         requiredType: "number",

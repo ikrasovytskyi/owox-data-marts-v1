@@ -19,22 +19,19 @@ function onOpen() {
 }
 
 function importNewData() {
-
   const config = new OWOX.GoogleSheetsConfig( CONFIG_RANGE );
-  
   const runConfig = OWOX.AbstractRunConfig.createIncremental();
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.BingAdsSource(config.setParametersValues(properties));
 
   const connector = new OWOX.BingAdsConnector(
     config,
-    new OWOX.BingAdsSource( config.setParametersValues(  // source with parameter's values added from properties 
-      PropertiesService.getDocumentProperties().getProperties()
-    ) ),
-    "GoogleSheetsStorage", // storage
+    source,
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
     runConfig
   );
 
   connector.run();
-
 }
 
 function manualBackfill() {
@@ -47,16 +44,15 @@ function manualBackfill() {
 }
 
 function executeManualBackfill(params) {
-  const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  
+  const config = new OWOX.GoogleSheetsConfig( CONFIG_RANGE );
   const runConfig = OWOX.AbstractRunConfig.createManualBackfill(params);
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.BingAdsSource(config.setParametersValues(properties));
   
   const connector = new OWOX.BingAdsConnector(
     config,
-    new OWOX.BingAdsSource(config.setParametersValues(
-      PropertiesService.getDocumentProperties().getProperties()
-    )),
-    "GoogleSheetsStorage", // storage
+    source,
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
     runConfig
   );
 

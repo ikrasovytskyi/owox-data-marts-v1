@@ -20,17 +20,15 @@ function onOpen() {
 }
 
 function importNewData() {
-
   const config = new OWOX.GoogleSheetsConfig( CONFIG_RANGE );
-  
   const runConfig = OWOX.AbstractRunConfig.createIncremental();
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.FacebookMarketingSource(config.setParametersValues(properties));
   
   const connector = new OWOX.FacebookMarketingConnector(
     config,
-    new OWOX.FacebookMarketingSource( config.setParametersValues(  // source with parameter's values added from properties 
-      PropertiesService.getDocumentProperties().getProperties()
-    ) ),
-    "GoogleBigQueryStorage", // storage - auto-assign
+    source,
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
     runConfig
   );
 
@@ -49,15 +47,14 @@ function manualBackfill() {
 
 function executeManualBackfill(params) {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  
   const runConfig = OWOX.AbstractRunConfig.createManualBackfill(params);
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.FacebookMarketingSource(config.setParametersValues(properties));
   
   const connector = new OWOX.FacebookMarketingConnector(
     config,
-    new OWOX.FacebookMarketingSource(config.setParametersValues(
-      PropertiesService.getDocumentProperties().getProperties()
-    )),
-    "GoogleSheetsStorage", // storage
+    source,
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
     runConfig
   );
 

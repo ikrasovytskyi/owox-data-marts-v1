@@ -10,27 +10,53 @@ var CONFIG_RANGE = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Config'
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('OWOX')
     .addItem('▶ Import New Data', 'importNewData')
+    .addItem('🔧 Manual Backfill', 'manualBackfill')
     .addItem('🧹 CleanUp Expired Data', 'cleanUpExpiredDate')
     .addItem('🔑 Manage Credentials', 'manageCredentials')
     .addItem('⏰ Schedule', 'scheduleRuns')
     .addToUi();
 }
 
-
 function importNewData() {
-
   const config = new OWOX.GoogleSheetsConfig( CONFIG_RANGE );
-
+  const runConfig = OWOX.AbstractRunConfig.createIncremental();
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.GitHubSource(config.setParametersValues(properties));
+  
   const connector = new OWOX.GitHubConnector(
-    config,                                               // connector configuration
-    new OWOX.GitHubSource(config.setParametersValues(       // source with parameter's values added from properties 
-      PropertiesService.getDocumentProperties().getProperties()
-    )), 
-    new OWOX.GoogleSheetsStorage(config, ["date"]) // storage 
+    config,
+    source,
+    new OWOX.GoogleSheetsStorage(config, ["date"]),
+    runConfig
   );
 
   connector.run();
 
+}
+
+function manualBackfill() {
+  const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
+  const source = new OWOX.GitHubSource(config.setParametersValues(
+    PropertiesService.getDocumentProperties().getProperties()
+  ));
+  
+  config.showManualBackfillDialog(source);
+}
+
+function executeManualBackfill(params) {
+  const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
+  const runConfig = OWOX.AbstractRunConfig.createManualBackfill(params);
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.GitHubSource(config.setParametersValues(properties));
+  
+  const connector = new OWOX.GitHubConnector(
+    config,
+    source,
+    new OWOX.GoogleSheetsStorage(config, ["date"]),
+    runConfig
+  );
+
+  connector.run();
 }
 
 

@@ -20,15 +20,14 @@ function onOpen() {
 
 function importNewData() {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  
   const runConfig = OWOX.AbstractRunConfig.createIncremental();
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.CriteoAdsSource(config.setParametersValues(properties));
   
   const connector = new OWOX.CriteoAdsConnector(
-    config,
-    new OWOX.CriteoAdsSource(config.setParametersValues(
-      PropertiesService.getDocumentProperties().getProperties()
-    )),
-    "GoogleSheetsStorage",
+    config, 
+    source,
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
     runConfig
   );
 
@@ -46,15 +45,14 @@ function manualBackfill() {
 
 function executeManualBackfill(params) {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  
   const runConfig = OWOX.AbstractRunConfig.createManualBackfill(params);
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.CriteoAdsSource(config.setParametersValues(properties));
   
   const connector = new OWOX.CriteoAdsConnector(
-    config,
-    new OWOX.CriteoAdsSource(config.setParametersValues(
-      PropertiesService.getDocumentProperties().getProperties()
-    )),
-    "GoogleSheetsStorage",
+    config, 
+    source,
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
     runConfig
   );
 

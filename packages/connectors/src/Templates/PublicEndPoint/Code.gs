@@ -13,15 +13,15 @@ function onOpen() {
 
 
 function importNewData() {
-
   const config = new OWOX.GoogleSheetsConfig( CONFIG_RANGE );
-  
   const runConfig = OWOX.AbstractRunConfig.createIncremental();
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.YOUR_DATA_SOURCESource(config.setParametersValues(properties));
   
   const connector = new OWOX.YOUR_DATA_SOURCEConnector(
-    config,                                               // connector configuration
-    new OWOX.YOUR_DATA_SOURCESource(config),                 // source 
-    "GoogleSheetsStorage", // storage 
+    config,
+    source,
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
     runConfig
   );
 
@@ -38,13 +38,14 @@ function manualBackfill() {
 
 function executeManualBackfill(params) {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  
   const runConfig = OWOX.AbstractRunConfig.createManualBackfill(params);
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.YOUR_DATA_SOURCESource(config.setParametersValues(properties));
   
   const connector = new OWOX.YOUR_DATA_SOURCEConnector(
-    config,                                               // connector configuration
-    new OWOX.YOUR_DATA_SOURCESource(config),                 // source 
-    "GoogleSheetsStorage", // storage 
+    config,
+    source,
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
     runConfig
   );
 

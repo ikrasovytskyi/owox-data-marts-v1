@@ -11,7 +11,7 @@ var YOUR_DATE_SOURCE_Source = class YOUR_DATE_SOURCE_Source extends AbstractSour
   
     super( configRange.mergeParameters({
       StartDate: {
-        isRequired: true,
+        requiredType: "date",
         label: 'Start Date',
         description: 'Start date for data import',
         attributes: ['manualBackfill']

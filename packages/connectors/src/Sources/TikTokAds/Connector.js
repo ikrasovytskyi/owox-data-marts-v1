@@ -190,7 +190,6 @@ var TikTokAdsConnector = class TikTokAdsConnector extends AbstractConnector {
         }
       }
 
-      // Only update LastRequestedDate for incremental runs
       if (this.runConfig.type === RunConfigType.INCREMENTAL) {
         this.config.updateLastRequstedDate(currentDate);
       }

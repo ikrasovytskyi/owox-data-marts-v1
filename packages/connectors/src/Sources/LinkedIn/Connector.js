@@ -77,8 +77,8 @@ var LinkedInConnector = class LinkedInConnector extends AbstractConnector {
       ...dateInfo
     });
     
-    // Update LastRequestedDate only for time series data
-    if (isTimeSeriesNode) {
+    // Update LastRequestedDate only for time series data and incremental runs
+    if (isTimeSeriesNode && this.runConfig.type === RunConfigType.INCREMENTAL) {
       this.config.updateLastRequstedDate(dateInfo.endDate);
     }
   }

@@ -11,6 +11,7 @@ var CONFIG_RANGE = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Config'
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('OWOX')
     .addItem('▶ Import New Data', 'importNewData')
+    .addItem('🔧 Manual Backfill', 'manualBackfill')
     .addItem('🧹 CleanUp Expired Data', 'cleanUpExpiredData')
     .addItem('🔑 Manage Credentials', 'manageCredentials')
     .addItem('⏰ Schedule', 'scheduleRuns')
@@ -18,19 +19,44 @@ function onOpen() {
 }
 
 function importNewData() {
-
   const config = new OWOX.GoogleSheetsConfig( CONFIG_RANGE );
-  
+  const runConfig = OWOX.AbstractRunConfig.createIncremental();
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.OpenExchangeRatesSource(config.setParametersValues(properties));
+
   const connector = new OWOX.OpenExchangeRatesConnector(
-    config,                                                           // connector configuration
-    new OWOX.OpenExchangeRatesSource(config.setParametersValues(       // source with parameter's values added from properties 
-      PropertiesService.getDocumentProperties().getProperties()
-    )),                          
-    // "GoogleBigQueryStorage"
+    config,
+    source,
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
+    runConfig
   );
 
   connector.run();
+}
 
+function manualBackfill() {
+  const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
+  const source = new OWOX.OpenExchangeRatesSource(config.setParametersValues(
+    PropertiesService.getDocumentProperties().getProperties()
+  ));
+  
+  config.showManualBackfillDialog(source);
+}
+
+function executeManualBackfill(params) {
+  const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
+  const runConfig = OWOX.AbstractRunConfig.createManualBackfill(params);
+  const properties = PropertiesService.getDocumentProperties().getProperties();
+  const source = new OWOX.OpenExchangeRatesSource(config.setParametersValues(properties));
+  
+  const connector = new OWOX.OpenExchangeRatesConnector(
+    config,
+    source,
+    "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
+    runConfig
+  );
+
+  connector.run();
 }
 
 function cleanUpExpiredData() {
