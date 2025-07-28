@@ -12,37 +12,37 @@ var BingAdsSource = class BingAdsSource extends AbstractSource {
       DeveloperToken: {
         isRequired: true,
         requiredType: "string",
-        label: "Developer Token",
+        displayName: "Developer Token",
         description: "Your Bing Ads API Developer Token"
       },
       ClientID: {
         isRequired: true,
         requiredType: "string",
-        label: "Client ID",
+        displayName: "Client ID",
         description: "Your Bing Ads API Client ID"
       },
       ClientSecret: {
         isRequired: true,
         requiredType: "string",
-        label: "Client Secret",
+        displayName: "Client Secret",
         description: "Your Bing Ads API Client Secret"
       },
       RefreshToken: {
         isRequired: true,
         requiredType: "string",
-        label: "Refresh Token",
+        displayName: "Refresh Token",
         description: "Your Bing Ads API Refresh Token"
       },
       AccountID: {
         isRequired: true,
         requiredType: "string",
-        label: "Account ID",
+        displayName: "Account ID",
         description: "Your Bing Ads Account ID"
       },
       CustomerID: {
         isRequired: true,
         requiredType: "string",
-        label: "Customer ID",
+        displayName: "Customer ID",
         description: "Your Bing Ads Customer ID"
       },
       StartDate: {
@@ -61,32 +61,32 @@ var BingAdsSource = class BingAdsSource extends AbstractSource {
         requiredType: "number",
         isRequired: true,
         default: 2,
-        label: "Reimport Lookback Window",
+        displayName: "Reimport Lookback Window",
         description: "Number of days to look back when reimporting data"
       },
       MaxFetchingDays: {
         requiredType: "number",
         isRequired: true,
         default: 30,
-        label: "Max Fetching Days",
+        displayName: "Max Fetching Days",
         description: "Maximum number of days to fetch data for"
       },
       ReportTimezone: {
         requiredType: "string",
         default: "GreenwichMeanTimeDublinEdinburghLisbonLondon",
-        label: "Report Timezone",
+        displayName: "Report Timezone",
         description: "Timezone for the report data"
       },
       Aggregation: {
         requiredType: "string",
         default: "Daily",
-        label: "Aggregation",
+        displayName: "Aggregation",
         description: "Aggregation for reports (e.g. Daily, Weekly, Monthly)"
       },
       ReportType: {
         requiredType: "string",
         default: "UserLocationPerformanceReportRequest",
-        label: "Report Type",
+        displayName: "Report Type",
         description: "Type of report to generate (e.g. AdPerformanceReportRequest, UserLocationPerformanceReportRequest)"
       }
     }));

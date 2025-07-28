@@ -47,9 +47,7 @@ var LinkedInSource = class LinkedInSource extends AbstractSource {
       },
       BaseUrl: {
         requiredType: "string",
-        default: "https://api.linkedin.com/rest/",
-        label: 'Base URL',
-        description: 'LinkedIn API base URL'
+        default: "https://api.linkedin.com/rest/"
       },
       StartDate: {
         requiredType: "date",
@@ -65,9 +63,7 @@ var LinkedInSource = class LinkedInSource extends AbstractSource {
         attributes: ['manualBackfill']
       },
       Fields: {
-        isRequired: true,
-        label: 'Fields',
-        description: 'Fields to fetch from LinkedIn API'
+        isRequired: true
       },
       MaxFieldsPerRequest: {
         requiredType: "number",

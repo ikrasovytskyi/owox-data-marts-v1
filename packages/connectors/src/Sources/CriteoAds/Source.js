@@ -24,8 +24,6 @@ var CriteoAdsSource = class CriteoAdsSource extends AbstractSource {
       },
       AdvertiserIDs: {
         isRequired: true,
-        label: 'Advertiser IDs',
-        description: 'Comma-separated list of Criteo advertiser IDs'
       },
       AccessToken: {
         requiredType: "string",

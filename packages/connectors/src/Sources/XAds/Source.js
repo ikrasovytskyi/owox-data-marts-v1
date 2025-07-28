@@ -11,31 +11,31 @@ var XAdsSource = class XAdsSource extends AbstractSource {
       ConsumerKey: {
         isRequired: true,
         requiredType: "string",
-        label: "Consumer Key (API Key)",
+        displayName: "Consumer Key (API Key)",
         description: "Your X Ads API Consumer Key"
       },
       ConsumerSecret: {
         isRequired: true,
         requiredType: "string",
-        label: "Consumer Secret (API Secret)",
+        displayName: "Consumer Secret (API Secret)",
         description: "Your X Ads API Consumer Secret"
       },
       AccessToken: {
         isRequired: true,
         requiredType: "string",
-        label: "Access Token",
+        displayName: "Access Token",
         description: "Your X Ads API Access Token"
       },
       AccessTokenSecret: {
         isRequired: true,
         requiredType: "string",
-        label: "Access Token Secret",
+        displayName: "Access Token Secret",
         description: "Your X Ads API Access Token Secret"
       },
       AccountIDs: {
         isRequired: true,
         requiredType: "string",
-        label: "Account ID",
+        displayName: "Account ID",
         description: "Your X Ads Account ID"
       },
       StartDate: {
@@ -54,55 +54,55 @@ var XAdsSource = class XAdsSource extends AbstractSource {
         requiredType: "number",
         isRequired: true,
         default: 2,
-        label: "Reimport Lookback Window",
+        displayName: "Reimport Lookback Window",
         description: "Number of days to look back when reimporting data"
       },
       CleanUpToKeepWindow: {
         requiredType: "number",
-        label: "Clean Up To Keep Window",
+        displayName: "Clean Up To Keep Window",
         description: "Number of days to keep data before cleaning up"
       },
       MaxFetchingDays: {
         requiredType: "number",
         isRequired: true,
         default: 31,
-        label: "Max Fetching Days",
+        displayName: "Max Fetching Days",
         description: "Maximum number of days to fetch data for"
       },
       BaseUrl: {
         requiredType: "string",
         default: "https://ads-api.x.com/",
-        label: "Base URL",
+        displayName: "Base URL",
         description: "X Ads API base URL"
       },
       Version: {
         requiredType: "string",
         default: "12",
-        label: "API Version",
+        displayName: "API Version",
         description: "X Ads API version"
       },
       DataMaxCount: {
         requiredType: "number",
         default: 1000,
-        label: "Max Data Count",
+        displayName: "Max Data Count",
         description: "Maximum number of records to fetch per request"
       },
       CardsMaxCountPerRequest: {
         requiredType: "number",
         default: 20,
-        label: "Max Cards Per Request",
+        displayName: "Max Cards Per Request",
         description: "Maximum number of cards to fetch per request"
       },
       AdsApiDelay: {
         requiredType: "number",
         default: 3.65,
-        label: "API Delay (seconds)",
+        displayName: "API Delay (seconds)",
         description: "Delay between API requests in seconds"
       },
       StatsMaxEntityIds: {
         requiredType: "number",
         default: 20,
-        label: "Max Stats Entity IDs",
+        displayName: "Max Stats Entity IDs",
         description: "Maximum number of entity_ids allowed per request for stats endpoint"
       }
     }));

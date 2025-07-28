@@ -11,14 +11,10 @@ var RedditAdsSource = class RedditAdsSource extends AbstractSource {
       ClientId: {
         isRequired: true,
         requiredType: "string",
-        label: 'Client ID',
-        description: 'Reddit Ads API Client ID'
       },
       ClientSecret: {
         isRequired: true,
         requiredType: "string",
-        label: 'Client Secret',
-        description: 'Reddit Ads API Client Secret'
       },
       RedirectUri: {
         isRequired: true,
@@ -62,8 +58,6 @@ var RedditAdsSource = class RedditAdsSource extends AbstractSource {
       },
       Fields: {
         isRequired: true,
-        label: 'Fields',
-        description: 'Fields to fetch from Reddit Ads API'
       },
       ReimportLookbackWindow: {
         requiredType: "number",

@@ -18,7 +18,7 @@ var FacebookMarketingSource = class FacebookMarketingSource extends AbstractSour
           label: "API Base URL",
           description: "Facebook Graph API base URL"
         },
-        AccessToken: {
+        AccessToken:{
           isRequired: true,
           requiredType: "string",
           label: "Access Token",
