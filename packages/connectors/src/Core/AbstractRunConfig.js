@@ -33,6 +33,8 @@ var AbstractRunConfig = class AbstractRunConfig {
     } else if (this.type !== RunConfigType.INCREMENTAL) {
       throw new Error(`Unknown RunConfig type: ${this.type}`);
     }
+    
+    return true;
   }
 
   /**
@@ -60,8 +62,8 @@ var AbstractRunConfig = class AbstractRunConfig {
       if (!configParam.attributes || !configParam.attributes.includes('manualBackfill')) {
         throw new Error(`Config field '${item.configField}' does not support manual backfill`);
       }
-
-      // Type validation will be done by config.validate() after _processRunConfig()
     }
+    
+    return true;
   }
 };

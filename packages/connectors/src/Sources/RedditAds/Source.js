@@ -11,10 +11,14 @@ var RedditAdsSource = class RedditAdsSource extends AbstractSource {
       ClientId: {
         isRequired: true,
         requiredType: "string",
+        label: "Client ID",
+        description: "Reddit Ads API Client ID"
       },
       ClientSecret: {
         isRequired: true,
         requiredType: "string",
+        label: "Client Secret",
+        description: "Reddit Ads API Client Secret"
       },
       RedirectUri: {
         isRequired: true,
@@ -46,18 +50,20 @@ var RedditAdsSource = class RedditAdsSource extends AbstractSource {
       },
       StartDate: {
         requiredType: "date",
-        label: 'Start Date',
-        description: 'Start date for data import',
-        attributes: ['manualBackfill']
+        label: "Start Date",
+        description: "Start date for data import",
+        attributes: ["manualBackfill"]
       },
       EndDate: {
         requiredType: "date",
-        label: 'End Date',
-        description: 'End date for data import',
-        attributes: ['manualBackfill']
+        label: "End Date",
+        description: "End date for data import",
+        attributes: ["manualBackfill"]
       },
       Fields: {
         isRequired: true,
+        label: "Fields",
+        description: "List of fields to fetch from Reddit API"
       },
       ReimportLookbackWindow: {
         requiredType: "number",

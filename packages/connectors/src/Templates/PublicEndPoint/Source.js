@@ -12,15 +12,15 @@ var YOUR_DATE_SOURCE_Source = class YOUR_DATE_SOURCE_Source extends AbstractSour
     super( configRange.mergeParameters({
       StartDate: {
         requiredType: "date",
-        label: 'Start Date',
-        description: 'Start date for data import',
-        attributes: ['manualBackfill']
+        label: "Start Date",
+        description: "Start date for data import",
+        attributes: ["manualBackfill"]
       },
       EndDate: {
         requiredType: "date",
-        label: 'End Date',
-        description: 'End date for data import',
-        attributes: ['manualBackfill']
+        label: "End Date",
+        description: "End date for data import",
+        attributes: ["manualBackfill"]
       },
       ReimportLookbackWindow: {
         requiredType: "number",

@@ -27,15 +27,15 @@ var OpenHolidaysSource = class OpenHolidaysSource extends AbstractSource {
       },
       StartDate: {
         requiredType: "date",
-        label: 'Start Date',
-        description: 'Start date for data import',
-        attributes: ['manualBackfill']
+        label: "Start Date",
+        description: "Start date for data import",
+        attributes: ["manualBackfill"]
       },
       EndDate: {
         requiredType: "date",
-        label: 'End Date',
-        description: 'End date for data import',
-        attributes: ['manualBackfill']
+        label: "End Date",
+        description: "End date for data import",
+        attributes: ["manualBackfill"]
       }
     }));
   }
