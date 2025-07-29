@@ -39,13 +39,13 @@ var TikTokAdsSource = class TikTokAdsSource extends AbstractSource {
       StartDate: {
         requiredType: "date",
         label: "Start Date",
-        description: "Start date for data import in YYYY-MM-DD format",
+        description: "Start date for data import",
         attributes: ["manualBackfill"]
       },
       EndDate: {
         requiredType: "date",
         label: "End Date",
-        description: "End date for data import in YYYY-MM-DD format",
+        description: "End date for data import",
         attributes: ["manualBackfill"]
       },
       ReimportLookbackWindow: {

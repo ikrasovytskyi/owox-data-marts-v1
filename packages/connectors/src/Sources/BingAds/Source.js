@@ -48,13 +48,13 @@ var BingAdsSource = class BingAdsSource extends AbstractSource {
       StartDate: {
         requiredType: "date",
         label: "Start Date",
-        label: "Start date for data import",
+        description: "Start date for data import",
         attributes: ['manualBackfill']
       },
       EndDate: {
         requiredType: "date",
         label: "End Date", 
-        label: "End date for data import",
+        description: "End date for data import",
         attributes: ["manualBackfill"]
       },
       ReimportLookbackWindow: {

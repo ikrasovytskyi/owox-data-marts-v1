@@ -38,7 +38,7 @@ var FacebookMarketingSource = class FacebookMarketingSource extends AbstractSour
         EndDate: {
           requiredType: "date",
           label: "End Date",
-          description: 'End date for data import',
+          description: "End date for data import",
           attributes: ['manualBackfill']
         },
         Fields: {
