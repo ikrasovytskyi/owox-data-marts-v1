@@ -18,7 +18,7 @@ function onOpen() {
     .addToUi();
 }
 
-function importNewData(importType = OpenHolidays_Integration.RunConfigType.INCREMENTAL, params = null) {
+function importNewData(importType = OpenHolidays_Integration.RUN_CONFIG_TYPE.INCREMENTAL, params = null) {
     const config = new OpenHolidays_Integration.GoogleSheetsConfig(CONFIG_RANGE);
   const source = new OpenHolidays_Integration.OpenHolidaysSource(config);
   const runConfig = new OpenHolidays_Integration.AbstractRunConfig({
@@ -44,7 +44,7 @@ function manualBackfill() {
 }
 
 function executeManualBackfill(params) {
-  importNewData(OpenHolidays_Integration.RunConfigType.MANUAL_BACKFILL, params);
+  importNewData(OpenHolidays_Integration.RUN_CONFIG_TYPE.MANUAL_BACKFILL, params);
 }
 
 function cleanUpExpiredData() {

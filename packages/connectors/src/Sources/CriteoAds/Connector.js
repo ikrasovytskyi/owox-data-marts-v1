@@ -88,7 +88,7 @@ var CriteoAdsConnector = class CriteoAdsConnector extends AbstractConnector {
       }
 
       // Only update LastRequestedDate for incremental runs
-      if (this.runConfig.type === RunConfigType.INCREMENTAL) {
+      if (this.runConfig.type === RUN_CONFIG_TYPE.INCREMENTAL) {
         this.config.updateLastRequstedDate(currentDate);
       }
     }

@@ -5,18 +5,13 @@
  * file that was distributed with this source code.
  */
 
-var RunConfigType = {
-  INCREMENTAL: 1,
-  MANUAL_BACKFILL: 2
-};
-
 var AbstractRunConfig = class AbstractRunConfig {
 
   constructor(runConfigData = null) {
     if (!runConfigData) {
-      this.type = RunConfigType.INCREMENTAL;
+      this.type = RUN_CONFIG_TYPE.INCREMENTAL;
     } else {
-      this.type = runConfigData.type || RunConfigType.INCREMENTAL;
+      this.type = runConfigData.type || RUN_CONFIG_TYPE.INCREMENTAL;
       this.data = runConfigData.data || [];
       this.state = runConfigData.state || {};
     }
@@ -28,9 +23,9 @@ var AbstractRunConfig = class AbstractRunConfig {
    * @throws {Error} If validation fails
    */
   validate(config) {
-    if (this.type === RunConfigType.MANUAL_BACKFILL) {
+    if (this.type === RUN_CONFIG_TYPE.MANUAL_BACKFILL) {
       this._validateManualBackfill(config);
-    } else if (this.type !== RunConfigType.INCREMENTAL) {
+    } else if (this.type !== RUN_CONFIG_TYPE.INCREMENTAL) {
       throw new Error(`Unknown RunConfig type: ${this.type}`);
     }
     

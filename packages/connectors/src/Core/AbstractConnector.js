@@ -65,7 +65,7 @@ var AbstractConnector = class AbstractConnector {
      * @private
      */
     _processRunConfig() {
-      if (this.runConfig.type === RunConfigType.MANUAL_BACKFILL) {
+      if (this.runConfig.type === RUN_CONFIG_TYPE.MANUAL_BACKFILL) {
         // Apply manual backfill parameters
         this.runConfig.data.forEach(item => { 
           if (this.config[item.configField] && 
@@ -84,12 +84,12 @@ var AbstractConnector = class AbstractConnector {
         
         this.config.logMessage(`🔧 Manual Backfill mode activated with custom parameters`);
         
-      } else if (this.runConfig.type === RunConfigType.INCREMENTAL) {
+      } else if (this.runConfig.type === RUN_CONFIG_TYPE.INCREMENTAL) {
         this.config.logMessage(`🔄 Incremental mode activated`);
       }
     }
     //----------------------------------------------------------------
-
+      
   //---- run ---------------------------------------------------------
     /**
      * Initiates imports new data from a data source
@@ -168,8 +168,8 @@ var AbstractConnector = class AbstractConnector {
         this.config.logMessage("ℹ️ No records have been fetched");
         
         // Only update LastRequestedDate for incremental runs
-        if (this.runConfig.type === RunConfigType.INCREMENTAL) {
-          this.config.updateLastRequstedDate(endDate);
+        if (this.runConfig.type === RUN_CONFIG_TYPE.INCREMENTAL) {
+        this.config.updateLastRequstedDate(endDate);
         }
 
       } else {
@@ -180,8 +180,8 @@ var AbstractConnector = class AbstractConnector {
       }
 
       // Only update LastRequestedDate for incremental runs
-      if (this.runConfig.type === RunConfigType.INCREMENTAL) {
-        this.config.updateLastRequstedDate(endDate);
+      if (this.runConfig.type === RUN_CONFIG_TYPE.INCREMENTAL) {
+      this.config.updateLastRequstedDate(endDate);
       }
 
     }
@@ -223,10 +223,10 @@ var AbstractConnector = class AbstractConnector {
      */
     getStartDateAndDaysToFetch() {
 
-      if (this.runConfig.type === RunConfigType.MANUAL_BACKFILL) {
+      if (this.runConfig.type === RUN_CONFIG_TYPE.MANUAL_BACKFILL) {
         return this._getManualBackfillDateRange();
         
-      } else if (this.runConfig.type === RunConfigType.INCREMENTAL) {
+      } else if (this.runConfig.type === RUN_CONFIG_TYPE.INCREMENTAL) {
         return this._getIncrementalDateRange();
         
       } else {
@@ -245,7 +245,7 @@ var AbstractConnector = class AbstractConnector {
       let startDate = this.config.StartDate.value;
       let endDate = this.config.EndDate.value || new Date();
       const today = new Date();
-      
+
       // Validate that EndDate is not earlier than StartDate
       if (endDate < startDate) {
         throw new Error(`EndDate (${endDate.toISOString().split('T')[0]}) cannot be earlier than StartDate (${startDate.toISOString().split('T')[0]})`);
@@ -254,7 +254,7 @@ var AbstractConnector = class AbstractConnector {
       // Validate that dates are not in the future
       if (startDate > today) {
         throw new Error(`StartDate (${startDate.toISOString().split('T')[0]}) cannot be in the future`);
-      }
+        }
       
       if (endDate > today) {
         this.config.logMessage(`⚠️ Warning: EndDate (${endDate.toISOString().split('T')[0]}) is in the future, adjusting to today`);

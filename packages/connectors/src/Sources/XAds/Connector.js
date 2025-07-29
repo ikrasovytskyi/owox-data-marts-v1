@@ -93,7 +93,7 @@ var XAdsConnector = class XAdsConnector extends AbstractConnector {
         storage.saveData(preparedData);
       }
 
-      if (this.runConfig.type === RunConfigType.INCREMENTAL) {
+      if (this.runConfig.type === RUN_CONFIG_TYPE.INCREMENTAL) {
         this.config.updateLastRequstedDate(currentDate);
       }
     }

@@ -28,7 +28,7 @@ function onOpen() {
 /**
  * Runs the import process based on the configuration in the Google Sheet.
  */
-function startImportProcess(importType = OWOX.RunConfigType.INCREMENTAL, params = null) {
+function startImportProcess(importType = OWOX.RUN_CONFIG_TYPE.INCREMENTAL, params = null) {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
   const properties = PropertiesService.getDocumentProperties().getProperties();
   const source = new OWOX.TikTokAdsSource(config.setParametersValues(properties));
@@ -56,7 +56,7 @@ function manualBackfill() {
 }
 
 function executeManualBackfill(params) {
-  startImportProcess(OWOX.RunConfigType.MANUAL_BACKFILL, params);
+  startImportProcess(OWOX.RUN_CONFIG_TYPE.MANUAL_BACKFILL, params);
 }
 
 function manageCredentials(credentials) {

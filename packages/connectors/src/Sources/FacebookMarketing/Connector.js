@@ -149,7 +149,7 @@ var FacebookMarketingConnector = class FacebookMarketingConnector extends Abstra
         }
 
         // Only update LastRequestedDate for incremental runs
-        if (this.runConfig.type === RunConfigType.INCREMENTAL) {
+        if (this.runConfig.type === RUN_CONFIG_TYPE.INCREMENTAL) {
           this.config.updateLastRequstedDate(startDate);
         }
         startDate.setDate( startDate.getDate() + 1);  // let's move on to the next date

@@ -18,15 +18,15 @@ function onOpen() {
     .addToUi();
 }
 
-function importNewData(importType = OWOX.RunConfigType.INCREMENTAL, params = null) {
+function importNewData(importType = OWOX.RUN_CONFIG_TYPE.INCREMENTAL, params = null) {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
   const properties = PropertiesService.getDocumentProperties().getProperties();
-  const source = new OWOX.CriteoAdsSource(config.setParametersValues(properties));
+    const source = new OWOX.CriteoAdsSource(config.setParametersValues(properties));
   const runConfig = new OWOX.AbstractRunConfig({
     type: importType,
     data: params || []
   });
-  
+
   const connector = new OWOX.CriteoAdsConnector(
     config, 
     source,
@@ -35,7 +35,7 @@ function importNewData(importType = OWOX.RunConfigType.INCREMENTAL, params = nul
   );
 
   connector.run();
-}
+} 
 
 function manualBackfill() {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
@@ -47,7 +47,7 @@ function manualBackfill() {
 }
 
 function executeManualBackfill(params) {
-  importNewData(OWOX.RunConfigType.MANUAL_BACKFILL, params);
+  importNewData(OWOX.RUN_CONFIG_TYPE.MANUAL_BACKFILL, params);
 }
 
 function updateFieldsSheet() {

@@ -48,7 +48,7 @@ startImportProcess() {
 
     }
 
-    if (this.runConfig.type === RunConfigType.INCREMENTAL) {
+    if (this.runConfig.type === RUN_CONFIG_TYPE.INCREMENTAL) {
       this.config.updateLastRequstedDate(startDate);
     }
     startDate.setDate( startDate.getDate() + 1);  // let's move on to the next date

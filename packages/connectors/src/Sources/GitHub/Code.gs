@@ -17,7 +17,7 @@ function onOpen() {
     .addToUi();
 }
 
-function importNewData(importType = OWOX.RunConfigType.INCREMENTAL, params = null) {
+function importNewData(importType = OWOX.RUN_CONFIG_TYPE.INCREMENTAL, params = null) {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
   const properties = PropertiesService.getDocumentProperties().getProperties();
   const source = new OWOX.GitHubSource(config.setParametersValues(properties));
@@ -46,7 +46,7 @@ function manualBackfill() {
 }
 
 function executeManualBackfill(params) {
-  importNewData(OWOX.RunConfigType.MANUAL_BACKFILL, params);
+  importNewData(OWOX.RUN_CONFIG_TYPE.MANUAL_BACKFILL, params);
 }
 
 function manageCredentials() {

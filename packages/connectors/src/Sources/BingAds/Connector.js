@@ -102,8 +102,8 @@ var BingAdsConnector = class BingAdsConnector extends AbstractConnector {
       }
 
       // Update last requested date after each successful day
-      if (this.runConfig.type === RunConfigType.INCREMENTAL) {
-        this.config.updateLastRequstedDate(currentDate);
+      if (this.runConfig.type === RUN_CONFIG_TYPE.INCREMENTAL) {
+      this.config.updateLastRequstedDate(currentDate);
       }
     }
   }
