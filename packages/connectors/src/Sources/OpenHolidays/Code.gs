@@ -11,7 +11,7 @@ var CONFIG_RANGE = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Config'
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('OWOX')
     .addItem('▶ Import New Data', 'importNewData')
-    .addItem('🔧 Manual Backfill', 'manualBackfill')
+    .addItem('📅 Manual Backfill', 'manualBackfill')
     .addItem('🧹 CleanUp Expired Data', 'cleanUpExpiredDate')
     .addItem('🔑 Manage Credentials', 'manageCredentials')
     .addItem('⏰ Schedule', 'scheduleRuns')
@@ -19,19 +19,19 @@ function onOpen() {
 }
 
 function importNewData(importType = OpenHolidays_Integration.RunConfigType.INCREMENTAL, params = null) {
-  const config = new OpenHolidays_Integration.GoogleSheetsConfig(CONFIG_RANGE);
+    const config = new OpenHolidays_Integration.GoogleSheetsConfig(CONFIG_RANGE);
   const source = new OpenHolidays_Integration.OpenHolidaysSource(config);
   const runConfig = new OpenHolidays_Integration.AbstractRunConfig({
     type: importType,
     data: params || []
   });
-  
+
   const connector = new OpenHolidays_Integration.OpenHolidaysConnector(
-    config,
+        config,
     source,
     "GoogleSheetsStorage",
     runConfig
-  );
+    );
 
   connector.run();
 }
@@ -39,7 +39,7 @@ function importNewData(importType = OpenHolidays_Integration.RunConfigType.INCRE
 function manualBackfill() {
   const config = new OpenHolidays_Integration.GoogleSheetsConfig(CONFIG_RANGE);
   const source = new OpenHolidays_Integration.OpenHolidaysSource(config);
-  
+
   config.showManualBackfillDialog(source);
 }
 

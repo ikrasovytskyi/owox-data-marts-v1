@@ -11,7 +11,7 @@ var CONFIG_RANGE = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Config'
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('OWOX')
     .addItem('▶ Import New Data', 'startImportProcess')
-    .addItem('🔧 Manual Backfill', 'manualBackfill')
+    .addItem('📅 Manual Backfill', 'manualBackfill')
     .addItem('🔑 Manage Credentials', 'manageCredentials')
     .addSubMenu(SpreadsheetApp.getUi().createMenu('⏰ Schedule')
       .addItem('Set Daily Schedule (5 AM)', 'createDailyTrigger')

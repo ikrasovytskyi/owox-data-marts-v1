@@ -10,7 +10,7 @@ var CONFIG_RANGE = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Config'
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('OWOX')
     .addItem('▶ Import New Data', 'importNewData')
-    .addItem('🔧 Manual Backfill', 'manualBackfill')
+    .addItem('📅 Manual Backfill', 'manualBackfill')
     .addItem('🧹 CleanUp Expired Data', 'cleanUpExpiredDate')
     .addItem('🔑 Manage Credentials', 'manageCredentials')
     .addItem('⏰ Schedule', 'scheduleRuns')
@@ -25,7 +25,7 @@ function importNewData(importType = OWOX.RunConfigType.INCREMENTAL, params = nul
     type: importType,
     data: params || []
   });
-  
+
   const connector = new OWOX.GitHubConnector(
     config,
     source,

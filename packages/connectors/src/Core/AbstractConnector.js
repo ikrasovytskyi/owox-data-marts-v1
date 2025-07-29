@@ -26,7 +26,7 @@ var AbstractConnector = class AbstractConnector {
       try {
 
         config.validate();
-        this.runConfig.validate(config); //?config
+        this.runConfig.validate(config);
 
       } catch(error) {
 
@@ -244,10 +244,21 @@ var AbstractConnector = class AbstractConnector {
     _getManualBackfillDateRange() {
       let startDate = this.config.StartDate.value;
       let endDate = this.config.EndDate.value || new Date();
+      const today = new Date();
       
       // Validate that EndDate is not earlier than StartDate
       if (endDate < startDate) {
         throw new Error(`EndDate (${endDate.toISOString().split('T')[0]}) cannot be earlier than StartDate (${startDate.toISOString().split('T')[0]})`);
+      }
+      
+      // Validate that dates are not in the future
+      if (startDate > today) {
+        throw new Error(`StartDate (${startDate.toISOString().split('T')[0]}) cannot be in the future`);
+      }
+      
+      if (endDate > today) {
+        this.config.logMessage(`⚠️ Warning: EndDate (${endDate.toISOString().split('T')[0]}) is in the future, adjusting to today`);
+        endDate = today;
       }
 
       // Calculate days between start and end date (no MaxFetchingDays limit for manual backfill)
