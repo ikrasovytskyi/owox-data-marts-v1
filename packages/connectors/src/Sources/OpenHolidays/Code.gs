@@ -43,6 +43,10 @@ function manualBackfill() {
   config.showManualBackfillDialog(source);
 }
 
+function executeManualBackfill(params) {
+  importNewData(OpenHolidays_Integration.RunConfigType.MANUAL_BACKFILL, params);
+}
+
 function cleanUpExpiredData() {
 
   const storage = new OpenHolidays_Integration.GoogleSheetsStorage( 

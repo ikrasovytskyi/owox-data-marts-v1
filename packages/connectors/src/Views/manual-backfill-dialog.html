@@ -186,7 +186,6 @@
       }
       
       const params = [];
-      
       const inputs = document.querySelectorAll('#manualBackfillForm input');
       inputs.forEach(input => {
         if (input.value.trim()) {
@@ -207,7 +206,7 @@
       });    
       google.script.host.close();
       
-      google.script.run.importNewData(RunConfigType.MANUAL_BACKFILL, params);
+      google.script.run.executeManualBackfill(params);
     }
   </script>
 </body>

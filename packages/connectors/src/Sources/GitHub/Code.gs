@@ -45,6 +45,10 @@ function manualBackfill() {
   config.showManualBackfillDialog(source);
 }
 
+function executeManualBackfill(params) {
+  importNewData(OWOX.RunConfigType.MANUAL_BACKFILL, params);
+}
+
 function manageCredentials() {
 
   const ui = SpreadsheetApp.getUi();

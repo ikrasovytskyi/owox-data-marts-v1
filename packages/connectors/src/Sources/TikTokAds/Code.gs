@@ -55,6 +55,10 @@ function manualBackfill() {
   config.showManualBackfillDialog(source);
 }
 
+function executeManualBackfill(params) {
+  startImportProcess(OWOX.RunConfigType.MANUAL_BACKFILL, params);
+}
+
 function manageCredentials(credentials) {
   const ui = SpreadsheetApp.getUi();
   const props = PropertiesService.getDocumentProperties();

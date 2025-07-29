@@ -38,6 +38,10 @@ function manualBackfill() {
   config.showManualBackfillDialog(source);
 }
 
+function executeManualBackfill(params) {
+  importNewData(OWOX.RunConfigType.MANUAL_BACKFILL, params);
+}
+
 function cleanUpExpiredData() {
 
   const storage = new OWOX.GoogleSheetsStorage( 

@@ -442,7 +442,7 @@ var GoogleSheetsConfig = class GoogleSheetsConfig extends AbstractConfig {
       
       const html = template.evaluate()
         .setWidth(600)
-        .setHeight(350);
+        .setHeight(300);
       
       ui.showModalDialog(html, 'Manual Backfill');
     }

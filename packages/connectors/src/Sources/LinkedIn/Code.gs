@@ -46,6 +46,10 @@ function manualBackfill() {
   config.showManualBackfillDialog(source);
 }
 
+function executeManualBackfill(params) {
+  importNewData(OWOX.RunConfigType.MANUAL_BACKFILL, params);
+}
+
 function updateFieldsSheet() {
   const config = new OWOX.GoogleSheetsConfig( CONFIG_RANGE );
 

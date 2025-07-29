@@ -6,8 +6,8 @@
  */
 
 var RunConfigType = {
-  INCREMENTAL: 'incremental',
-  MANUAL_BACKFILL: 'manualBackfill'
+  INCREMENTAL: 1,
+  MANUAL_BACKFILL: 2
 };
 
 var AbstractRunConfig = class AbstractRunConfig {
