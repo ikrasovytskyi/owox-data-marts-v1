@@ -6,7 +6,7 @@ Power self-service analytics from your infrastructure – with reusable Data Mar
 
 [📘 Quick Start Guide](./docs/getting-started/quick-start.md) | [🌐 Website](https://www.owox.com?utm_source=github&utm_medium=referral&utm_campaign=readme) |  [💬 Community](https://github.com/OWOX/owox-data-marts/discussions) | [🆘 Create an Issue](https://github.com/OWOX/owox-data-marts/issues)
 
-![OWOX Data Marts - Open-Source Self-Service Analytics Platform](https://i.imgur.com/XVKA8mI.png)
+![OWOX Data Marts - Open-Source Self-Service Analytics Platform](./docs/res/owox-data-marts-schema.svg)
 
 ## ✨ Why We Built This
 
