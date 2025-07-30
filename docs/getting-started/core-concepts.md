@@ -4,7 +4,7 @@
 
 This guide will help you unlock the product’s full value and save time during implementation.
 
-![Data Marts](../res/main-core-concepts.png)
+![Core Concepts](../res/core-concepts.svg)
 
 ---
 
@@ -93,6 +93,3 @@ Different Google Sheets Reports of the same Data Mart may have different schedul
 - **Connector Run** – Import data from a **Source** into **Storage**.  
 - **Report Runs** – Push or pull data (stored in **Storage**) to a **Destination**.
 
----
-
-![Core Concepts](../res/core-concepts.svg)
