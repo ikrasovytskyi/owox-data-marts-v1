@@ -47,7 +47,7 @@
     "lint:md:root:fix": "cross-env MDLINT_CONTEXT=root npx markdownlint-cli2 --fix",
     "migration:run": "npm run migration:run -w @owox/backend",
     "migration:revert": "npm run migration:revert -w @owox/backend",
-    "migration:create": "npm run migration:create -w @owox/backend",
+    "migration:create-template": "npm run migration:create-template -w @owox/backend",
     "dump:create": "npm run dump:create -w @owox/backend",
     "dump:apply": "npm run dump:apply -w @owox/backend",
     "postinstall": "npm run setup:husky || echo 'Warning: Git hooks setup failed'",

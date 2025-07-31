@@ -59,9 +59,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migration:run": "npx typeorm-ts-node-commonjs migration:run -d ./scripts/data-source.ts",
     "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d ./scripts/data-source.ts",
-    "migration:create-template": "ts-node commands/create-migration-template.ts",
-    "dump:create": "ts-node commands/create-dump-inserts.ts",
-    "dump:apply": "ts-node commands/apply-dump-inserts.ts"
+    "migration:create-template": "ts-node commands/create-migration-template-command.ts",
+    "dump:create": "ts-node commands/create-dump-command.ts",
+    "dump:apply": "ts-node commands/apply-dump-command.ts"
   },
   "dependencies": {
     "@aws-sdk/client-athena": "^3.839.0",

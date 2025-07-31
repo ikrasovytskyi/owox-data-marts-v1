@@ -1,12 +1,12 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as readline from 'readline';
-import { createLogger } from '../src/common/logger/logger.service';
 import { QueryRunner } from 'typeorm/query-runner/QueryRunner';
 import envPaths from 'env-paths';
-import { createDataSourceOptions } from 'src/config/data-source-options.config';
 import { ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
+import { createLogger } from '../common/logger/logger.service';
+import { createDataSourceOptions } from '../config/data-source-options.config';
 
 const logger = createLogger('DumperApplier');
 const paths = envPaths('owox', { suffix: '' });
@@ -41,7 +41,7 @@ function createDataSource() {
   return new DataSource(dataSourceOptions);
 }
 
-async function applyDump() {
+export async function applyDump() {
   const dataSource = createDataSource();
   await dataSource.initialize();
   const dbType = dataSource.options.type;
@@ -109,5 +109,3 @@ async function insertBatch(
     await queryRunner.query(sql, values);
   }
 }
-
-applyDump().catch((err: unknown) => logger.error(err instanceof Error ? err.stack : String(err)));

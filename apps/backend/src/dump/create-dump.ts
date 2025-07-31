@@ -1,10 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { createLogger } from '../src/common/logger/logger.service';
 import envPaths from 'env-paths';
-import { createDataSourceOptions } from 'src/config/data-source-options.config';
 import { ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
+import { createLogger } from '../common/logger/logger.service';
+import { createDataSourceOptions } from '../config/data-source-options.config';
 
 const logger = createLogger('DumperCreator');
 const paths = envPaths('owox', { suffix: '' });
@@ -19,7 +19,7 @@ function createDataSource() {
   return new DataSource(dataSourceOptions);
 }
 
-async function dumpInserts() {
+export async function dumpInserts() {
   const dataSource = createDataSource();
   await dataSource.initialize();
   if (!fs.existsSync(DUMP_DIR)) {
@@ -49,5 +49,3 @@ async function dumpInserts() {
   await dataSource.destroy();
   logger.log(`Dump complete successfully: ${DUMP_DIR}`);
 }
-
-dumpInserts().catch((err: unknown) => logger.error(err instanceof Error ? err.stack : String(err)));
