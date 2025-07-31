@@ -91,6 +91,11 @@ export abstract class BaseCommand extends Command {
     );
   }
 
+  protected handleStartupError(error: unknown): void {
+    const message = error instanceof Error ? error.message : String(error);
+    this.error(`Failed to start dump process: ${message}`, { exit: 1 });
+  }
+
   /**
    * Initializes logging configuration based on provided flags.
    * Should be called at the start of each command's run method.
@@ -136,6 +141,12 @@ export abstract class BaseCommand extends Command {
    */
   protected logJson(json: unknown): void {
     console.log(JSON.stringify(json));
+  }
+
+  protected setupLogFormat(logFormat: string): void {
+    // Set environment variables
+    process.env.LOG_FORMAT = logFormat;
+    this.log(`📦 Setup log format to ${logFormat}`);
   }
 
   /**

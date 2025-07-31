@@ -78,11 +78,6 @@ export default class Serve extends BaseCommand {
     process.exit(0);
   }
 
-  private handleStartupError(error: unknown): void {
-    const message = error instanceof Error ? error.message : String(error);
-    this.error(`Failed to start application: ${message}`, { exit: 1 });
-  }
-
   private setupGracefulShutdown(): void {
     const shutdownSignals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM'];
 
