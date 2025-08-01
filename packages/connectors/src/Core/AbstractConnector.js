@@ -70,7 +70,7 @@ var AbstractConnector = class AbstractConnector {
         this.runConfig.data.forEach(item => { 
           if (this.config[item.configField] && 
               this.config[item.configField].attributes && 
-              this.config[item.configField].attributes.includes('manualBackfill')) {
+              this.config[item.configField].attributes.includes(CONFIG_ATTRIBUTES.MANUAL_BACKFILL)) {
             
             // Convert date strings to Date objects if needed
             let value = item.value;
@@ -242,6 +242,9 @@ var AbstractConnector = class AbstractConnector {
      * @private
      */
     _getManualBackfillDateRange() {
+      if (!this.config.StartDate.value) {
+        throw new Error('StartDate is required for manual backfill');
+      }
       let startDate = this.config.StartDate.value;
       let endDate = this.config.EndDate.value || new Date();
       const today = new Date();

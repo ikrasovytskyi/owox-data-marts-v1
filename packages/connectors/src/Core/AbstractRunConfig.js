@@ -54,7 +54,7 @@ var AbstractRunConfig = class AbstractRunConfig {
 
       // Check if the field supports manual backfill
       const configParam = config[item.configField];
-      if (!configParam.attributes || !configParam.attributes.includes('manualBackfill')) {
+      if (!configParam.attributes || !configParam.attributes.includes(CONFIG_ATTRIBUTES.MANUAL_BACKFILL)) {
         throw new Error(`Config field '${item.configField}' does not support manual backfill`);
       }
     }

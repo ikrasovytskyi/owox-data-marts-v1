@@ -23,13 +23,13 @@ constructor(config) {
         requiredType: "date",
         label: "Start Date",
         description: "Start date for data import",
-        attributes: ["manualBackfill"]
+        attributes: [CONFIG_ATTRIBUTES.MANUAL_BACKFILL]
       },
       EndDate: {
         requiredType: "date",
         label: "End Date",
         description: "End date for data import",
-        attributes: ["manualBackfill"]
+        attributes: [CONFIG_ATTRIBUTES.MANUAL_BACKFILL, CONFIG_ATTRIBUTES.HIDE_IN_CONFIG_FORM]
       },
       ReimportLookbackWindow: {
         requiredType: "number",

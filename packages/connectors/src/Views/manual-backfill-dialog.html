@@ -129,7 +129,7 @@
       // Find fields with manualBackfill attribute
       for (var fieldName in config) {
         var field = config[fieldName];
-        if (field.attributes && field.attributes.includes('manualBackfill')) {
+        if (field.attributes && field.attributes.includes(CONFIG_ATTRIBUTES.MANUAL_BACKFILL)) {
           manualBackfillFields.push({
             name: fieldName,
             field: field
