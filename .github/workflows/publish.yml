@@ -42,7 +42,7 @@ jobs:
       - name: Extract "latest" version
         id: extract_latest_version
         run: |
-          VERSION=$(npm pkg get version -w apps/owox | grep -oE '"[0-9]+(\.[0-9]+)*"' | tr -d '"')
+          VERSION=$(npm pkg get version -w apps/owox | grep -oE '"[0-9]+\.[0-9]+\.[0-9]+"' | tr -d '"')
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
 
