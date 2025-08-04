@@ -49,7 +49,7 @@ jobs:
       - name: Check if container image with this "latest" version exists
         id: latest_image_exists
         run: |
-          if docker manifest inspect ghcr.io/${{ github.repository }}:${{ steps.extract_version.outputs.version }} > /dev/null 2>&1; then
+          if docker manifest inspect ghcr.io/${{ github.repository }}:${{ steps.extract_latest_version.outputs.version }} > /dev/null 2>&1; then
             echo "exists=true" >> $GITHUB_OUTPUT
           else
             echo "exists=false" >> $GITHUB_OUTPUT
@@ -91,7 +91,6 @@ jobs:
           cat $GITHUB_OUTPUT
 
       - name: Build and push "next" container image
-        if: steps.latest_image_exists.outputs.exists == 'false'
         uses: docker/build-push-action@v5
         with:
           context: .
