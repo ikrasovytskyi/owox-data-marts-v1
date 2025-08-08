@@ -81,17 +81,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <p>Fill in required parameters:</p>
 <ul>
-<li><strong>Start Date</strong></li>
 <li><strong>Account IDs</strong></li>
 <li><strong>Fields</strong></li>
 <li><strong>Destination Dataset ID</strong> (applicable only for the <strong>Google BigQuery</strong> template)</li>
 <li><strong>Destination Location</strong> (applicable only for the <strong>Google BigQuery</strong> template)</li>
 </ul>
-<p>The import will begin from the selected <strong>Start Date</strong>.</p>
-<blockquote>
-<p>⚠️ <strong>Note:</strong> Choosing a long date range may result in import failure due to high data volume.</p>
-</blockquote>
-<p><img alt="Reddit Start Date" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1462" src="/_astro/reddit-startdate.BascgVE8_Z1dsSwM.webp" ></p>
 <p>You can find your <strong>Account ID</strong> on the homepage of your <a href="https://ads.reddit.com/" rel="noopener noreferrer" target="_blank">Reddit Ads account</a>:</p>
 <p><img alt="Reddit Account ID" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="228" src="/_astro/reddit-accountid.DqFuSdB1_1virmM.webp" ></p>
 <p>Copy and paste the ID into the appropriate field in the spreadsheet:</p>
@@ -130,14 +124,13 @@ To include additional fields, go to the <strong>Fields</strong> tab and check th
 <p>To include more fields later, check the appropriate boxes in the <strong>Fields</strong> tab and click:<br>
 <strong>OWOX → Import New Data</strong></p>
 <blockquote>
-<p>⚠️ <strong>Important:</strong> To change the date range:</p>
+<p>⚠️ <strong>Important:</strong> To make a manual backfill for the date range:</p>
 <ol>
-<li>Clear existing data in the <strong>Status</strong> columns</li>
-<li>Update the <strong>Start Date</strong> and/or <strong>End Date</strong></li>
-<li>Run <strong>OWOX → Import New Data</strong> again</li>
+<li>Open the menu: <strong>OWOX → Manual Backfill</strong></li>
+<li>Update the <strong>Start Date</strong> and <strong>End Date</strong></li>
+<li>Click <strong>Run manual Backfill</strong></li>
 </ol>
 </blockquote>
-<p><img alt="Reddit Clear" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="194" src="/_astro/criteo-clear.yrIYuEsG_ZeUynQ.webp" ></p>
 <p>If you encounter any issues:</p>
 <ol>
 <li>Check the “Logs” sheet for specific error messages</li>
