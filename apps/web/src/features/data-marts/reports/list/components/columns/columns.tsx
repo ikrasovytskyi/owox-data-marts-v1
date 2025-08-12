@@ -38,7 +38,7 @@ export const getGoogleSheetsColumns = ({
     ),
     cell: ({ row }) => row.original.title,
     enableColumnFilter: true,
-    size: 50, // responsive width in %
+    size: 60, // responsive width in %
   },
   {
     accessorKey: ReportColumnKey.LAST_RUN_DATE,
@@ -66,7 +66,7 @@ export const getGoogleSheetsColumns = ({
       ) : (
         <span className='text-muted-foreground text-sm'>&mdash;</span>
       ),
-    size: 25, // responsive width in %
+    size: 15, // responsive width in %
   },
   {
     id: 'actions',
@@ -78,7 +78,7 @@ export const getGoogleSheetsColumns = ({
         onEditReport={onEditReport}
       />
     ),
-    size: 80, // fixed width in pixels
+    size: 160, // fixed width in pixels
   },
 ];
 

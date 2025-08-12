@@ -149,7 +149,7 @@ export function GoogleSheetsReportsTable() {
                         )}
                         style={
                           header.column.id === 'actions'
-                            ? { width: 80, minWidth: 80, maxWidth: 80 }
+                            ? { width: 160, minWidth: 160, maxWidth: 160 }
                             : { width: `${String(header.getSize())}%` }
                         }
                         scope='col'
@@ -186,7 +186,7 @@ export function GoogleSheetsReportsTable() {
                           className={`px-6 whitespace-normal ${getAlignClass((cell.column.columnDef as { _align?: Align })._align)}`}
                           style={
                             cell.column.id === 'actions'
-                              ? { width: 80, minWidth: 80, maxWidth: 80 }
+                              ? { width: 160, minWidth: 160, maxWidth: 160 }
                               : { width: `${String(cell.column.getSize())}%` }
                           }
                           role='cell'
