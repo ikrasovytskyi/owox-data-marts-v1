@@ -87,9 +87,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><strong>Destination Location</strong> (applicable only for the <strong>Google BigQuery</strong> template)</li>
 </ul>
 <p>You can find your <strong>Account ID</strong> on the homepage of your <a href="https://ads.reddit.com/" rel="noopener noreferrer" target="_blank">Reddit Ads account</a>:</p>
-<p><img alt="Reddit Account ID" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="228" src="/_astro/reddit-accountid.DqFuSdB1_1virmM.webp" ></p>
+<p><img alt="Reddit Account ID" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="480" src="/_astro/reddit-accountid.DSdqlWKz_ZvImCs.webp" ></p>
 <p>Copy and paste the ID into the appropriate field in the spreadsheet:</p>
-<p><img alt="Account ID" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1006" src="/_astro/reddit-pasteid.BDw2RDMK_Z1UXpjS.webp" ></p>
+<p><img alt="Account ID" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="656" src="/_astro/reddit-pasteid.CUfy7HmK_2vo7Qv.webp" ></p>
 <p>Some fields are pre-filled by default.<br>
 To include additional fields, go to the <strong>Fields</strong> tab and check the boxes next to the ones you need.</p>
 <p><img alt="Reddit Fields" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="1010" src="/_astro/reddit-fields.vNlKJs8A_AFK6g.webp" ></p>
@@ -101,16 +101,31 @@ To include additional fields, go to the <strong>Fields</strong> tab and check th
 <blockquote>
 <p>ℹ️ <strong>Important:</strong> If the specified BigQuery dataset does not already exist in your Google Cloud project, it will be automatically created during the import process.</p>
 </blockquote>
-<p><img alt="Reddit Dataset" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="736" src="/_astro/reddit-dataset.lkLQW9kk_ZoEtvT.webp" ></p>
+<p><img alt="Reddit Dataset" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="736" src="/_astro/reddit-dataset.ZIqMkKM0_1pQ63i.webp" ></p>
 <p>Open the menu: <strong>OWOX → Manage Credentials</strong></p>
-<p><img alt="Reddit Credentials" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="894" src="/_astro/reddit-credentials.BWD5qy0B_Z1YFrmY.webp" ></p>
+<p><img alt="Reddit Credentials" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="742" src="/_astro/reddit-credentials.Z5wCe8-__Z1UI5hg.webp" ></p>
 <p>Enter your credentials as described in this guide:<br>
 <a href="/packages/connectors/src/sources/reddit-ads/credentials/"><strong>How to obtain the credentials for the Reddit Ads connector</strong></a></p>
-<p><img alt="Reddit Token" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="1732" src="/_astro/reddit-tokens.CQhK_6qH_Z1DpDss.webp" ></p>
-<p>Click <strong>Check and Save</strong>. Once credentials are saved, go to:<br>
-<strong>OWOX → Import New Data</strong></p>
-<p><img alt="Reddit Import Data" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="896" src="/_astro/reddit-import.vTUlCnKI_Z2bvaUa.webp" ></p>
-<p>The process is complete when the <strong>Log</strong> sheet shows the message:<br>
+<p><img alt="Reddit Token" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="3492" src="/_astro/reddit-tokens.C1pWJMNJ_1MmnwF.webp" ></p>
+<p>Click <strong>Check and Save</strong>. Once credentials are saved, go to menu.</p>
+<p>Now you have <strong>two options</strong> for importing data from Reddit Ads:</p>
+<p>Option 1: Import Current Day’s Data</p>
+<p>Choose <strong>OWOX → Import New Data</strong> to load data for the <strong>current day</strong>.</p>
+<p><img alt="Reddit Import New Data" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1396" src="/_astro/reddit-importcurrentday.uBSBGU3I_Z2pvYWf.webp" ></p>
+<blockquote>
+<p>ℹ️ If you click <strong>Import New Data</strong> again after a successful initial load,<br>
+the connector will import: <strong>Current day’s data</strong>, plus <strong>Additional days</strong>, based on the value in the <strong>Reimport Lookback Window</strong> field.</p>
+</blockquote>
+<p><img alt="Reddit Reimport" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1914" src="/_astro/reddit-reimport.DnC5TfGz_Z1DDKVO.webp" ></p>
+<p>Option 2: Manual Backfill for Specific Date Range</p>
+<p>Choose <strong>Manual Backfill</strong> to load historical data for a custom time range.</p>
+<p><img alt="Reddit Backfill" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="896" src="/_astro/reddit-backfill.qc4aXPI-_Zriw8T.webp" ></p>
+<ol>
+<li>Select the <strong>Start Date</strong> and <strong>End Date</strong></li>
+<li>Click the <strong>Run Manual Backfill</strong> button</li>
+</ol>
+<p><img alt="Reddit Run Backfill" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1768" src="/_astro/reddit-runbackfill.B6LKiOuE_Z1nNc95.webp" ></p>
+<p>The process is complete when the <strong>Log</strong> field shows the message:<br>
 <strong>“Import is finished”</strong></p>
 <p>Access Your Data:</p>
 <ul>
@@ -121,16 +136,8 @@ To include additional fields, go to the <strong>Fields</strong> tab and check th
 <li>In the <strong>Google BigQuery</strong> template, the data will be written to the dataset specified earlier.</li>
 </ul>
 <p><img alt="Reddit Finished" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1346" src="/_astro/reddit-finish.BckF9iOi_Z1Oh6KS.webp" ></p>
-<p>To include more fields later, check the appropriate boxes in the <strong>Fields</strong> tab and click:<br>
-<strong>OWOX → Import New Data</strong></p>
-<blockquote>
-<p>⚠️ <strong>Important:</strong> To make a manual backfill for the date range:</p>
-<ol>
-<li>Open the menu: <strong>OWOX → Manual Backfill</strong></li>
-<li>Update the <strong>Start Date</strong> and <strong>End Date</strong></li>
-<li>Click <strong>Run manual Backfill</strong></li>
-</ol>
-</blockquote>
+<p>Want to include more fields? You can customize the imported data by selecting additional checkboxes in the <strong>Fields</strong> tab.
+After adjusting your field selection, run the import again to retrieve the updated data.</p>
 <p>If you encounter any issues:</p>
 <ol>
 <li>Check the “Logs” sheet for specific error messages</li>
