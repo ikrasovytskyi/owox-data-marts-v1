@@ -16,10 +16,10 @@ However, most **self-service analytics** initiatives fail because they compromis
 
 At OWOX, we value both:
 
-- Data analysts **orchestrate data marts** defined by [SQL](./docs/getting-started/setup-guide/sql-data-mart.md) or [connectors](./docs/getting-started/setup-guide/connector-data-mart.md) to sources like Facebook Ads, TikTok Ads, and LinkedIn Ads.
+- Data analysts **orchestrate data marts** defined either by [SQL](./docs/getting-started/setup-guide/sql-data-mart.md) or by [connectors](./docs/getting-started/setup-guide/connector-data-mart.md) to sources like Facebook Ads, TikTok Ads, and LinkedIn Ads.
 - Business users **enjoy trusted reports** right [where they want them](./docs/destinations/manage-destinations.md) — in spreadsheets or dashboards.
 
-At OWOX, we believe data analysts shouldn’t have to waste time on CSV files and one-off dashboards. Business users shouldn’t be forced to use complex BI tools either.
+At OWOX, we believe data analysts shouldn’t have to waste time on CSV files and one-off dashboards. Business users shouldn’t have to be forced to use complex BI tools either.
 
 ## 🚀 What You Can Do with OWOX Data Marts
 
