@@ -81,24 +81,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <p>Fill in the required information:</p>
 <ul>
-<li><strong>Start Date</strong></li>
 <li><strong>Account IDs</strong></li>
 <li><strong>Fields</strong></li>
 <li><strong>Destination Dataset ID</strong> (for <strong>Google BigQuery</strong> template)</li>
 <li><strong>Destination Location</strong> (for <strong>Google BigQuery</strong> template)</li>
 </ul>
-<p>The import will begin from the selected <strong>Start Date</strong>.</p>
-<blockquote>
-<p>⚠️ <strong>Note:</strong> Using a long date range may cause the import to fail due to the high volume of data.</p>
-</blockquote>
-<p><img alt="Facebook Start Date" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="901" src="/_astro/fb-startdate.BtK7CXez_Z226vTv.webp" ></p>
 <p>You can find your <strong>Account ID</strong> on the <strong>Account Overview</strong> page in <a href="https://adsmanager.facebook.com/adsmanager/manage/accounts" rel="noopener noreferrer" target="_blank">Meta Ads Manager</a>.</p>
 <p><img alt="Facebook Account ID" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="704" src="/_astro/fb-accountid.Dx9nGBsM_Z1tG0wX.webp" ></p>
 <p>Copy and paste the ID into the spreadsheet:</p>
-<p><img alt="Account ID" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="835" src="/_astro/fb-pasteid.CrMvBd2B_1H1aLT.webp" ></p>
+<p><img alt="Account ID" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1380" src="/_astro/fb-pasteid.h7E6k2qb_Z1RFgsY.webp" ></p>
 <p>Some fields are pre-filled by default.<br>
 To include additional fields, go to the <strong>Fields</strong> tab and check the boxes next to the fields you want to include.</p>
-<p><img alt="Facebook Fields" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="730" src="/_astro/fb-fields.DDlHnfUg_Z251oD5.webp" ></p>
+<p><img alt="Facebook Fields" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1278" src="/_astro/fb-fields.BnmbxF6y_1f6rqn.webp" ></p>
 <p>If you’re using the <strong>Google BigQuery</strong> template, also provide:</p>
 <ul>
 <li><strong>Destination Dataset ID</strong> in the format: <code dir="auto">projectid.datasetid</code></li>
@@ -107,28 +101,43 @@ To include additional fields, go to the <strong>Fields</strong> tab and check th
 <blockquote>
 <p>ℹ️ If the specified dataset doesn’t exist, it will be created automatically.</p>
 </blockquote>
-<p><img alt="Facebook Dataset" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="562" src="/_astro/facebook-dataset.C9jtJXOF_Z1ECBCW.webp" ></p>
+<p><img alt="Facebook Dataset" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1274" src="/_astro/facebook-dataset.DjjCT6c7_ZyAjx2.webp" ></p>
 <p>Open the menu: <strong>OWOX → Manage Credentials</strong></p>
-<p><img alt="Facebook Credentials" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="322" src="/_astro/fb-credentials.Blwkxdtc_Z1qiSA3.webp" ></p>
+<p><img alt="Facebook Credentials" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1318" src="/_astro/fb-credentials.cAukDa7n_ZGFaCq.webp" ></p>
 <p>Enter your credentials obtained by following this guide: <a href="/packages/connectors/src/sources/facebook-marketing/credentials/"><strong>How to obtain the access token for the Facebook connector</strong></a></p>
-<p><img alt="Facebook Token" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="546" src="/_astro/fb-token.DoRr2qnc_1TteKE.webp" ></p>
-<p>Once your credentials are saved, go to: <strong>OWOX → Import New Data</strong></p>
-<p><img alt="Facebook Import Data" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="303" src="/_astro/fb-import.BNgirjVR_Z1tGnDa.webp" ></p>
-<p>The import process is complete when the Log data displays <strong>“Import is finished”</strong>.</p>
-<p><img alt="Facebook Finished" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="701" src="/_astro/fb-success.B7mkockF_Z3hCr9.webp" ></p>
+<p><img alt="Facebook Token" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="749" src="/_astro/fb-token.B2EpQb3Z_Z2a3PP4.webp" ></p>
+<p>Now you have <strong>two options</strong> for importing data from Facebook Ads:</p>
+<p>Option 1: Import Current Day’s Data</p>
+<p>Choose <strong>OWOX → Import New Data</strong> to load data for the <strong>current day</strong>.</p>
+<p><img alt="Facebook Import New Data" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1294" src="/_astro/facebook-newdata.CTjD5UHw_Z1BYd3p.webp" ></p>
+<blockquote>
+<p>ℹ️ If you click <strong>Import New Data</strong> again after a successful initial load,<br>
+the connector will import: <strong>Current day’s data</strong>, plus <strong>Additional days</strong>, based on the value in the <strong>Reimport Lookback Window</strong> field.</p>
+</blockquote>
+<p><img alt="Facebook Reimport" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1340" src="/_astro/facebook-reimport.Bd3ui1Zg_Z14AC76.webp" ></p>
+<p>Option 2: Manual Backfill for Specific Date Range</p>
+<p>Choose <strong>Manual Backfill</strong> to load historical data for a custom time range.</p>
+<p><img alt="Facebook Backfill" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="878" src="/_astro/facebook-backfill.CQVdSHYd_Z7C6Ie.webp" ></p>
+<ol>
+<li>Select the <strong>Start Date</strong> and <strong>End Date</strong></li>
+<li>Click the <strong>Run Manual Backfill</strong> button</li>
+</ol>
+<p><img alt="Facebook Run Backfill" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1760" src="/_astro/facebook-runbackfill.Cd8aVcAT_Zk7hwE.webp" ></p>
+<p>The process is complete when the <strong>Log</strong> field shows the message:<br>
+<strong>“Import is finished”</strong></p>
 <p>Access Your Data:</p>
 <ul>
-<li>
-<p>In the <strong>Google Sheets</strong> template, the data will appear in new tabs labeled with the corresponding data types (e.g., <em>ad-account</em>, <em>ad-campaign</em>).</p>
-</li>
-<li>
-<p>In the <strong>Google BigQuery</strong> template, the data will be written to the dataset specified earlier.</p>
-</li>
+<li>In the <strong>Google Sheets</strong> template, the data will appear in new tabs labeled with the corresponding data types (e.g., <em>ad-account</em>, <em>ad-campaign</em>).</li>
 </ul>
+<p><img alt="Facebook Import Success Sheets" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1204" src="/_astro/facebook-importsheets.moKKSYjR_ZCTspU.webp" ></p>
+<ul>
+<li>In the <strong>Google BigQuery</strong> template, the data will be written to the dataset specified earlier.</li>
+</ul>
+<p><img alt="Facebook Import Success" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1720" src="/_astro/facebook-importgbq._6-Lw4LH_Z2qgee9.webp" ></p>
 <p>To import more data:</p>
 <ol>
 <li>Select the additional fields you need in the <strong>Fields</strong> tab.</li>
-<li>Go to <strong>OWOX → Import New Data</strong> again.</li>
+<li>Go to <strong>OWOX → Import New Data</strong> or <strong>OWOX → Run Manual Backfill</strong> again.</li>
 </ol>
 <p>If you encounter any issues:</p>
 <ol>
