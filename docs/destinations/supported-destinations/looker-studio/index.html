@@ -92,6 +92,7 @@ Integration with Looker Studio as a <strong>Destination</strong> for OWOX Data M
 </li>
 </ul>
 </li>
+<li>Copy the <strong>JSON Config</strong> to your clipboard and click <strong>Save</strong>.</li>
 <li>Click <strong>Save</strong>.</li>
 </ul>
 <p><img alt="Create Data Mart-1" loading="lazy" decoding="async" fetchpriority="auto" width="2866" height="1550" src="/_astro/create-destination-entity-looker-studio.BT0pEQWs_Zsgv4o.webp" ></p>
@@ -99,26 +100,23 @@ Integration with Looker Studio as a <strong>Destination</strong> for OWOX Data M
 <div class="sl-heading-wrapper level-h2"><h2 id="step-2-make-a-data-mart-accessible-for-looker-studio">Step 2. Make a Data Mart accessible for Looker Studio</h2><a class="sl-anchor-link" href="#step-2-make-a-data-mart-accessible-for-looker-studio"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “Step 2. Make a Data Mart accessible for Looker Studio”</span></a></div>
 <ul>
 <li>Open the <strong>Data Mart</strong> you want to make accessible in Looker Studio and go to the <strong>Destinations</strong> tab.</li>
-<li>In the Looker Studio section, click <strong>+ Add Report</strong>.</li>
-<li>Provide a <strong>Title</strong> — a unique name for this connection (e.g., “Report for Marketing”).</li>
-<li>Select the <strong>Destination</strong> entity you created previously.</li>
-<li>Adjust the <strong>Cache Lifetime</strong> based on how you want to control data freshness when Looker Studio requests this data:
+<li>In corresponding Looker Studio Destination, <strong>enable</strong> toggle with a single click to make the current Data Mart available for Looker Studio.</li>
+<li>If needed, click on on the row in Destination section to adjust default <strong>Cache Lifetime</strong> based on how you want to control data freshness when Looker Studio requests this data:
 <ul>
-<li>This defines the period during which results from previous query executions are served from the storage-side cache, eliminating the need to re-execute the query.</li>
+<li>This setting defines the period during which results from previous query executions are served from the storage-side cache, eliminating the need to re-execute the query.</li>
 </ul>
 </li>
-<li>Copy the <strong>JSON Config</strong> to your clipboard and click <strong>Save</strong>.</li>
 </ul>
-<p><img alt="Create Data Mart-1" loading="lazy" decoding="async" fetchpriority="auto" width="2864" height="1538" src="/_astro/create-report-to-looker-studio-in-data-mart.BgGCPiEi_Z7zasj.webp" ></p>
+<p><img alt="Create Data Mart-1" loading="lazy" decoding="async" fetchpriority="auto" width="2842" height="1530" src="/_astro/create-report-to-looker-studio-in-data-mart.CK_0Q5kn_1xidnT.webp" ></p>
 <hr>
 <div class="sl-heading-wrapper level-h2"><h2 id="step-3-add-a-data-source-in-looker-studio">Step 3. Add a Data Source in Looker Studio</h2><a class="sl-anchor-link" href="#step-3-add-a-data-source-in-looker-studio"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “Step 3. Add a Data Source in Looker Studio”</span></a></div>
 <ul>
 <li>Find the <a href="https://datastudio.google.com/datasources/create?connectorId=AKfycbz6kcYn3qGuG0jVNFjcDnkXvVDiz4hewKdAFjOm-_d4VkKVcBidPjqZO991AvGL3FtM4A" rel="noopener noreferrer" target="_blank">OWOX Data Marts connector</a> in Looker Studio’s Gallery.</li>
 <li><strong>Authorize</strong> with your Google Account (Looker Studio requires authorization to connect to data).</li>
-<li>Provide a <strong>Configuration Display Name</strong> — a unique name to help you distinguish different connections (e.g., “Marketing Data Connection”).</li>
+<li>Provide a <strong>Configuration Display Name</strong> — a unique name to help you distinguish different connections (e.g., “Looker Studio Access (Marketing)”).</li>
 <li>Paste the value from your clipboard into the <strong>JSON Config</strong> field and click <strong>Next</strong>.</li>
 <li>Select the <strong>Connection Configuration</strong> you created previously and click <strong>Next</strong>.</li>
-<li>Select a <strong>Report</strong> based on the Data Mart available via the provided Destination entity and click <strong>Connect</strong>.</li>
+<li>Select a <strong>Data Mart</strong> and click <strong>Connect</strong>.</li>
 <li>Make sure all the required fields are connected this Looker Studio’s data source and click <strong>Create Report</strong> or <strong>Explore</strong>.
 <ul>
 <li>You can control the name and description of fields shown in Looker Studio via the <strong>Output Schema</strong> of the Data Mart in your OWOX Data Marts web application.</li>
@@ -128,6 +126,6 @@ Integration with Looker Studio as a <strong>Destination</strong> for OWOX Data M
 <p>Connector in Looker Studio (first step):</p>
 <p><img alt="Create Data Mart-1" loading="lazy" decoding="async" fetchpriority="auto" width="1780" height="1206" src="/_astro/connector-in-looker-studio-1st-step.9NB7c_da_Z61gje.webp" ></p>
 <p>Connector in Looker Studio (second step):</p>
-<p><img alt="Create Data Mart-1" loading="lazy" decoding="async" fetchpriority="auto" width="1756" height="1104" src="/_astro/connector-in-looker-studio-2nd-step.xFnLcbjl_2t6GtE.webp" ></p>
+<p><img alt="Create Data Mart-1" loading="lazy" decoding="async" fetchpriority="auto" width="2844" height="1308" src="/_astro/connector-in-looker-studio-2nd-step.Btk3OvDf_27NTLi.webp" ></p>
 <hr>
 <p>For additional guidance or troubleshooting, refer to the <a href="https://github.com/OWOX/owox-data-marts/discussions" rel="noopener noreferrer" target="_blank">OWOX Community</a></p> </div> <footer class="sl-flex astro-umjoovsl"> <div class="meta sl-flex astro-umjoovsl">   </div> <div class="pagination-links print:hidden astro-tsjwhn6j" dir="ltr"> <a href="/docs/destinations/supported-destinations/google-sheets/" rel="prev" class="astro-tsjwhn6j"> <svg aria-hidden="true" class="astro-tsjwhn6j astro-u5r6xs7a" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-tsjwhn6j"> Previous <br class="astro-tsjwhn6j"> <span class="link-title astro-tsjwhn6j">Google Sheets</span> </span> </a>  </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
