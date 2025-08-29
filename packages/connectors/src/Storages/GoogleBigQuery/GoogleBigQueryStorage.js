@@ -70,6 +70,18 @@ var GoogleBigQueryStorage = class GoogleBigQueryStorage extends AbstractStorage 
     
     }
 
+  //---- getColumnType -----------------------------------------------
+    /**
+     * Get column type for BigQuery from schema
+     * @param {string} columnName - Name of the column
+     * @returns {string} BigQuery column type
+     */
+    getColumnType(columnName) {
+      return this.schema[columnName]["GoogleBigQueryType"] 
+             || TYPE_CONVERTER[this.schema[columnName]["type"]?.toLowerCase()]?.bigquery 
+             || 'STRING';
+    }
+
   //---- loads Google BigQuery Table Schema ---------------------------
     loadTableSchema() {
 
@@ -151,16 +163,13 @@ var GoogleBigQueryStorage = class GoogleBigQueryStorage extends AbstractStorage 
       for(var i in this.uniqueKeyColumns) {
         
         let columnName = this.uniqueKeyColumns[i];
-        let columnType = 'string';
         let columnDescription = '';
 
         if( !(columnName in this.schema) ) {
           throw new Error(`Required field ${columnName} not found in schema`);
         }
         
-        if( "GoogleBigQueryType" in this.schema[ columnName ] ) {
-          columnType = this.schema[ columnName ]["GoogleBigQueryType"];
-        }
+        let columnType = this.getColumnType(columnName);
         
         if( "description" in this.schema[ columnName ] ) {
           columnDescription = ` OPTIONS(description="${this.schema[ columnName ]["description"]}")`;
@@ -231,12 +240,9 @@ var GoogleBigQueryStorage = class GoogleBigQueryStorage extends AbstractStorage 
         // checking the field is exists in schema
         if( columnName in this.schema ) {
 
-          let columnType = 'STRING';
           let columnDescription = '';
           
-          if( "GoogleBigQueryType" in this.schema[ columnName ] ) {
-            columnType = this.schema[ columnName ]["GoogleBigQueryType"];
-          }
+          let columnType = this.getColumnType(columnName);
           
           if( "description" in this.schema[ columnName ] ) {
             columnDescription = ` OPTIONS (description = "${this.schema[ columnName ]["description"]}")`;
