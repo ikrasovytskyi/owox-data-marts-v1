@@ -152,18 +152,6 @@ var AwsAthenaStorage = class AwsAthenaStorage extends AbstractStorage {
       });
   }
 
-  //---- getColumnType -----------------------------------------------
-  /**
-   * Get column type for Athena from schema
-   * @param {string} columnName - Name of the column
-   * @returns {string} Athena column type
-   */
-  getColumnType(columnName) {
-          return this.schema[columnName]["AthenaType"] 
-             || TYPE_CONVERTER[this.schema[columnName]["type"]?.toLowerCase()]?.athena 
-             || 'string';
-  }
-
   //---- getTableSchema -------------------------------------------
   /**
    * Get the schema of the existing table
@@ -694,5 +682,17 @@ var AwsAthenaStorage = class AwsAthenaStorage extends AbstractStorage {
         
         return results;
       });
+  }
+
+  //---- getColumnType -----------------------------------------------
+  /**
+   * Get column type for Athena from schema
+   * @param {string} columnName - Name of the column
+   * @returns {string} Athena column type
+   */
+  getColumnType(columnName) {
+    return this.schema[columnName]["AthenaType"] 
+           || TYPE_CONVERTER[this.schema[columnName]["type"]?.toLowerCase()]?.athena 
+           || 'string';
   }
 } 

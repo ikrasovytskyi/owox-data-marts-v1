@@ -70,18 +70,6 @@ var GoogleBigQueryStorage = class GoogleBigQueryStorage extends AbstractStorage 
     
     }
 
-  //---- getColumnType -----------------------------------------------
-    /**
-     * Get column type for BigQuery from schema
-     * @param {string} columnName - Name of the column
-     * @returns {string} BigQuery column type
-     */
-    getColumnType(columnName) {
-      return this.schema[columnName]["GoogleBigQueryType"] 
-             || TYPE_CONVERTER[this.schema[columnName]["type"]?.toLowerCase()]?.bigquery 
-             || 'STRING';
-    }
-
   //---- loads Google BigQuery Table Schema ---------------------------
     loadTableSchema() {
 
@@ -447,6 +435,18 @@ var GoogleBigQueryStorage = class GoogleBigQueryStorage extends AbstractStorage 
   
       return String(inputString).replace(/\\/g, '\\\\').replace(/\n/g, ' ').replace(/'/g, "\\'").replace(/"/g, '\\"'); 
   
+    }
+
+  //---- getColumnType -----------------------------------------------
+    /**
+     * Get column type for BigQuery from schema
+     * @param {string} columnName - Name of the column
+     * @returns {string} BigQuery column type
+     */
+    getColumnType(columnName) {
+      return this.schema[columnName]["GoogleBigQueryType"] 
+             || TYPE_CONVERTER[this.schema[columnName]["type"]?.toLowerCase()]?.bigquery 
+             || 'STRING';
     }
 
 }
