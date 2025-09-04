@@ -79,24 +79,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <a href="https://docs.google.com/spreadsheets/d/1lFqSkdHjO2jTlHoi8QtmJNMCZK1YSaMKaSYmDI7LMKQ/copy" rel="noopener noreferrer" target="_blank">“LinkedIn Pages → Google BigQuery. Template”</a></p>
 <p>Fill in required information:</p>
 <ul>
-<li><strong>Start Date</strong></li>
 <li><strong>Organization URNs</strong></li>
 <li><strong>Fields</strong></li>
 <li><strong>Destination Dataset ID</strong> (for <strong>Google BigQuery</strong> template)</li>
 <li><strong>Destination Location</strong> (for <strong>Google BigQuery</strong> template)</li>
 </ul>
-<p>The import will begin from the selected <strong>Start Date</strong>.</p>
-<blockquote>
-<p>⚠️ Note: Choosing a long date range may cause the import to fail due to high data volume.</p>
-</blockquote>
-<p><img alt="LinkedIn Start Date" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="784" src="/_astro/linkedin-date.B-EELiEG_Z2mrEVn.webp" ></p>
 <p>To obtain <strong>Organization URN</strong>, go to <a href="https://www.linkedin.com/campaignmanager" rel="noopener noreferrer" target="_blank">LinkedIn Campaign Manager</a>.</p>
 <p>Select your ad account > Assets > Company Page.</p>
 <p>The URL may show something like:</p>
 <p><a href="https://www.linkedin.com/company/123456/admin/" rel="noopener noreferrer" target="_blank">https://www.linkedin.com/company/123456/admin/</a></p>
-<p>Here, <code dir="auto">123456</code> is the Organization URN.</p>
+<p>Here, <code dir="auto">123456</code> is the Company ID and will be used as the Organization URN.</p>
 <p>To include fields, go to the <strong>Fields</strong> tab and check the boxes next to the fields you want to include.</p>
-<p><img alt="LinkedIn Fields" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="1182" src="/_astro/linkedin-fields.wEUOxzDj_1e3CJJ.webp" ></p>
+<p><img alt="LinkedIn Fields" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1506" src="/_astro/linkedin-fields.D8URJFS9_108yko.webp" ></p>
 <p>If you’re using the <strong>Google BigQuery</strong> template, also provide:</p>
 <ul>
 <li><strong>Destination Dataset ID</strong> in the format: <code dir="auto">projectid.datasetid</code></li>
@@ -105,23 +99,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <blockquote>
 <p>ℹ️ If the specified dataset doesn’t exist, it will be created automatically.</p>
 </blockquote>
-<p><img alt="LinkedIn Dataset" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1222" src="/_astro/linkedin-dataset.BI6hAbgw_Z1QkAGO.webp" ></p>
+<p><img alt="LinkedIn Dataset" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1052" src="/_astro/linkedin-dataset.BCm3ckTu_8xj8t.webp" ></p>
 <p>Go to the menu: <strong>OWOX → Manage Credentials</strong></p>
-<p><img alt="LinkedIn Credentials" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="645" src="/_astro/linkedin-credentials.C0oHxZ6X_ZmMGAN.webp" ></p>
+<p><img alt="LinkedIn Credentials" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="792" src="/_astro/linkedin-credentials.D8x8Vj_r_ZxuJUM.webp" ></p>
 <p>Enter your Access Token obtained by following this tutorial: <a href="/packages/connectors/src/sources/linked-in-pages/credentials/"><strong>How to obtain the credentials for the LinkedIn Pages connector</strong></a>.</p>
-<p><img alt="LinkedIn Token" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="732" src="/_astro/linkedin-token.CO7Ye-1q_22uQpf.webp" ></p>
-<p>Click <strong>OK</strong>. Once your credentials are saved, click: <strong>OWOX → Import New Data</strong></p>
-<p><img alt="LinkedIn Import Data" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="790" src="/_astro/linkedin-import.KbOFVEes_ZAi9Su.webp" ></p>
-<p>The import process is complete when the Log data displays <strong>“Import is finished”</strong>.</p>
+<p><img alt="LinkedIn Token" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="730" src="/_astro/linkedin-token.BLCkNUDA_27AK0z.webp" ></p>
+<p>Click <strong>OK</strong>.</p>
+<p>Now you have <strong>two options</strong> for importing data from LinkedIn Pages:</p>
+<p>Option 1: Import Current Day’s Data</p>
+<p>Choose <strong>OWOX → Import New Data</strong> to load data for the <strong>current day</strong>.</p>
+<p><img alt="LinkedIn Import New Data" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="902" src="/_astro/linkedin-newdata.AHWAZVcB_Z2ciUxY.webp" ></p>
+<blockquote>
+<p>ℹ️ If you click <strong>Import New Data</strong> again after a successful initial load,<br>
+the connector will import: <strong>Current day’s data</strong>, plus <strong>Additional days</strong>, based on the value in the <strong>Reimport Lookback Window</strong> field.</p>
+</blockquote>
+<p><img alt="LinkedIn Reimport" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1340" src="/_astro/facebook-reimport.Bd3ui1Zg_Z14AC76.webp" ></p>
+<p>Option 2: Manual Backfill for Specific Date Range</p>
+<p>Choose <strong>Manual Backfill</strong> to load historical data for a custom time range.</p>
+<p><img alt="LinkedIn Backfill" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="810" src="/_astro/linkedin-backfill.B4p0jroz_1IpF3g.webp" ></p>
+<ol>
+<li>Select the <strong>Start Date</strong> and <strong>End Date</strong></li>
+<li>Click the <strong>Run Manual Backfill</strong> button</li>
+</ol>
+<p><img alt="LinkedIn Run Backfill" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="1760" src="/_astro/facebook-runbackfill.Cd8aVcAT_Zk7hwE.webp" ></p>
+<p>The process is complete when the <strong>Log</strong> field shows the message:<br>
+<strong>“Import is finished”</strong></p>
 <p>Access Your Data:</p>
 <ul>
-<li>In the <strong>Google Sheets</strong> template, the data will appear in new tabs labeled with the corresponding data types (e.g., <em>adAccounts</em>, <em>adCampaignGroups</em>).</li>
+<li>In the <strong>Google Sheets</strong> template, the data will appear in new tabs labeled with the corresponding data types (e.g., <em>follower_statistics</em>, <em>follower_statistics_time_bound</em>).</li>
 </ul>
-<p><img alt="LinkedIn Finished" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="557" src="/_astro/linkedin-success.DAj-3TXa_ZlJk04.webp" ></p>
+<p><img alt="LinkedIn Finished" loading="lazy" decoding="async" fetchpriority="auto" width="2858" height="880" src="/_astro/linkedin-importsheets.D-1zQPuu_Z15Tl3o.webp" ></p>
 <ul>
 <li>In the <strong>Google BigQuery</strong> template, the data will be written to the dataset specified earlier.</li>
 </ul>
-<p><img alt="LinkedIn Finished" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="767" src="/_astro/linkedin-bq.CvF8Jo_8_1xoCF2.webp" ></p>
+<p><img alt="LinkedIn Finished" loading="lazy" decoding="async" fetchpriority="auto" width="1429" height="760" src="/_astro/linkedin-pages-bq.DQDG3FF6_2rJmC0.webp" ></p>
+<p>To import more data:</p>
+<ol>
+<li>Select the additional fields you need in the <strong>Fields</strong> tab.</li>
+<li>Go to <strong>OWOX → Import New Data</strong> or <strong>OWOX → Run Manual Backfill</strong> again.</li>
+</ol>
 <p>If you encounter any issues:</p>
 <ol>
 <li>Check the “Logs” sheet for specific error messages</li>
