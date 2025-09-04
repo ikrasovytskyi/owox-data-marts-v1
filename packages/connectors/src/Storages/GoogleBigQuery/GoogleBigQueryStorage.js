@@ -444,9 +444,54 @@ var GoogleBigQueryStorage = class GoogleBigQueryStorage extends AbstractStorage 
      * @returns {string} BigQuery column type
      */
     getColumnType(columnName) {
-      return this.schema[columnName]["GoogleBigQueryType"] 
-             || TYPE_CONVERTER[this.schema[columnName]["type"]?.toLowerCase()]?.bigquery 
-             || 'STRING';
+      return this.schema[columnName]["GoogleBigQueryType"] || this._convertTypeToStorageType(this.schema[columnName]["type"]?.toLowerCase());
+    }
+
+  //---- _convertTypeToStorageType ------------------------------------
+    /**
+     * Converts generic type to BigQuery-specific type
+     * @param {string} genericType - Generic type from schema
+     * @returns {string} BigQuery column type
+     */
+    _convertTypeToStorageType(genericType) {
+      if (!genericType) return 'STRING';
+      
+      // TODO: Move types to constants and refactor schemas
+      
+      switch (genericType.toLowerCase()) {
+        // Integer types
+        case 'integer':
+        case 'int32':
+        case 'int64':
+        case 'unsigned int32':
+        case 'long':
+          return 'INTEGER';
+        
+        // Float types
+        case 'float':
+        case 'number':
+        case 'double':
+          return 'FLOAT64';
+        case 'decimal':
+          return 'NUMERIC';
+        
+        // Boolean types
+        case 'bool':
+        case 'boolean':
+          return 'BOOL';
+        
+        // Date/time types
+        case 'datetime':
+          return 'DATETIME';
+        case 'date':
+          return 'DATE';
+        case 'timestamp':
+          return 'TIMESTAMP';
+        
+        // Default to STRING for unknown types
+        default:
+          return 'STRING';
+      }
     }
 
 }
