@@ -97,44 +97,6 @@ var LinkedInPagesSource = class LinkedInPagesSource extends AbstractSource {
   }
 
   /**
-   * Retrieve and store an OAuth access token using the refresh token
-   */
-  getAccessToken() {
-    const tokenUrl = "https://www.linkedin.com/oauth/v2/accessToken";
-    
-    const form = {
-      grant_type: 'refresh_token',
-      refresh_token: this.config.RefreshToken.value,
-      client_id: this.config.ClientID.value,
-      client_secret: this.config.ClientSecret.value
-    };
-    
-    const options = {
-      method: 'post',
-      contentType: 'application/x-www-form-urlencoded',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      payload: form,
-      body: Object.entries(form)
-        .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
-        .join('&')
-    };
-    
-    try {
-      const resp = EnvironmentAdapter.fetch(tokenUrl, options);
-      const json = JSON.parse(resp.getContentText());
-      
-      if (json.error) {
-        throw new Error(`Token error: ${json.error}`);
-      }
-      
-      this.config.AccessToken = { value: json.access_token };
-      this.config.logMessage(`Successfully obtained access token`);
-    } catch (error) {
-      throw new Error(`Failed to refresh access token: ${error.message}`);
-    }
-  }
-  
-  /**
    * Main entry point for fetching data from LinkedIn Pages API
    * @param {string} nodeName - Type of resource to fetch
    * @param {string|number} urn - Organization ID (numeric)
@@ -224,7 +186,16 @@ var LinkedInPagesSource = class LinkedInPagesSource extends AbstractSource {
    */
   makeRequest(url) {
     console.log(`LinkedIn Pages API URL:`, url);
-    this.getAccessToken();
+    OAuthUtils.getAccessToken({ 
+      config: this.config,
+      tokenUrl: "https://www.linkedin.com/oauth/v2/accessToken",
+      formData: {
+        grant_type: 'refresh_token',
+        refresh_token: this.config.RefreshToken.value,
+        client_id: this.config.ClientID.value,
+        client_secret: this.config.ClientSecret.value
+      }
+    });
     
     const headers = {
       "LinkedIn-Version": this.config.Version.value,
