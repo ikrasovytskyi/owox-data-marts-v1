@@ -8,11 +8,23 @@
 var LinkedInAdsSource = class LinkedInAdsSource extends AbstractSource {
   constructor(config) {
     super(config.mergeParameters({
-      AccessToken: {
+      ClientID: {
         isRequired: true,
         requiredType: "string",
-        label: "Access Token",
-        description: "LinkedIn API Access Token for authentication"
+        label: "Client ID",
+        description: "LinkedIn API Client ID for authentication"
+      },
+      ClientSecret: {
+        isRequired: true,
+        requiredType: "string",
+        label: "Client Secret",
+        description: "LinkedIn API Client Secret for authentication"
+      },
+      RefreshToken: {
+        isRequired: true,
+        requiredType: "string",
+        label: "Refresh Token",
+        description: "LinkedIn API Refresh Token for authentication"
       },
       Version: {
         requiredType: "string",
@@ -71,6 +83,56 @@ var LinkedInAdsSource = class LinkedInAdsSource extends AbstractSource {
     
     this.fieldsSchema = LinkedInAdsFieldsSchema;
     this.MAX_FIELDS_PER_REQUEST = 20;
+  }
+
+  /**
+   * Returns credential fields for this source
+   * @returns {Object}
+   */
+  getCredentialFields() {
+    return {
+      ClientID: this.config.ClientID,
+      ClientSecret: this.config.ClientSecret,
+      RefreshToken: this.config.RefreshToken
+    };
+  }
+
+  /**
+   * Retrieve and store an OAuth access token using the refresh token
+   */
+  getAccessToken() {
+    const tokenUrl = "https://www.linkedin.com/oauth/v2/accessToken";
+    
+    const form = {
+      grant_type: 'refresh_token',
+      refresh_token: this.config.RefreshToken.value,
+      client_id: this.config.ClientID.value,
+      client_secret: this.config.ClientSecret.value
+    };
+    
+    const options = {
+      method: 'post',
+      contentType: 'application/x-www-form-urlencoded',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      payload: form,
+      body: Object.entries(form)
+        .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+        .join('&')
+    };
+    
+    try {
+      const resp = EnvironmentAdapter.fetch(tokenUrl, options);
+      const json = JSON.parse(resp.getContentText());
+      
+      if (json.error) {
+        throw new Error(`Token error: ${json.error} - ${json.error_description}`);
+      }
+      
+      this.config.AccessToken = { value: json.access_token };
+      this.config.logMessage(`Successfully obtained access token`);
+    } catch (error) {
+      throw new Error(`Failed to refresh access token: ${error.message}`);
+    }
   }
   
   /**
@@ -345,7 +407,8 @@ var LinkedInAdsSource = class LinkedInAdsSource extends AbstractSource {
    */
   makeRequest(url) {
     console.log(`LinkedIn Ads API Request URL:`, url);
-    
+    this.getAccessToken();
+
     const headers = {
       "LinkedIn-Version": this.config.Version.value,
       "X-RestLi-Protocol-Version": "2.0.0",
