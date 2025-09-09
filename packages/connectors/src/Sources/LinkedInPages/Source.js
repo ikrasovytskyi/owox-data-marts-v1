@@ -124,7 +124,7 @@ var LinkedInPagesSource = class LinkedInPagesSource extends AbstractSource {
       const json = JSON.parse(resp.getContentText());
       
       if (json.error) {
-        throw new Error(`Token error: ${json.error} - ${json.error_description}`);
+        throw new Error(`Token error: ${json.error}`);
       }
       
       this.config.AccessToken = { value: json.access_token };
