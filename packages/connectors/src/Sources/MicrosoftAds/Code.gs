@@ -21,13 +21,13 @@ function onOpen() {
 function importNewData(importType = OWOX.RUN_CONFIG_TYPE.INCREMENTAL, params = null) {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
   const properties = PropertiesService.getDocumentProperties().getProperties();
-    const source = new OWOX.BingAdsSource(config.setParametersValues(properties));
+    const source = new OWOX.MicrosoftAdsSource(config.setParametersValues(properties));
   const runConfig = new OWOX.AbstractRunConfig({
     type: importType,
     data: params || []
   });
 
-  const connector = new OWOX.BingAdsConnector(
+  const connector = new OWOX.MicrosoftAdsConnector(
     config, 
     source,
     "GoogleSheetsStorage", // storage name, e.g., "GoogleSheetsStorage", "GoogleBigQueryStorage"
@@ -39,7 +39,7 @@ function importNewData(importType = OWOX.RUN_CONFIG_TYPE.INCREMENTAL, params = n
 
 function manualBackfill() {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-  const source = new OWOX.BingAdsSource(config.setParametersValues(
+  const source = new OWOX.MicrosoftAdsSource(config.setParametersValues(
     PropertiesService.getDocumentProperties().getProperties()
   ));
   
@@ -54,7 +54,7 @@ function updateFieldsSheet() {
   const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
 
   config.updateFieldsSheet(
-    new OWOX.BingAdsSource(config.setParametersValues({
+    new OWOX.MicrosoftAdsSource(config.setParametersValues({
       "DeveloperToken": "undefined",
       "ClientID": "undefined",
       "ClientSecret": "undefined",
@@ -71,7 +71,7 @@ function manageCredentials(credentials) {
   if (!credentials) {
     // Show credentials dialog
     const config = new OWOX.GoogleSheetsConfig(CONFIG_RANGE);
-      const source = new OWOX.BingAdsSource(config);
+      const source = new OWOX.MicrosoftAdsSource(config);
   return config.showCredentialsDialog(source, props);
   }
 

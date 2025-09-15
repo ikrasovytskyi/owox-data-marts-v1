@@ -1,13 +1,12 @@
-# How to Import Data from the Bing Ads Source
+# How to Import Data from the Microsoft Ads Source
 
-To begin importing data from Bing Ads, start by making a copy of one of the following templates:
+To begin importing data from Microsoft Ads, start by making a copy of one of the following templates:
 
-- [**Bing Ads → Google Sheets. Template**](https://docs.google.com/spreadsheets/d/1OTLrSl1bMDC6IS8eKDYPEOx_LBZZI7kPePh2eTEeiEc/copy)
-- [**Bing Ads → Google BigQuery. Template**](https://docs.google.com/spreadsheets/d/1uETkcB5Pq8oN3fed9eNxxdyaycLYJ7ZxRibU1CzuCdA/copy)
+- [**Microsoft Ads → Google Sheets. Template**](https://docs.google.com/spreadsheets/d/1OTLrSl1bMDC6IS8eKDYPEOx_LBZZI7kPePh2eTEeiEc/copy)
+- [**Microsoft Ads → Google BigQuery. Template**](https://docs.google.com/spreadsheets/d/1uETkcB5Pq8oN3fed9eNxxdyaycLYJ7ZxRibU1CzuCdA/copy)
 
 Fill in the required information:
 
-- **Start Date**
 - **Account ID**
 - **Customer ID**
 - **Fields**
@@ -16,32 +15,27 @@ Fill in the required information:
 - **Destination Dataset ID** (for **Google BigQuery** template)
 - **Destination Location** (for **Google BigQuery** template)
 
-The import will begin from the selected **Start Date**.  
-> ⚠️ **Note:** Using a long date range may cause the import to fail due to the high volume of data.
-
-![Bing Start Date](res/bing_startdate.png)
-
-Log in to your Bing Ads account at [https://ads.microsoft.com/](https://ads.microsoft.com/).  
+Log in to your Microsoft Ads account at [https://ads.microsoft.com/](https://ads.microsoft.com/).  
 Your **Account ID** and **Customer ID** can be found in the account URL.
 
-![Bing Add Account](res/bing_addaccount.png)
+![Microsoft Add Account](res/microsoft_addaccount.png)
 
 Copy and paste both values into the template.
 
-![Account ID](res/bing_pasteid.png)
+![Account ID](res/microsoft_pasteid.png)
 
 Go to the **Fields** tab and check the boxes next to the fields you want to include.  
 
-![Bing Fields](res/bing_fields.png)
+![Microsoft Fields](res/microsoft_fields.png)
 
 Select the **Report Aggregation** value.  
 Refer to the [Microsoft Ads documentation](https://learn.microsoft.com/en-us/advertising/reporting-service/reportaggregation?view=bingads-13) to learn more.  
 
-![Bing Aggregation](res/bing_aggregation.png)
+![Microsoft Aggregation](res/microsoft_aggregation.png)
 
 Choose the **Report Time Zone** to define the timezone for the reporting date range.
 
-![Bing Time Zone](res/bing_timezone.png)
+![Microsoft Time Zone](res/microsoft_timezone.png)
 
 If you're using the **Google BigQuery** template, also provide:
 
@@ -50,34 +44,38 @@ If you're using the **Google BigQuery** template, also provide:
 
 > ℹ️ If the specified dataset doesn't exist, it will be created automatically.
 
-![Bing Dataset](res/bing_dataset.png)
+![Microsoft Dataset](res/microsoft_dataset.png)
 
 Open the menu: **OWOX → Manage Credentials**
 
-![Bing Credentials](res/bing_credentials.png)
+![Microsoft Credentials](res/microsoft_credentials.png)
 
-Enter your credentials obtained by following this guide: [**How to obtain the credentials for the Bing Ads source**](CREDENTIALS.md)
+Enter your credentials obtained by following this guide: [**How to obtain the credentials for the Microsoft Ads source**](CREDENTIALS.md)
 
-![Bing Token](res/bing_creds.png)
+![Microsoft Token](res/microsoft_creds.png)
 
-Once your credentials are saved, go to: **OWOX → Import New Data**
+Now you have **two options** for importing data from Microsoft Ads:
 
-![Bing Import Data](res/bing_import.png)
+Option 1: Import Current Day's Data
+
+Choose **OWOX → Import New Data** to load data for the **current day**.
+
+![Microsoft Import Data](res/microsoft_import.png)
 
 The import process is complete when the **Log** sheet displays:  
 **"Import is finished"**  
 
-![Bing Finished](res/bing_finished.png)
+![Microsoft Finished](res/microsoft_finished.png)
 
 Access Your Data:
 
 - In the **Google Sheets** template, the data will appear in new tabs labeled with the corresponding data types.  
 
-![Bing Result](res/bing_success_sheets.png)
+![Microsoft Result](res/microsoft_success_sheets.png)
 
 - In the **Google BigQuery** template, the data will be written to the dataset specified earlier.
 
-![Bing Result](res/bing_success.png)
+![Microsoft Result](res/microsoft_success.png)
 
 To import more data:
 

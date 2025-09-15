@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-const BingAdsHelper = {
+const MicrosoftAdsHelper = {
   /**
    * Parse fields string into a structured object
    * @param {string} fieldsString - Fields string in format "nodeName fieldName, nodeName fieldName"

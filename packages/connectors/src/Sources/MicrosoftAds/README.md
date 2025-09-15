@@ -1,6 +1,6 @@
-# Bing Ads Source
+# Microsoft Ads Source
 
-The **Bing Ads Source** allows you to seamlessly export raw data from Bing Ads. Use this data for custom analysis, reporting, or to power your marketing dashboards.
+The **Microsoft Ads Source** allows you to seamlessly export raw data from Microsoft Ads. Use this data for custom analysis, reporting, or to power your marketing dashboards.
 
 ## Getting Started
 
@@ -8,7 +8,7 @@ Ready to get up and running? Follow our [**Getting Started Guide**](GETTING_STAR
 
 ## Documentation
 
-Here's everything you need to know about the Bing Ads Connector:
+Here's everything you need to know about the Microsoft Ads Connector:
 
 - [**Getting Started**](GETTING_STARTED.md) – quick setup instructions.
 - [**README**](README.md) – general overview and usage.

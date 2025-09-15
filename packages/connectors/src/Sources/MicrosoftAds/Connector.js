@@ -5,7 +5,7 @@
  * file that was distributed with this source code.
  */
 
-var BingAdsConnector = class BingAdsConnector extends AbstractConnector {
+var MicrosoftAdsConnector = class MicrosoftAdsConnector extends AbstractConnector {
   constructor(config, source, storageName = "GoogleSheetsStorage", runConfig = null) {
     super(config, source, null, runConfig);
 
@@ -17,7 +17,7 @@ var BingAdsConnector = class BingAdsConnector extends AbstractConnector {
    * Processes all nodes defined in the fields configuration
    */
   startImportProcess() {
-    const fields = BingAdsHelper.parseFields(this.config.Fields.value);    
+    const fields = MicrosoftAdsHelper.parseFields(this.config.Fields.value);    
 
     for (const nodeName in fields) {
       this.processNode({

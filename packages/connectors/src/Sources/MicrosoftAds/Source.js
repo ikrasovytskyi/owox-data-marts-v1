@@ -6,44 +6,44 @@
  */
 // API Documentation: https://learn.microsoft.com/en-us/advertising/reporting-service/reporting-service-reference
 
-var BingAdsSource = class BingAdsSource extends AbstractSource {
+var MicrosoftAdsSource = class MicrosoftAdsSource extends AbstractSource {
   constructor(config) {
     super(config.mergeParameters({
       DeveloperToken: {
         isRequired: true,
         requiredType: "string",
         label: "Developer Token",
-        description: "Your Bing Ads API Developer Token"
+        description: "Your Microsoft Ads API Developer Token"
       },
       ClientID: {
         isRequired: true,
         requiredType: "string",
         label: "Client ID",
-        description: "Your Bing Ads API Client ID"
+        description: "Your Microsoft Ads API Client ID"
       },
       ClientSecret: {
         isRequired: true,
         requiredType: "string",
         label: "Client Secret",
-        description: "Your Bing Ads API Client Secret"
+        description: "Your Microsoft Ads API Client Secret"
       },
       RefreshToken: {
         isRequired: true,
         requiredType: "string",
         label: "Refresh Token",
-        description: "Your Bing Ads API Refresh Token"
+        description: "Your Microsoft Ads API Refresh Token"
       },
       AccountID: {
         isRequired: true,
         requiredType: "string",
         label: "Account ID",
-        description: "Your Bing Ads Account ID"
+        description: "Your Microsoft Ads Account ID"
       },
       CustomerID: {
         isRequired: true,
         requiredType: "string",
         label: "Customer ID",
-        description: "Your Bing Ads Customer ID"
+        description: "Your Microsoft Ads Customer ID"
       },
       StartDate: {
         requiredType: "date",
@@ -84,7 +84,7 @@ var BingAdsSource = class BingAdsSource extends AbstractSource {
         description: "Aggregation for reports (e.g. Daily, Weekly, Monthly)"
       }
     }));
-    this.fieldsSchema = BingAdsFieldsSchema;
+    this.fieldsSchema = MicrosoftAdsFieldsSchema;
   }
 
   /**
@@ -242,7 +242,7 @@ var BingAdsSource = class BingAdsSource extends AbstractSource {
     }
     
     // Save main data immediately
-    const filteredMainData = BingAdsHelper.filterByFields(allRecords, fields);
+    const filteredMainData = MicrosoftAdsHelper.filterByFields(allRecords, fields);
     if (filteredMainData.length > 0) {
       onBatchReady(filteredMainData);
     }
@@ -251,7 +251,7 @@ var BingAdsSource = class BingAdsSource extends AbstractSource {
     this.config.logMessage(`Fetching Keywords for account ${accountId} (processing by campaigns to avoid size limits)...`);
     
     // Extract campaign IDs from campaigns
-    const campaignIds = BingAdsHelper.extractCampaignIds(campaignRecords);
+    const campaignIds = MicrosoftAdsHelper.extractCampaignIds(campaignRecords);
     this.config.logMessage(`Found ${campaignIds.length} campaigns, fetching Keywords in batches`);
     this.config.logMessage(`Campaign IDs: ${campaignIds.slice(0, 10).join(', ')}${campaignIds.length > 10 ? '...' : ''}`);
     
@@ -262,7 +262,7 @@ var BingAdsSource = class BingAdsSource extends AbstractSource {
       campaignIds,
       onBatchReady: (batchRecords) => {
         totalFetched += batchRecords.length;
-        const filteredBatch = BingAdsHelper.filterByFields(batchRecords, fields);
+        const filteredBatch = MicrosoftAdsHelper.filterByFields(batchRecords, fields);
         onBatchReady(filteredBatch);
       }
     });
@@ -288,13 +288,13 @@ var BingAdsSource = class BingAdsSource extends AbstractSource {
       body: JSON.stringify({ RequestId: requestId }) 
     });
     
-    const pollResult = BingAdsHelper.pollUntilStatus({ 
+    const pollResult = MicrosoftAdsHelper.pollUntilStatus({ 
       url: pollUrl, 
       options: pollOpts, 
       isDone: status => status.RequestStatus === 'Completed' 
     });
-    const csvRows = BingAdsHelper.downloadCsvRows(pollResult.ResultFileUrl);
-    const result = BingAdsHelper.csvRowsToObjects(csvRows);
+    const csvRows = MicrosoftAdsHelper.downloadCsvRows(pollResult.ResultFileUrl);
+    const result = MicrosoftAdsHelper.csvRowsToObjects(csvRows);
         
     return result;
   }
@@ -433,13 +433,13 @@ var BingAdsSource = class BingAdsSource extends AbstractSource {
       return [];
     }
     
-    const csvRows = BingAdsHelper.downloadCsvRows(pollResult.ReportRequestStatus.ReportDownloadUrl);
-    const records = BingAdsHelper.csvRowsToObjects(csvRows);
-    return BingAdsHelper.filterByFields(records, fields);
+    const csvRows = MicrosoftAdsHelper.downloadCsvRows(pollResult.ReportRequestStatus.ReportDownloadUrl);
+    const records = MicrosoftAdsHelper.csvRowsToObjects(csvRows);
+    return MicrosoftAdsHelper.filterByFields(records, fields);
   }
 
   /**
-   * Submit a report request to Bing Ads API
+   * Submit a report request to Microsoft Ads API
    * @param {Object} opts
    * @param {string} opts.accountId
    * @param {Array<string>} opts.fields
@@ -488,11 +488,11 @@ var BingAdsSource = class BingAdsSource extends AbstractSource {
       const submitResponse = JSON.parse(submitResponseText);
       if (submitResponse.OperationErrors && submitResponse.OperationErrors.length > 0) {
         const error = submitResponse.OperationErrors[0];
-        throw new Error(`Bing Ads API Error ${error.Code}: ${error.ErrorCode} - ${error.Message}`);
+        throw new Error(`Microsoft Ads API Error ${error.Code}: ${error.ErrorCode} - ${error.Message}`);
       }
       return submitResponse;
     } catch (parseError) {
-      if (parseError.message.includes('Bing Ads API Error')) {
+      if (parseError.message.includes('Microsoft Ads API Error')) {
         throw parseError;
       }
       throw new Error(`Failed to parse submit response: ${parseError.message}`);
@@ -525,7 +525,7 @@ var BingAdsSource = class BingAdsSource extends AbstractSource {
       body: submitResponseText
     };
     
-    return BingAdsHelper.pollUntilStatus({ 
+    return MicrosoftAdsHelper.pollUntilStatus({ 
       url: pollUrl, 
       options: pollOpts, 
       isDone: status => status.ReportRequestStatus.Status === 'Success' 

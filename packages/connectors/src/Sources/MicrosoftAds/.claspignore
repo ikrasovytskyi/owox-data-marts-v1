@@ -1,6 +1,6 @@
 **/**
-!Sources/BingAds/*.js
-!Sources/BingAds/**/*.js
+!Sources/MicrosoftAds/*.js
+!Sources/MicrosoftAds/**/*.js
 !appsscript.json
 !Core/**/*.js
 !Constants/*.js
