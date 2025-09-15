@@ -1,9 +1,9 @@
 # How to Import Data from the Facebook Ads Source
 
-Prerequisites:
+Before proceeding, please make sure that:
 
-- you already create the access token how explained in the (GETTING_STARTED.md)
-- you already run OWOX Data Marts and create at leat one storage in Storages section
+- You have already created an **access token**, as described in [GETTING_STARTED.md](GETTING_STARTED.md).  
+- You [have run **OWOX Data Marts**](https://docs.owox.com/docs/getting-started/quick-start/) and created at least one storage in the **Storages** section.  
 
 ![Facebook Storage](res/facebook_nodejs_storage.png)
 
@@ -62,12 +62,10 @@ Option 2: Manual Backfill for Specific Date Range
 
 Choose **Backfill (custom period)** to load historical data for a custom time range.
 
-![Facebook Backfill](res/facebook_daterange.png)
-
 1. Select the **Start Date** and **End Date**  
 2. Click the **Run** button
 
-![Facebook Run Backfill](res/facebook_runbackfill.png)
+![Facebook Backfill](res/facebook_daterange.png)
 
 The process is complete when the **Run history** tab shows the message:  
 **"Success"**  
