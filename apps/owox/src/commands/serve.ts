@@ -8,7 +8,7 @@ import express from 'express';
 
 import { IdpFactory } from '../idp/factory.js';
 import { getPackageInfo } from '../utils/package-info.js';
-import { setupWebStaticAssets } from '../web/index.js';
+import { registerPublicFlagsRoute, setupWebStaticAssets } from '../web/index.js';
 import { BaseCommand } from './base.js';
 
 /**
@@ -177,6 +177,9 @@ export default class Serve extends BaseCommand {
     const idpProtocolMiddleware = new IdpProtocolMiddleware(idpProvider);
     idpProtocolMiddleware.register(expressApp);
     expressApp.set('idp', idpProvider);
+
+    // Register public route to expose whitelisted flags
+    registerPublicFlagsRoute(expressApp);
 
     // Configure web static assets if web interface is enabled
     if (flags['web-enabled']) {
