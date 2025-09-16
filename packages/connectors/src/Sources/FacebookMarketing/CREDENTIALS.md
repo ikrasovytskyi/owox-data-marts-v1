@@ -34,13 +34,13 @@ Choose the appropriate **Business Portfolio**, then click the **Create App** but
 
 ![Facebook Business portfolio option](res/facebook_portfolio.png)
 
-## Step 4: Set Up Marketing API
+## Step 3: Set Up Marketing API
 
 Go to the new app. In your app dashboard, locate **Marketing API** and click **Set Up**.  
 
 ![Facebook Marketing API set up](res/facebook_setup.png)
 
-## Step 5: Get the temporary token
+## Step 4: Get the temporary token
 
 First, ensure your app is in **Development Mode**:
 
@@ -68,14 +68,14 @@ Please, build the authorization URL. Use the template below and replace `YOUR_AP
 
 After authorization, you’ll be redirected to a URL like this (note the long `code` parameter):
 
-```http://localhost:8080/?code=AQBg6el516UZN-YDhnsDQOWUYjbavjIkykWvj5PxAOhgiHikl8HB0WOJLXwxRd6joT5x9u7XnWWsH4GbbzOo_McT5EVHzZkTt-bvb7qwVsLRUbPqKdyYQor73NuXNFpLMHK9xQZE2ucII2JBTxS0sGdlMq9ndP533lSR9ES22NKyaDTH2x9WJ8X07vBczF5phTB36KXm0t25Nw1tm576GFvO9OsJ6ie6KYcY6ILt9-ogW3hPCgnAYU399TRkV2njvpBd7FtvRSNyh7qybL93ToVnp_9LrjeRPm0MzPPF9Tg2dehcJlaDpZ0OmxKx7w8EOD3Wpb0Irmuf3unsBM4FsIe0ljQ6TSZiSvfghfLpviIakK08h1ATu0UXJTRVWYjCJ9itOQ30CiaNq9Th5Evtt8IW&state=abc123#_=_```
+`http://localhost:8080/?code=AQBg6el516UZN-YDhnsDQOWUYjbavjIkykWvj5PxAOhgiHikl8HB0WOJLXwxRd6joT5x9u7XnWWsH4GbbzOo_McT5EVHzZkTt-bvb7qwVsLRUbPqKdyYQor73NuXNFpLMHK9xQZE2ucII2JBTxS0sGdlMq9ndP533lSR9ES22NKyaDTH2x9WJ8X07vBczF5phTB36KXm0t25Nw1tm576GFvO9OsJ6ie6KYcY6ILt9-ogW3hPCgnAYU399TRkV2njvpBd7FtvRSNyh7qybL93ToVnp_9LrjeRPm0MzPPF9Tg2dehcJlaDpZ0OmxKx7w8EOD3Wpb0Irmuf3unsBM4FsIe0ljQ6TSZiSvfghfLpviIakK08h1ATu0UXJTRVWYjCJ9itOQ30CiaNq9Th5Evtt8IW&state=abc123#_=_`
 
 Copy and save the **code** value (everything after `code=` up to `&state=...`).  
 You will need this in the next step.
 
 ![Facebook copy code](res/facebook_copycode.png)
 
-## Step 6: Generate and Save the Access Token
+## Step 5: Generate and Save the Access Token
 
 Now, exchange the authorization code for an **Access Token**. Go to [ReqBin](https://reqbin.com/) or use **Postman**.  
 Send a `POST` request to:
@@ -98,7 +98,7 @@ You should receive a response containing your **Access Token**.
 Copy and securely save the generated **Access Token**.  
 This token will be required to authenticate your API requests.
 
-## Step 7: Use the Access Token
+## Step 6: Use the Access Token
 
 Once you have the access token, you can begin using it as described in the [Getting Started guide](GETTING_STARTED.md).
 
