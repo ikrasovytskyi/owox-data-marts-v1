@@ -8,7 +8,6 @@ import {
   Payload,
   Projects,
 } from '@owox/idp-protocol';
-import { betterAuth } from 'better-auth';
 import { Express, type Request, Response, NextFunction } from 'express';
 import express from 'express';
 import { BetterAuthConfig } from '../types/index.js';
@@ -18,10 +17,11 @@ import { CryptoService } from '../services/crypto-service.js';
 import { AuthenticationService } from '../services/authentication-service.js';
 import { TokenService } from '../services/token-service.js';
 import { UserManagementService } from '../services/user-management-service.js';
-import { DatabaseService } from '../services/database-service.js';
 import { RequestHandlerService } from '../services/request-handler-service.js';
 import { MiddlewareService } from '../services/middleware-service.js';
 import { PageService } from '../services/page-service.js';
+import type { DatabaseStore } from '../store/DatabaseStore.js';
+import { createDatabaseStore } from '../store/DatabaseStoreFactory.js';
 
 export class BetterAuthProvider
   implements
@@ -34,12 +34,14 @@ export class BetterAuthProvider
   private readonly authenticationService: AuthenticationService;
   private readonly tokenService: TokenService;
   private readonly userManagementService: UserManagementService;
-  private readonly databaseService: DatabaseService;
   private readonly requestHandlerService: RequestHandlerService;
   private readonly middlewareService: MiddlewareService;
   private readonly pageService: PageService;
 
-  private constructor(private readonly auth: Awaited<ReturnType<typeof createBetterAuthConfig>>) {
+  private constructor(
+    private readonly auth: Awaited<ReturnType<typeof createBetterAuthConfig>>,
+    private readonly store: DatabaseStore
+  ) {
     // Initialize core services
     const cryptoService = new CryptoService(this.auth);
     const magicLinkService = new MagicLinkService(this.auth, cryptoService);
@@ -50,9 +52,9 @@ export class BetterAuthProvider
     this.userManagementService = new UserManagementService(
       this.auth,
       magicLinkService,
-      cryptoService
+      cryptoService,
+      this.store
     );
-    this.databaseService = new DatabaseService(this.auth);
     this.requestHandlerService = new RequestHandlerService(this.auth);
     this.pageService = new PageService(
       this.authenticationService,
@@ -69,17 +71,11 @@ export class BetterAuthProvider
     this.authenticationService.setUserManagementService(this.userManagementService);
   }
 
-  getAuth(): Awaited<ReturnType<typeof betterAuth>> {
-    return this.auth;
-  }
-
   static async create(config: BetterAuthConfig): Promise<BetterAuthProvider> {
-    const auth = await createBetterAuthConfig(config);
-    return new BetterAuthProvider(auth);
-  }
-
-  getBetterAuth(): Awaited<ReturnType<typeof betterAuth>> {
-    return this.auth;
+    const store = createDatabaseStore(config.database);
+    const adapter = await store.getAdapter();
+    const auth = await createBetterAuthConfig(config, { adapter });
+    return new BetterAuthProvider(auth, store);
   }
 
   registerRoutes(app: Express): void {
@@ -139,7 +135,9 @@ export class BetterAuthProvider
   }
 
   async initialize(): Promise<void> {
-    await this.databaseService.runMigrations();
+    const { getMigrations } = await import('better-auth/db');
+    const { runMigrations } = await getMigrations(this.auth.options);
+    await runMigrations();
   }
 
   async introspectToken(token: string): Promise<Payload | null> {
@@ -163,7 +161,11 @@ export class BetterAuthProvider
   }
 
   async shutdown(): Promise<void> {
-    return Promise.resolve();
+    try {
+      await this.store.shutdown();
+    } catch (error) {
+      console.error('Failed to shutdown BetterAuthProvider store:', error);
+    }
   }
 
   async addUser(username: string, _password?: string): Promise<AddUserCommandResponse> {
