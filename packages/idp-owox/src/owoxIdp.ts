@@ -79,7 +79,7 @@ export class OwoxIdp implements IdpProvider {
   }
 
   async signInMiddleware(
-    _req: e.Request,
+    req: e.Request,
     res: e.Response,
     _next: NextFunction
   ): Promise<void | e.Response> {
@@ -90,8 +90,17 @@ export class OwoxIdp implements IdpProvider {
     const expiresAt = new Date(Date.now() + ms('1m'));
     await this.store.save(state, codeVerifier, expiresAt);
 
-    const url = `${this.config.idpConfig.platformSignInUrl}?state=${state}&codeChallenge=${codeChallenge}&clientId=${clientId}`;
-    res.redirect(url);
+    const signInUrl = new URL(this.config.idpConfig.platformSignInUrl);
+    const params = signInUrl.searchParams;
+    params.set('state', state);
+    params.set('codeChallenge', codeChallenge);
+    params.set('clientId', clientId);
+
+    const projectId = (req.query?.projectId as string | undefined)?.toString();
+    if (projectId) {
+      params.set('projectId', projectId);
+    }
+    res.redirect(signInUrl.toString());
   }
 
   async signOutMiddleware(
