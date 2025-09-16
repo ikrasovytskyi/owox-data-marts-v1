@@ -5,7 +5,7 @@ import { z } from 'zod';
 /**
  * Default HTTP route that exposes selected environment variables
  */
-const DEFAULT_PUBLIC_ENV_ROUTE = '/flags';
+const DEFAULT_PUBLIC_ENV_ROUTE = '/api/flags';
 
 /**
  * Default whitelist of environment variable names to expose.
