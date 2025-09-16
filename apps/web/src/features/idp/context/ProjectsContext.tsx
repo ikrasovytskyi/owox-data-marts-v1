@@ -39,9 +39,6 @@ export function ProjectsProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const loadProjects = useCallback(async () => {
-    if (state.callState === RequestStatus.LOADING || state.callState === RequestStatus.ERROR) {
-      return;
-    }
     dispatch({ type: 'LOADING' });
     try {
       const provider = getTokenProvider();

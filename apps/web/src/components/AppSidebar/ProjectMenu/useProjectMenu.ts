@@ -18,7 +18,7 @@ export function useProjectMenu() {
     if (isOwoxIdpProvider) {
       void loadProjects();
     }
-  }, [loadProjects]);
+  }, [loadProjects, isOwoxIdpProvider]);
 
   const canSwitchProject = projects.length > 1;
 
