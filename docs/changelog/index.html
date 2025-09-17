@@ -96,6 +96,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>This change fixes timeout issues for long-running operations like SQL editing, schema refresh, and data mart publishing while maintaining reasonable timeouts for other operations.</p>
 </li>
 <li>
+<p>342e534: # Switch between projects in the Cloud edition on app.owox.com ✨</p>
+<p>You can now quickly switch between your projects right from the sidebar menu. This makes it easier to:</p>
+<ul>
+<li>Move between workspaces without signing out</li>
+<li>Keep your context while browsing different projects</li>
+<li>Access project-specific data and settings faster</li>
+</ul>
+<p>No setup required — just open the project switcher and choose the project you need.</p>
+</li>
+<li>
+<p>Fixes</p>
+<ul>
+<li>Fixed indefinite “Running” status for Report Runs</li>
+<li>Fixed indefinite “Running” status for Connector Runs caused by app shutdown<br>
+(added graceful shutdown for Connector Runner)</li>
+<li>Fixed MySQL adapter compatibility with idp-better-auth</li>
+<li>Fixed unexpected session logout for Cloud edition (idp-owox)</li>
+<li>Fixed the error of multiple connector launches at the same time</li>
+</ul>
+</li>
+<li>
 <p>78b8972: # Clarifies LinkedIn Pages import steps, adds new images, and improves error handling and API logging</p>
 <ul>
 <li>Updated GETTING_STARTED.md for LinkedIn Pages with clearer import options and detailed instructions for using Organization URN.</li>
@@ -111,17 +132,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>4b487c8: # Refactor GitHub connector according to common architecture and fix bugs</p>
 </li>
 <li>
-<p>342e534: # Switch between projects in the app ✨</p>
-<p>You can now quickly switch between your projects right from the sidebar menu. This makes it easier to:</p>
-<ul>
-<li>Move between workspaces without signing out</li>
-<li>Keep your context while browsing different projects</li>
-<li>Access project-specific data and settings faster</li>
-</ul>
-<p>No setup required — just open the project switcher and choose the project you need.</p>
-</li>
-<li>
-<p>ea803b2: # refactor: enhance Reddit Ads connector reporting logic with new field definitions</p>
+<p>ea803b2: # Refactor: enhance Reddit Ads connector reporting logic with new field definitions</p>
 </li>
 </ul>
 <div class="sl-heading-wrapper level-h3"><h3 id="patch-changes-070">Patch Changes 0.7.0</h3><a class="sl-anchor-link" href="#patch-changes-070"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “Patch Changes 0.7.0”</span></a></div>
