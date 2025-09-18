@@ -1,6 +1,7 @@
 import { appFlagsService } from '../../services/app-flags.service.ts';
 import { RequestStatus } from '../../../shared/types/request-status';
 import type { AnyAction } from '../types';
+import { DEFAULT_FLAGS } from '../default-flags';
 
 export interface FlagsState {
   data: Record<string, unknown> | null;
@@ -9,7 +10,7 @@ export interface FlagsState {
 }
 
 const initialState: FlagsState = {
-  data: null,
+  data: { ...DEFAULT_FLAGS },
   callState: RequestStatus.IDLE,
 };
 
@@ -38,7 +39,8 @@ export function flagsReducer(state: FlagsState = initialState, action: AnyAction
       return {
         ...state,
         callState: RequestStatus.LOADED,
-        data: action.payload as Record<string, unknown>,
+        // Merge defaults with fetched flags; fetched values take precedence
+        data: { ...DEFAULT_FLAGS, ...(action.payload as Record<string, unknown>) },
       };
     case LOAD_FLAGS_ERROR:
       return { ...state, callState: RequestStatus.ERROR, error: action.payload as string };
