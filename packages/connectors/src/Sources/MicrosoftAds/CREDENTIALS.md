@@ -1,6 +1,6 @@
-# How to obtain the credentials for the Bing Ads source
+# How to obtain the credentials for the Microsoft Ads source
 
-During this process, you will obtain the following credentials required for the Bing Ads source:
+During this process, you will obtain the following credentials required for the Microsoft Ads source:
 
 - **Account ID**  
 - **Customer ID**  
@@ -15,7 +15,7 @@ If you haven't already, [sign up for Microsoft Azure](https://azure.microsoft.co
 
 In the Azure Portal, search for and open the **App registrations** service.
 
-![Bing Search App](res/bing_appsearch.png)
+![Microsoft Search App](res/microsoft_appsearch.png)
 
 Click **New registration** and fill in the form:
 
@@ -29,23 +29,23 @@ Click **New registration** and fill in the form:
   
 Click the **Register** button.
 
-![Bing New App](res/bing_newapp.png)
+![Microsoft New App](res/microsoft_newapp.png)
 
 ## Step 2: Generate Client Credentials
 
 In your registered app, go to **Client credentials** -> **Add a certificate or secret**.
 
-![Bing Create Secret](res/bing_createsecret.png)
+![Microsoft Create Secret](res/microsoft_createsecret.png)
 
 Click **New client secret**.
 
 Provide a description (e.g., _Client secret for OWOX App_), choose the maximum expiration period (_730 days_), and click **Add**.
 
-![Bing New Secret](res/bing_newsecret.png)
+![Microsoft New Secret](res/microsoft_newsecret.png)
 
 > ⚠️ **Important:** Copy and securely save the **client secret value**. You won't be able to see it again later.
 
-![Bing Copy Secret](res/bing_copysecret.png)
+![Microsoft Copy Secret](res/microsoft_copysecret.png)
 
 At this point, you have:
 
@@ -55,20 +55,20 @@ At this point, you have:
 
 ## Step 3: Get Account ID and Customer ID
 
-1. Go to [https://ads.microsoft.com/](https://ads.microsoft.com/) and log in to your Bing Ads account.  
+1. Go to [https://ads.microsoft.com/](https://ads.microsoft.com/) and log in to your Microsoft Ads account.  
 2. Your **Account ID** and **Customer ID** can be found in the URL.
 
-![Bing Add Account](res/bing_addaccount.png)
+![Microsoft Add Account](res/microsoft_addaccount.png)
 
 ## Step 4: Get Your Developer Token
 
-In the Bing Ads interface, go to **Settings → Developer Settings**.  
+In the Microsoft Ads interface, go to **Settings → Developer Settings**.  
 
-![Bing Developer](res/bing_developer.png)
+![Microsoft Developer](res/microsoft_developer.png)
 
 Click **Request Token**, and copy the generated **Developer Token**.  
 
-![Bing Request](res/bing_request.png)
+![Microsoft Request](res/microsoft_request.png)
 
 ## Step 5: Generate an Authorization Code
 
@@ -99,11 +99,11 @@ with the following parameters (as form data or in the body of the request):
 - `redirect_uri` = `http://localhost:8080`  
 - `scope` = `https://ads.microsoft.com/msads.manage offline_access`
 
-![Bing GET Request](res/bing_getrequest.png)
+![Microsoft GET Request](res/microsoft_getrequest.png)
 
 After a successful request, you will receive a **Refresh Token** in the response. Store it securely — this token will be used to authenticate API requests.
 
-![Bing Refresh](res/bing_refresh.png)
+![Microsoft Refresh](res/microsoft_refresh.png)
 
 ## ✅ Final Summary
 
@@ -116,4 +116,4 @@ At this point, you should have the following credentials:
 - **Client Secret**  
 - **Refresh Token**
 
-These credentials are required to connect to the Bing Ads source and begin importing your advertising data.
+These credentials are required to connect to the Microsoft Ads source and begin importing your advertising data.
