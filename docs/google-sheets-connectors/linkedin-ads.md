@@ -5,7 +5,7 @@ It provides access to advertiser information, campaigns, ad groups, ads, perform
 
 ## Step 1: Configure the connector
 
-To initiate the data import process from LinkedIn Ads, begin by creating a copy of a [**LinkedIn Ads → Google Sheets Template**]([https://docs.google.com/spreadsheets/d/15AujaJ_x-ibEqs2u3DwvC8qV0hYC7oO1b1LGLEen1mQ/copy](https://docs.google.com/spreadsheets/d/1-eo1z9h5qKGfNDVmSoVYgyEkWfRWRy07NaU5hZnM4Vk/copy))
+To initiate the data import process from LinkedIn Ads, begin by creating a copy of a [**LinkedIn Ads → Google Sheets Template**](https://docs.google.com/spreadsheets/d/1-eo1z9h5qKGfNDVmSoVYgyEkWfRWRy07NaU5hZnM4Vk/copy)
 
 Once you have copied the template, proceed with the configuration steps:
 
