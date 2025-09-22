@@ -8,7 +8,7 @@ To initiate the data import process from Twitter Ads, begin by creating a copy o
 
 In your newly copied spreadsheet, navigate to the "Config" sheet.
 
-Start by filling out the **Account IDs** field. 
+Start by filling out the **Account IDs** field.
 
 To find your **Account ID**, go to [https://ads.x.com](https://ads.x.com/) and look at the URL of your account.  
 For example, in this link:  
