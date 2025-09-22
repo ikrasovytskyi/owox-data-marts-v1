@@ -1,4 +1,6 @@
-# How to Import Data from Reddit Ads to Google Sheets
+# Reddit Ads
+
+How to Import Data from Reddit Ads to Google Sheets?
 
 This guide will walk you through the process of collecting the Reddit Ads data directly into Google Sheets.
 
