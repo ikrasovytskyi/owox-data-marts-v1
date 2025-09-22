@@ -88,7 +88,7 @@ Copy the `code` value from the URL.
 
 ## Step 6: Exchange Authorization Code for a Refresh Token
 
-Exchange this code for a refresh token by making a GET request to
+Use [ReqBin](https://reqbin.com/) or Postman to exchange this code for a refresh token by making a GET request to
 `https://login.microsoftonline.com/common/oauth2/v2.0/token`
 with the following parameters (as form data or in the body of the request):
 

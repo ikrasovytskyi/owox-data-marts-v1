@@ -1,90 +1,77 @@
 # How to Import Data from the Microsoft Ads Source
 
-To begin importing data from Microsoft Ads, start by making a copy of one of the following templates:
+Before you begin, please ensure that:
 
-- [**Microsoft Ads → Google Sheets. Template**](https://docs.google.com/spreadsheets/d/1OTLrSl1bMDC6IS8eKDYPEOx_LBZZI7kPePh2eTEeiEc/copy)
-- [**Microsoft Ads → Google BigQuery. Template**](https://docs.google.com/spreadsheets/d/1uETkcB5Pq8oN3fed9eNxxdyaycLYJ7ZxRibU1CzuCdA/copy)
+- You have already obtained all required credentials, as described in [CREDENTIALS](CREDENTIALS.md).  
+- You have [set up **OWOX Data Marts**](https://docs.owox.com/docs/getting-started/quick-start/) and created at least one storage in the **Storages** section.  
 
-Fill in the required information:
+## Create the Data Mart
 
-- **Account ID**
-- **Customer ID**
-- **Fields**
-- **Aggregation**
-- **Report Timezone**
-- **Destination Dataset ID** (for **Google BigQuery** template)
-- **Destination Location** (for **Google BigQuery** template)
+- Click **New Data Mart**.
+- Enter a title and select the Storage.
+- Click **Create Data Mart**.
 
-Log in to your Microsoft Ads account at [https://ads.microsoft.com/](https://ads.microsoft.com/).  
-Your **Account ID** and **Customer ID** can be found in the account URL.
+![Microsoft New Data Mart](res/microsoft_newdatamart.png)
 
-![Microsoft Add Account](res/microsoft_addaccount.png)
+1. Select **Connector** as the input source type.  
+2. Click **Set up connector** and choose **Microsoft Ads**.  
+3. Fill in the required fields with the credentials you obtained in the [CREDENTIALS](CREDENTIALS.md) guide.  
+   - Leave the other fields as default.  
+   - Proceed to the next step.
 
-Copy and paste both values into the template.
+![Microsoft Input Source](res/microsoft_inputsource.png)
 
-![Account ID](res/microsoft_pasteid.png)
+![Microsoft Setup Connector](res/microsoft_setupconnector.png)
 
-Go to the **Fields** tab and check the boxes next to the fields you want to include.  
+## Configure Data Import
 
-![Microsoft Fields](res/microsoft_fields.png)
+1. Choose one of the available **endpoints**.  
+   - To import spend, clicks, and impressions from an ad account, select the `Microsoft Ads Campaigns` endpoint.  
+2. Select the required **fields**.  
+3. Specify the **dataset** where the data will be stored (or leave the default).  
+4. Click **Finish**, then **Save** and **Publish Data Mart**.  
 
-Select the **Report Aggregation** value.  
-Refer to the [Microsoft Ads documentation](https://learn.microsoft.com/en-us/advertising/reporting-service/reportaggregation?view=bingads-13) to learn more.  
+![Microsoft Publish Data Mart](res/microsoft_publishdatamart.png)
 
-![Microsoft Aggregation](res/microsoft_aggregation.png)
+## Run the Data Mart
 
-Choose the **Report Time Zone** to define the timezone for the reporting date range.
-
-![Microsoft Time Zone](res/microsoft_timezone.png)
-
-If you're using the **Google BigQuery** template, also provide:
-
-- **Destination Dataset ID** in the format: `projectid.datasetid`
-- **Destination Location**
-
-> ℹ️ If the specified dataset doesn't exist, it will be created automatically.
-
-![Microsoft Dataset](res/microsoft_dataset.png)
-
-Open the menu: **OWOX → Manage Credentials**
-
-![Microsoft Credentials](res/microsoft_credentials.png)
-
-Enter your credentials obtained by following this guide: [**How to obtain the credentials for the Microsoft Ads source**](CREDENTIALS.md)
-
-![Microsoft Token](res/microsoft_creds.png)
-
-Now you have **two options** for importing data from Microsoft Ads:
+You now have two options for importing data from Microsoft Ads:  
 
 Option 1: Import Current Day's Data
 
-Choose **OWOX → Import New Data** to load data for the **current day**.
+Choose **Manual run → Incremental load** to load data for the **current day**.
 
-![Microsoft Import Data](res/microsoft_import.png)
+![Microsoft Manual Run](res/microsoft_manualrun.png)
 
-The import process is complete when the **Log** sheet displays:  
-**"Import is finished"**  
+![Microsoft Incremental Load](res/microsoft_currentday.png)
 
-![Microsoft Finished](res/microsoft_finished.png)
+> ℹ️ If you click **Incremental load** again after a successful initial load,  
+> the connector will import: **Current day's data**, plus **Additional days**, based on the value in the **Reimport Lookback Window** field.
 
-Access Your Data:
+![Microsoft Reimport](res/microsoft_reimportwindow.png)
 
-- In the **Google Sheets** template, the data will appear in new tabs labeled with the corresponding data types.  
+Option 2: Manual Backfill for Specific Date Range
 
-![Microsoft Result](res/microsoft_success_sheets.png)
+- Choose **Backfill (custom period)** to load historical data.  
 
-- In the **Google BigQuery** template, the data will be written to the dataset specified earlier.
+1. Select the **Start Date** and **End Date**.  
+2. Click **Run**.  
 
-![Microsoft Result](res/microsoft_success.png)
+![Microsoft Backfill](res/microsoft_daterange.png)
 
-To import more data:
+The process is complete when the **Run history** tab shows the message: **"Success"**  
 
-1. Select the additional fields you need in the **Fields** tab.
-2. Go to **OWOX → Import New Data** again.
+![Microsoft Success](res/microsoft_successrun.png)
+
+## Access Your Data
+
+Once the run is complete, the data will be written to the dataset you specified earlier.  
+
+![Microsoft Import Success](res/microsoft_importgbq.png)
 
 If you encounter any issues:
 
-1. Check the "Logs" sheet for specific error messages
+1. Check the Run history for specific error messages
 2. Please [visit Q&A](https://github.com/OWOX/owox-data-marts/discussions/categories/q-a) first
 3. If you want to report a bug, please [open an issue](https://github.com/OWOX/owox-data-marts/issues)
 4. Join the [discussion forum](https://github.com/OWOX/owox-data-marts/discussions) to ask questions or propose improvements
