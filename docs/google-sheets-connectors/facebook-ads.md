@@ -4,7 +4,7 @@ To begin importing data from Facebook Ads into Google Sheets, start by making a 
 
 ## Step 1: Configure the connector
 
-**Ads Account ID(s)**
+1. Ads Account ID(s)
 
 You can find your **Account ID** on the **Account Overview** page in [Meta Ads Manager](https://adsmanager.facebook.com/adsmanager/manage/accounts).  
 
