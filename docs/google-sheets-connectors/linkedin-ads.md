@@ -1,4 +1,4 @@
-# How to Import Data from the LinkedIn Ads to Google Sheets
+# Linkedin Ads
 
 This guide will walk you through the process of collecting the LinkedIn Ads data directly into Google Sheets.
 It provides access to advertiser information, campaigns, ad groups, ads, performance metrics, and custom audiences.
