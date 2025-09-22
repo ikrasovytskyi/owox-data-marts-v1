@@ -1,4 +1,6 @@
-# Free Advertising Platforms -> Google Sheets Connectors
+# Overview
+
+Free Advertising Platforms -> Google Sheets Connectors
 
 With this set of connectors, data analysts & marketers can collect advertising data into **Google Sheets**.
 
