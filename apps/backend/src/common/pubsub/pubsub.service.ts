@@ -5,9 +5,9 @@ export class PubSubService implements OnModuleDestroy {
   private readonly logger = new Logger(PubSubService.name);
   private readonly client: PubSub;
 
-  constructor(params?: { projectId?: string }) {
+  constructor(params?: { gcpProjectId?: string }) {
     const projectId =
-      params?.projectId || process.env.GCLOUD_PROJECT || process.env.GOOGLE_CLOUD_PROJECT;
+      params?.gcpProjectId || process.env.GCLOUD_PROJECT || process.env.GOOGLE_CLOUD_PROJECT;
     this.client = new PubSub({ projectId });
   }
 

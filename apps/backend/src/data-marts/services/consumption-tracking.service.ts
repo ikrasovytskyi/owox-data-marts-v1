@@ -23,7 +23,7 @@ export class ConsumptionTrackingService {
   ) {
     const consumptionPubSubProject = configService.get<string>('CONSUMPTION_PUBSUB_PROJECT_ID');
     if (consumptionPubSubProject) {
-      this.pubSubService = new PubSubService({ projectId: consumptionPubSubProject });
+      this.pubSubService = new PubSubService({ gcpProjectId: consumptionPubSubProject });
       this.logger.log(`Consumption PubSub project ID: ${consumptionPubSubProject}`);
 
       this.connectorRunConsumptionTopic = configService.get<string>(
