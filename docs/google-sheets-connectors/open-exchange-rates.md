@@ -1,6 +1,6 @@
-# How to Import Data from Open Exchange Rates to Google Sheets
+# Open Exchange Rates
 
-This guide will walk you through the process of collecting the Currency Exchange Rates directly into Google Sheets.
+This guide will walk you through the process of collecting the Currency Exchange Rates (Open Exchange Rates) directly into Google Sheets.
 
 ## Step 1: Configure the connector
 
