@@ -1,4 +1,6 @@
-# How to Import Data from the TikTok Ads to Google Sheets
+# TikTok Ads
+
+How to Import Data from the TikTok Ads to Google Sheets?
 
 This guide will walk you through the process of collecting the TikTok Ads data directly into Google Sheets.
 It provides access to advertiser information, campaigns, ad groups, ads, performance metrics, and custom audiences.
