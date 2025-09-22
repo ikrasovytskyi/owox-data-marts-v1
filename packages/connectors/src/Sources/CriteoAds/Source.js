@@ -67,6 +67,12 @@ var CriteoAdsSource = class CriteoAdsSource extends AbstractSource {
         value: "2025-04",
         label: "API Version",
         description: "Criteo API version"
+      },
+      CreateEmptyTables: {
+        requiredType: "string",
+        default: "true",
+        label: "Create Empty Tables",
+        description: "Create tables with all columns even if no data is returned from API"
       }
     }));
 
