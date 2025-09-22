@@ -12,15 +12,16 @@ Just **Google Sheets Templates** + Your full **control** + Amazing OWOX **Commun
 
 ## 🔌 Available Connectors
 
-| Name                          | Status           | Links                                                                                                                                                                            |
-| ----------------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Facebook Ads                  | 🟢 Public        | [Copy Template](https://drive.google.com/drive/u/0/folders/1_x556pta5lKtKbTltIrPEDkNqAn78jM4) |
-| Microsoft Ads                      | 🟢 Public        | [Copy Template](https://drive.google.com/drive/folders/1AmLYbXj72CpDeamfCecvIXJgvKwIpoOS)| | TikTok Ads                    | 🟢 Public        | [Copy Template](https://drive.google.com/drive/folders/1zYBdx4Lm496mrCmwSNG3t82weWZRJb0o) |
-| LinkedIn Ads | 🟢 Public        | [Copy Template](https://drive.google.com/drive/folders/1anKRhqJpSWEoeDZvJtrNLgfsGfgSBtIm) |
-| Reddit Ads                    | 🟢 Public        | [Copy Template](https://drive.google.com/drive/folders/1Bnd-GN2u3BPzI1RqZpG03aeov9kcaXNx) |
-| X Ads   | 🟢 Public        | [Copy Template](https://drive.google.com/drive/folders/16PMllaU704wrjHH45MlOBjQWZdxNhxZN) |
-| Open Exchange Rates           | 🟢 Public        | [Copy Template](https://drive.google.com/drive/u/0/folders/1akutchS-Txr5PwToMzHrikTXd_GTs-84) |
-| LinkedIn Pages | 🟢 Public        | [Copy Template](https://drive.google.com/drive/folders/1anKRhqJpSWEoeDZvJtrNLgfsGfgSBtIm) |
+| Name                | Status     | Links                                                                                               |
+| ------------------- | ---------- | --------------------------------------------------------------------------------------------------- |
+| Facebook Ads        | 🟢 Public  | [Copy Template](https://drive.google.com/drive/u/0/folders/1_x556pta5lKtKbTltIrPEDkNqAn78jM4)       |
+| Microsoft Ads       | 🟢 Public  | [Copy Template](https://drive.google.com/drive/folders/1AmLYbXj72CpDeamfCecvIXJgvKwIpoOS)           |
+| TikTok Ads          | 🟢 Public  | [Copy Template](https://drive.google.com/drive/folders/1zYBdx4Lm496mrCmwSNG3t82weWZRJb0o)           |
+| LinkedIn Ads        | 🟢 Public  | [Copy Template](https://drive.google.com/drive/folders/1anKRhqJpSWEoeDZvJtrNLgfsGfgSBtIm)           |
+| Reddit Ads          | 🟢 Public  | [Copy Template](https://drive.google.com/drive/folders/1Bnd-GN2u3BPzI1RqZpG03aeov9kcaXNx)           |
+| X Ads               | 🟢 Public  | [Copy Template](https://drive.google.com/drive/folders/16PMllaU704wrjHH45MlOBjQWZdxNhxZN)           |
+| Open Exchange Rates | 🟢 Public  | [Copy Template](https://drive.google.com/drive/u/0/folders/1akutchS-Txr5PwToMzHrikTXd_GTs-84)       |
+| LinkedIn Pages      | 🟢 Public  | [Copy Template](https://drive.google.com/drive/folders/1anKRhqJpSWEoeDZvJtrNLgfsGfgSBtIm)           |
 
 If you need an integration that is currently not available, you can share your use case and request it in the [discussions](https://github.com/OWOX/owox-data-marts/discussions)
 
