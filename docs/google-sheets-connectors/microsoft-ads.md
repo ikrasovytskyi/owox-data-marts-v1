@@ -1,4 +1,4 @@
-# How to Import Data from Microsoft Ads to Google Sheets
+# Microsoft Ads
 
 This guide will walk you through the process of collecting the Microsoft Ads (ex. Bing Ads) data directly into Google Sheets.
 
