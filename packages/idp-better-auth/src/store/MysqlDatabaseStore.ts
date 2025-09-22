@@ -24,6 +24,7 @@ export interface MysqlConnectionConfig {
   password: string;
   database: string;
   port?: number;
+  ssl?: unknown;
 }
 
 export class MysqlDatabaseStore implements DatabaseStore {
@@ -48,6 +49,7 @@ export class MysqlDatabaseStore implements DatabaseStore {
         waitForConnections: true,
         connectionLimit: 10,
         queueLimit: 0,
+        ssl: this.config.ssl,
       }) as MysqlPool;
     } catch (error) {
       console.error('Failed to initialize MySQL pool:', error);

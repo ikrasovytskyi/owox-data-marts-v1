@@ -37,6 +37,7 @@ export function createDatabaseStore(database: DatabaseConfig): DatabaseStore {
         password: cfg.password,
         database: cfg.database,
         port: cfg.port ?? 3306,
+        ssl: cfg.ssl,
       });
     }
     default:

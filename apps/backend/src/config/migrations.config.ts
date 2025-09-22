@@ -12,7 +12,7 @@ export async function runMigrationsIfNeeded(): Promise<void> {
   const shouldRun = runMigrationsValue === 'true';
 
   if (!shouldRun) {
-    logger.log('RUN_MIGRATIONS is not set to "true". Skipping migrations.');
+    logger.debug('RUN_MIGRATIONS is not set to "true". Skipping migrations.');
     return;
   }
 
@@ -78,7 +78,7 @@ async function acquireMigrationsLock(
   while (true) {
     try {
       await dataSource.query(createSql);
-      logger.log(`Acquired migrations lock using table ${LOCK_TABLE_NAME}`);
+      logger.debug(`Acquired migrations lock using table ${LOCK_TABLE_NAME}`);
       break;
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);
@@ -91,14 +91,14 @@ async function acquireMigrationsLock(
         throw new Error(`Timed out waiting for migrations lock after ${MAX_WAIT_SECONDS} seconds`);
       }
 
-      logger.log(`Another instance is running migrations. Waiting ${WAIT_DELAY_SECONDS}s...`);
+      logger.debug(`Another instance is running migrations. Waiting ${WAIT_DELAY_SECONDS}s...`);
       await sleepInSeconds(WAIT_DELAY_SECONDS);
     }
   }
 
   return async () => {
     await dataSource.query(dropSql);
-    logger.log(`Released migrations lock by dropping ${LOCK_TABLE_NAME}`);
+    logger.debug(`Released migrations lock by dropping ${LOCK_TABLE_NAME}`);
   };
 }
 
