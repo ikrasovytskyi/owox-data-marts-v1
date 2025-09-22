@@ -1,4 +1,6 @@
-# How to Import Data from the Facebook Ads to Google Sheets
+# Facebook Ads
+
+This guide is all about how to import data from Facebook & Instagram Ads to Google Sheets
 
 To begin importing data from Facebook Ads into Google Sheets, start by making a copy of the **[following template](https://docs.google.com/spreadsheets/d/1OgpGMnQqUpS23rmOyA2gTVO2FK48oPS7tJGBp9NYJy4/copy)**
 
