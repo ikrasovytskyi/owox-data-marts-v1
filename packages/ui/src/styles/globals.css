@@ -302,7 +302,7 @@
   @apply flex flex-col items-center justify-center px-4 pt-22 pb-24;
 }
 .dm-empty-state-ico {
-  @apply mb-6 h-16 w-16 text-gray-500/50 dark:text-gray-200/50;
+  @apply mb-6 h-16 w-16 text-neutral-400 dark:text-neutral-300;
 }
 .dm-empty-state-title {
   @apply text-foreground mb-3 text-center text-xl font-medium;
@@ -317,4 +317,35 @@
 }
 .dm-card-formcontrol {
   @apply dark:bg-black/16 dark:hover:bg-black/24;
+}
+
+/* 404 page grid background */
+.bg-grid {
+  /* Use CSS variables for color to support light/dark mode */
+  --grid-color: rgba(0, 0, 0, 0.1); /* default for light mode */
+
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Dark mode override */
+.dark .bg-grid {
+  --grid-color: rgba(255, 255, 255, 0.05); /* softer for dark background */
+}
+
+/* Zoom animation */
+@keyframes zoomTunnel {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(2);
+  }
+}
+
+.animate-zoomTunnel {
+  animation: zoomTunnel 20s linear infinite alternate;
 }
