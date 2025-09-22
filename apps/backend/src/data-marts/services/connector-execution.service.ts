@@ -28,6 +28,7 @@ import { ConnectorOutputCaptureService } from '../connector-types/connector-mess
 import { ConnectorMessageType } from '../connector-types/enums/connector-message-type-enum';
 import { ConnectorOutputState } from '../connector-types/interfaces/connector-output-state';
 import { ConnectorStateService } from '../connector-types/connector-message/services/connector-state.service';
+import { ConsumptionTrackingService } from './consumption-tracking.service';
 import { DataMartService } from './data-mart.service';
 import { DataMartStatus } from '../enums/data-mart-status.enum';
 import { GracefulShutdownService } from '../../common/scheduler/services/graceful-shutdown.service';
@@ -50,6 +51,7 @@ export class ConnectorExecutionService implements OnApplicationBootstrap {
     private readonly connectorStateService: ConnectorStateService,
     private readonly dataMartService: DataMartService,
     private readonly gracefulShutdownService: GracefulShutdownService,
+    private readonly consumptionTracker: ConsumptionTrackingService,
     private readonly configService: ConfigService
   ) {}
 
@@ -171,6 +173,7 @@ export class ConnectorExecutionService implements OnApplicationBootstrap {
     const state: ConnectorOutputState = { state: {}, at: '' };
     const capturedLogs: ConnectorMessage[] = [];
     const capturedErrors: ConnectorMessage[] = [];
+    let hasSuccessfulRun = false;
 
     try {
       if (this.gracefulShutdownService.isInShutdownMode()) {
@@ -195,6 +198,7 @@ export class ConnectorExecutionService implements OnApplicationBootstrap {
 
       const successCount = configurationResults.filter(r => r.success).length;
       const totalCount = configurationResults.length;
+      hasSuccessfulRun = successCount > 0;
       this.logger.log(
         `Connector execution completed: ${successCount}/${totalCount} configurations successful for DataMart ${dataMart.id}`
       );
@@ -210,6 +214,11 @@ export class ConnectorExecutionService implements OnApplicationBootstrap {
     } finally {
       await this.updateRunStatus(runId, capturedLogs, capturedErrors);
       await this.updateRunState(dataMart.id, state);
+
+      if (hasSuccessfulRun) {
+        // Register connector run consumption only if at least one configuration succeeded
+        await this.consumptionTracker.registerConnectorRunConsumption(dataMart, runId);
+      }
 
       this.logger.debug(`Actualizing schema for DataMart ${dataMart.id} after connector execution`);
 
