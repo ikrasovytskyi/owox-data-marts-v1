@@ -1,4 +1,6 @@
-# How to Import Data from X Ads to Google Sheets
+# X Ads
+
+How to Import Data from X Ads to Google Sheets
 
 This guide will walk you through the process of collecting the X / Twitter Ads data directly into Google Sheets.
 
