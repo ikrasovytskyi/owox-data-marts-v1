@@ -5,10 +5,10 @@
  * file that was distributed with this source code.
  */
 
-var BingAdsFieldsSchema = {
+var MicrosoftAdsFieldsSchema = {
   ad_performance_report: {
     overview: "Ad Performance Report",
-    description: "Performance metrics for ads in Bing Ads campaigns.",
+    description: "Performance metrics for ads in Microsoft Ads campaigns.",
     documentation: "https://learn.microsoft.com/en-us/advertising/reporting-service/adperformancereportrequest",
     reportType: "AdPerformanceReportRequest",
     fields: adPerformanceReportFields,
@@ -29,12 +29,12 @@ var BingAdsFieldsSchema = {
       "Language",
       "CampaignType"
     ],
-    destinationName: "bing_ads_ad_performance_report",
+    destinationName: "microsoft_ads_ad_performance_report",
     isTimeSeries: true
   },
   user_location_performance_report: {
     overview: "User Location Performance Report",
-    description: "Performance metrics by user location for Bing Ads campaigns.",
+    description: "Performance metrics by user location for Microsoft Ads campaigns.",
     documentation: "https://learn.microsoft.com/en-us/advertising/reporting-service/userlocationperformancereportrequest",
     reportType: "UserLocationPerformanceReportRequest",
     fields: userLocationPerformanceReportFields,
@@ -54,16 +54,16 @@ var BingAdsFieldsSchema = {
       "DeviceOS",
       "TopVsOther"
     ],
-    destinationName: "bing_ads_user_location_performance_report",
+    destinationName: "microsoft_ads_user_location_performance_report",
     isTimeSeries: true
   },
   campaigns: {
-    overview: "Bing Ads Campaigns",
-    description: "Campaign data from Bing Ads API.",
+    overview: "Microsoft Ads Campaigns",
+    description: "Campaign data from Microsoft Ads API.",
     documentation: "https://learn.microsoft.com/en-us/advertising/bulk-service/bulk-service-reference",
     fields: campaignFields,
     uniqueKeys: ["Id"],
-    destinationName: "bing_ads_campaigns",
+    destinationName: "microsoft_ads_campaigns",
     isTimeSeries: false
   }
 };
