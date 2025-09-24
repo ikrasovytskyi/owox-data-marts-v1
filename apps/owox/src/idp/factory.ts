@@ -6,6 +6,7 @@ import {
 } from '@owox/idp-better-auth';
 import { loadIdpOwoxConfigFromEnv, OwoxIdp } from '@owox/idp-owox';
 import { IdpConfig, IdpProvider, NullIdpProvider } from '@owox/idp-protocol';
+import { parseMysqlSslEnv } from '@owox/internal-helpers';
 
 import { BaseCommand } from '../commands/base.js';
 
@@ -84,6 +85,8 @@ export class IdpFactory {
       }
 
       case 'mysql': {
+        const ssl = parseMysqlSslEnv(process.env.IDP_BETTER_AUTH_MYSQL_SSL);
+
         database = {
           database: process.env.IDP_BETTER_AUTH_MYSQL_DATABASE || 'better_auth',
           host: process.env.IDP_BETTER_AUTH_MYSQL_HOST || 'localhost',
@@ -93,7 +96,8 @@ export class IdpFactory {
             : 3306,
           type: 'mysql' as const,
           user: process.env.IDP_BETTER_AUTH_MYSQL_USER || 'root',
-        };
+          ...(ssl === undefined ? {} : { ssl }),
+        } as MySqlConfig;
         break;
       }
 

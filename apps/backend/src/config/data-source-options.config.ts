@@ -1,4 +1,5 @@
 import { ConfigService } from '@nestjs/config';
+import { parseMysqlSslEnv } from '@owox/internal-helpers';
 import { DataSourceOptions, LoggerOptions } from 'typeorm';
 import { createLogger } from '../common/logger/logger.service';
 import { getSqliteDatabasePath } from './get-sqlite-database-path';
@@ -23,24 +24,28 @@ export function createDataSourceOptions(config: ConfigService): DataSourceOption
     synchronize: false,
   };
 
-  const dbConfigs: Record<DbType, DataSourceOptions> = {
-    [DbType.sqlite]: {
+  if (dbType === DbType.sqlite) {
+    return {
       type: DbType.sqlite,
       database: getSqliteDatabasePath(config),
       ...baseOptions,
-    },
-    [DbType.mysql]: {
+    } as DataSourceOptions;
+  } else if (dbType === DbType.mysql) {
+    const ssl = parseMysqlSslEnv(config.get<string>('DB_MYSQL_SSL'));
+
+    return {
       type: DbType.mysql,
       host: config.get<string>('DB_HOST'),
       port: Number(config.get<string>('DB_PORT')),
       username: config.get<string>('DB_USERNAME'),
       password: config.get<string>('DB_PASSWORD'),
       database: config.get<string>('DB_DATABASE'),
+      ...(ssl === undefined ? {} : { ssl }),
       ...baseOptions,
-    },
-  };
-
-  return dbConfigs[dbType];
+    } as DataSourceOptions;
+  } else {
+    throw new Error(`Unsupported DB_TYPE: ${dbType}`);
+  }
 }
 
 function resolveLoggerOptions(value: string): LoggerOptions {

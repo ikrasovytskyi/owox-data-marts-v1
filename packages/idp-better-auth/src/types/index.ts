@@ -16,6 +16,7 @@ export interface MySqlConfig {
   password: string;
   database: string;
   port?: number;
+  ssl?: unknown;
 }
 
 export type Role = 'admin' | 'editor' | 'viewer';
