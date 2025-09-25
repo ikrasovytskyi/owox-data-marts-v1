@@ -12,17 +12,12 @@ export class RunDataMartService {
   ) {}
 
   async run(command: RunDataMartCommand): Promise<string> {
-    const dataMart = await this.dataMartService.getByIdAndProjectIdAndUserId(
-      command.id,
-      command.projectId,
-      command.userId
-    );
+    const dataMart = await this.dataMartService.getByIdAndProjectId(command.id, command.projectId);
 
     if (dataMart.definitionType !== DataMartDefinitionType.CONNECTOR) {
       throw new Error('Only data marts with connector definition type can be run manually');
     }
 
-    const runId = await this.connectorExecutionService.run(dataMart, command.payload);
-    return runId;
+    return await this.connectorExecutionService.run(dataMart, command.payload);
   }
 }

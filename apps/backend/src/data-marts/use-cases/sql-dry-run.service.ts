@@ -12,10 +12,9 @@ export class SqlDryRunService {
   ) {}
 
   async run(command: SqlDryRunCommand): Promise<SqlDryRunResult> {
-    const dataMart = await this.dataMartService.getByIdAndProjectIdAndUserId(
+    const dataMart = await this.dataMartService.getByIdAndProjectId(
       command.dataMartId,
-      command.projectId,
-      command.userId
+      command.projectId
     );
 
     const storage = dataMart.storage;
