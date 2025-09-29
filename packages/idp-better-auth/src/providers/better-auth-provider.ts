@@ -101,6 +101,17 @@ export class BetterAuthProvider
     return this.middlewareService.signInMiddleware(req, res, next);
   }
 
+  async signUpMiddleware(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void | Response> {
+    // Trade-off: Currently redirects to sign-in flow as Better Auth doesn't have
+    // a separate sign-up implementation yet. The product uses magic link authentication
+    // where sign-up and sign-in are handled through the same flow.
+    return this.middlewareService.signInMiddleware(req, res, next);
+  }
+
   async signOutMiddleware(
     req: Request,
     res: Response,
